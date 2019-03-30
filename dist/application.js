@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"body {\\n  background-color:  black;\\n  font-family:       \\\"Roboto\\\",\\\"Helvetica Neue\\\",Helvetica,Arial,sans-serif;\\n  color:             white;\\n  font-weight:       bold;\\n  margin:            20px 20px auto;\\n}\\n\\nmain {\\n  width: 95%;\\n  margin: auto;\\n}\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/stylesheet.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"body {\\n  background-color:  black;\\n  font-family:       \\\"Roboto\\\",\\\"Helvetica Neue\\\",Helvetica,Arial,sans-serif;\\n  color:             white;\\n  font-weight:       bold;\\n  margin:            20px 20px auto;\\n}\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/stylesheet.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -139,19 +139,19 @@ eval("/**\n * When source maps are enabled, `style-loader` uses a link element w
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stylesheet_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stylesheet.css */ \"./src/stylesheet.css\");\n/* harmony import */ var _stylesheet_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_stylesheet_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _hello__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hello */ \"./src/hello.js\");\n\n\nnew _hello__WEBPACK_IMPORTED_MODULE_1__[\"default\"]({\n  target: document.getElementsByTagName('main')[0]\n}).run();\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stylesheet_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stylesheet.css */ \"./src/stylesheet.css\");\n/* harmony import */ var _stylesheet_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_stylesheet_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _js_hello__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/hello */ \"./src/js/hello.js\");\n\n // (new Hello({\n//     target: document.getElementsByTagName('main')[0]\n// })).run()\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
-/***/ "./src/hello.js":
-/*!**********************!*\
-  !*** ./src/hello.js ***!
-  \**********************/
+/***/ "./src/js/hello.js":
+/*!*************************!*\
+  !*** ./src/js/hello.js ***!
+  \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar Hello =\n/*#__PURE__*/\nfunction () {\n  function Hello(config) {\n    _classCallCheck(this, Hello);\n\n    this.target = config.target;\n  }\n\n  _createClass(Hello, [{\n    key: \"run\",\n    value: function run() {\n      this.target.innerHTML = \"\\n      <p>\\n        Hello from ES2015\\n      </p>\\n    \";\n    }\n  }]);\n\n  return Hello;\n}();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Hello);\n\n//# sourceURL=webpack:///./src/hello.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar Hello =\n/*#__PURE__*/\nfunction () {\n  function Hello(config) {\n    _classCallCheck(this, Hello);\n\n    console.log('sdsdsdsd', this.target);\n    this.target = config.target;\n  }\n\n  _createClass(Hello, [{\n    key: \"run\",\n    value: function run() {\n      this.target.innerHTML = \"\\n            <p>\\n                Hello from ES2015\\n            </p>\\n        \";\n    }\n  }]);\n\n  return Hello;\n}();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Hello);\n\n//# sourceURL=webpack:///./src/js/hello.js?");
 
 /***/ }),
 

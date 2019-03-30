@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const Handlebars = require('handlebars');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -37,5 +38,10 @@ module.exports = {
             title: '6COSC006W-data-vis',
             template: 'src/index.hbs'
         })
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000
+    }
 }
