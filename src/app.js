@@ -1,6 +1,7 @@
-import css from './stylesheet.css'
-import Hello from './js/hello'
+import css from './app.scss'
+import Test from './components/test'
+import data from './assets/data/uowdata_clean'
 
-// (new Hello({
-//     target: document.getElementsByTagName('main')[0]
-// })).run()
+(new Test({
+    data: data
+})).run()

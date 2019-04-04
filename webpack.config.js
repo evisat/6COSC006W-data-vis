@@ -4,7 +4,7 @@ const Handlebars = require('handlebars');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/app.js',
+    entry: ['babel-polyfill', './src/app.js'],
     output: {
         filename: 'application.js',
         path: path.resolve(__dirname, 'dist')
@@ -12,8 +12,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: [ 'style-loader', 'css-loader' ]
+                test: /\.(scss)$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.js$/,
@@ -36,7 +36,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: '6COSC006W-data-vis',
-            template: 'src/index.hbs'
+            template: 'src/app.hbs'
         })
     ],
     devServer: {
