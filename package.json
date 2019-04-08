@@ -41,6 +41,7 @@
     "dependencies": {
         "d3": "^5.9.2",
         "handlebars": "^4.1.1",
-        "sass": "^1.17.3"
+        "sass": "^1.17.3",
+        "waypoints": "^4.0.1"
     }
 }

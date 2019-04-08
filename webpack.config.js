@@ -9,6 +9,11 @@ module.exports = {
         filename: 'application.js',
         path: path.resolve(__dirname, 'dist')
     },
+    resolve: {
+        alias: {
+            waypoints: `${__dirname}/node_modules/waypoints/lib/noframework.waypoints`
+        }
+    },
     module: {
         rules: [
             {
