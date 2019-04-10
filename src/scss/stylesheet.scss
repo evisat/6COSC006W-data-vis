@@ -32,18 +32,40 @@ html, body {
   }
   .container {
     height: 100%;
-    max-width: 440px;
-    width: 100%;
     margin: 0;
     padding: 0;
-    position: absolute;
     height: 100%;
     line-height: 1.5;
-    left: 500px;
+
   }
+
+  .title-container {
+      height: 100%;
+display: table;
+padding: 0 45px;
+width: 80%;
+margin: 0 auto;
+
+h1 {
+    vertical-align: middle;
+display: table-cell;
+font-size: 3.2em;
+}
+  }
+
+    .animation-container {
+        max-width: 440px;
+        width: 100%;
+        right: 200px;
+        position: absolute;
+
+        div {
+            display: block;
+        }
+    }
+
   .container div {
     height: 100%;
-    display: block;
     padding: 0 45px;
   }
   .fixed {
