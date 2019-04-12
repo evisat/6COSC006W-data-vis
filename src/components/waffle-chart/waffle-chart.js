@@ -14,7 +14,7 @@ class WaffleCharts {
     }
 
     getData(d) {
-        const div = d3.select("body")
+        const div = d3.select(".waffle-chart-container")
             .append("div")
             .attr("class", "tooltip")
             .style("opacity", 0)
