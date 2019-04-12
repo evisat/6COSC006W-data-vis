@@ -1,7 +1,11 @@
 import css from './app.scss'
-import Test from './components/test'
+import WaffleCharts from './components/waffle-chart/waffle-chart'
 import data from './assets/data/uowdata_clean'
 
-(new Test({
+// (new Test({
+//     data: data
+// })).run()
+
+new WaffleCharts({
     data: data
-})).run()
+})
