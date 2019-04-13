@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 
 class WaffleCharts {
     constructor(config) {
-        this.data = config.data;
+        this.data = JSON.parse(config.data);
         this.generateData(this.data);
     }
 

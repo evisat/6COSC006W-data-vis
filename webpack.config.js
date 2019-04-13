@@ -15,8 +15,7 @@ module.exports = {
         }
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(scss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
@@ -30,13 +29,17 @@ module.exports = {
             {
                 test: /\.hbs/,
                 loader: "handlebars-loader"
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
         ]
     },
     plugins: [
         new webpack.LoaderOptionsPlugin({
             options: {
-              handlebarsLoader: {}
+                handlebarsLoader: {}
             }
         }),
         new HtmlWebpackPlugin({
