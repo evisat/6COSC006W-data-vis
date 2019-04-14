@@ -1,32 +1,13 @@
-div.tooltip {
-    position: absolute;
-    text-align: left;
-    width: 90px;
-    padding: 6px;
-    font: 1.4rem sans-serif;
-    background: white;
-    border: 1px solid lightgrey;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.waffle-chart-container {
-
-}
-.waffle {
-    margin: 10px;
-}
-
-.waffle-chart-legend--items {
+.donut-chart-legend--items {
     display: inline-block;
 }
 
-.waffle-chart-legend--text {
+.donut-chart-legend--text {
     display: inline-block;
     margin-right: 10px;
 }
 
-.waffle-chart-legend--items:last-child .waffle-chart-legend--text:after {
+.donut-chart-legend--items:last-child .donut-chart-legend--text:after {
   content: " *";
 }
 
@@ -88,10 +69,10 @@ $md-radio-ripple-size: 11px;
   }
 }
 
-.class-radio {
+.donut-class-radio {
     margin: 5px 0;
 
-    &.class-radio-inline {
+    &.donut-class-radio-inline {
         display: inline-block;
     }
 

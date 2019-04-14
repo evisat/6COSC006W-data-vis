@@ -2,3 +2,19 @@
 // @import "./scss/stylesheet.scss";
 @import "./components/waffle-chart/waffle-chart.scss";
 @import "./components/horizontal-chart/horizontal-chart.scss";
+@import "./components/donut-chart/donut-chart.scss";
+
+.main-content--container {
+    background-color: #fffcf9;
+    color: #282828;
+    // height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}

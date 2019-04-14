@@ -1,10 +1,40 @@
 <html lang="en-US">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>{{htmlWebpackPlugin.options.title}}</title>
-    <body>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{htmlWebpackPlugin.options.title}}</title>
+    <style>
+        .noJS-container {
+            background: #eee;
+            float: left;
+            width: 100%;
+            text-align: center;
+        }
+
+        p.noJS-container--message {
+            font-size: 18px;
+            line-height: 1.6em;
+            color: #282828;
+            padding: 0;
+            font-weight: 100;
+            -webkit-font-smoothing: antialiased;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="noJS-container">
+        <p class="noJS-container--message">Sorry, your browser does not support JavaScript!</p>
+    </div>
+    <div class="main-content--container" style="display:none">
         {{!-- {{>./components/main}} --}}
         {{>./components/waffle-chart/waffle-chart}}
         {{>./components/horizontal-chart/horizontal-chart}}
-    </body>
+        {{>./components/donut-chart/donut-chart}}
+    </div>
+    <script>
+    document.querySelector('.main-content--container').style.display = 'block';
+    document.querySelector('.noJS-container').style.display = 'none';
+    </script>
+</body>
 </html>

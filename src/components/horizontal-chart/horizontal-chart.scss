@@ -1,24 +1,25 @@
 .bar-chart_container {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .bar-chart_barContainer {
+    position: relative;
     display: inline-block;
     width: 84%;
 
     @media (min-width: 580px) {
-        width: 50%;
+        width: 55%;
     }
 }
 
 p.bar-chart_label {
     margin: 0 0 4px;
-    font-size: 1.125em;
+    font-size: 1em;
 
     @media (min-width: 580px) {
         display: inline-block;
-        min-width: 46%;
+        min-width: 41%;
         vertical-align: top;
         text-align: right;
         margin-right: 18px;
@@ -29,19 +30,19 @@ div.bar-chart_bar {
     height: 26px;
     background-color: #D1495B;
     display: inline-block;
-    -webkit-transition: width 0.8s ease-out;
-    transition: width 0.8s ease-out;
+    -webkit-transition: width 0.8s;
+    transition: width 0.8s;
+    transition-timing-function: ease-out;
     border: 1px solid #D1495B;
 }
 
 .bar-chart_barContainer .bar-tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: black;
+  height: 26px;
+  width: 80px;
+  background-color: #282828;
   color: #fff;
   text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
 
   /* Position the tooltip */
   position: absolute;

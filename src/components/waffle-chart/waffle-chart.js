@@ -3,6 +3,12 @@ import * as d3 from 'd3';
 class WaffleCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
+        document.querySelector('.waffle-chart-container--title').innerHTML =
+        "Average number of <span id='degreeValue'>BA</span> students per accommodation type";
+        document.querySelector('#moreInfo').innerHTML =
+        "*Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about <a href='https://en.wikipedia.org/wiki/Travel_to_work_area' target='_blank'>TTWAs</a>"
+
+        this.generateRadioButtons();
         this.generateData(this.data);
     }
 
@@ -11,6 +17,30 @@ class WaffleCharts {
             (rv[x[key]] = rv[x[key]] || []).push(x);
             return rv;
         }, {});
+    }
+
+    generateRadioButtons() {
+        const radioArray = ['BA', 'BEng', 'BMus', 'BSc', 'LLB'];
+
+        const radios_container = document.querySelector('.radio-buttons-container');
+
+        for (let i in radioArray) {
+            const radioButton = document.createElement('div');
+            radioButton.className = 'class-radio class-radio-inline';
+            radios_container.appendChild(radioButton);
+
+            const radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.id = `radio-${radioArray[i]}`;
+            radioInput.name = 'radio-class';
+            radioInput.value = `${radioArray[i]}`;
+            radioButton.appendChild(radioInput);
+
+            const radioLabel = document.createElement('label');
+            radioLabel.setAttribute('for', `radio-${radioArray[i]}`);
+            radioLabel.innerHTML = `${radioArray[i]}`;
+            radioButton.appendChild(radioLabel);
+        }
     }
 
     getData(d) {
@@ -224,9 +254,7 @@ class WaffleCharts {
 
         for (let i = 0, max = radios.length; i < max; i++) {
             radios[i].onclick = () => {
-                const self = this
                 selectedDegree = groupedByDegree[radios[i].value];
-
                 document.getElementById("degreeValue").innerHTML = radios[i].value;
                 d3.selectAll('#waffle-charts svg').remove();
                 d3.selectAll('#legend div').remove();

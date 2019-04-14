@@ -56,7 +56,7 @@ class HorizontalCharts {
                 filter: "commute_length",
                 sort: "top",
                 color: "#00798C",
-                symbol:"mi."
+                symbol:"miles"
             },
             {
                 title: "Bottom 10 courses by commute length",
@@ -64,7 +64,7 @@ class HorizontalCharts {
                 filter: "commute_length",
                 sort: "bottom",
                 color: "#00798C",
-                symbol:"mi."
+                symbol:"miles"
             }
         ];
 
@@ -141,6 +141,7 @@ class HorizontalCharts {
 
             const value = document.createElement('span');
             value.className = 'bar-chart_value bar-tooltiptext';
+            value.style.width = `${percentageofTotal}%`;
             value.tabIndex = '0';
             value.innerHTML = `${(i.value)}${chart.symbol}`;
             barContainer.appendChild(value);
