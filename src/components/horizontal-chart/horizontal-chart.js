@@ -4,11 +4,9 @@ class HorizontalCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         this.total = 100;
-                this.container = document.querySelector('.bar-chart-section-container--chart');
+        this.parentDIV = document.querySelector('.horizontal-chart-container');
 
-        this.generateData(this.data);
-
-        this.animateRows(this.container);
+        this.chartData(this.data);
     }
 
     groupBy(xs, key) {
@@ -18,10 +16,67 @@ class HorizontalCharts {
         }, {});
     }
 
-    generateData(d) {
+    chartData(d) {
+        const chartData = [
+            {
+                title: "Top 10 courses by average module marks",
+                id: "top-10-avg",
+                filter: "average_modulemark",
+                sort: "top",
+                color: "#D1495B",
+                symbol:"%"
+            },
+            {
+                title: "Bottom 10 courses by average module marks",
+                id: "bottom-10-avg",
+                filter: "average_modulemark",
+                sort: "bottom",
+                color: "#D1495B",
+                symbol:"%"
+            },
+            {
+                title: "Top 10 courses by average module attendance",
+                id: "top-10-att",
+                filter: "perc_attendance",
+                sort: "top",
+                color: "#EDAE49",
+                symbol:"%"
+            },
+            {
+                title: "Bottom 10 courses by average module attendance",
+                id: "bottom-10-att",
+                filter: "perc_attendance",
+                sort: "bottom",
+                color: "#EDAE49",
+                symbol:"%"
+            },
+            {
+                title: "Top 10 courses by commute length",
+                id: "top-10-comm",
+                filter: "commute_length",
+                sort: "top",
+                color: "#00798C",
+                symbol:"mi."
+            },
+            {
+                title: "Bottom 10 courses by commute length",
+                id: "bottom-10-comm",
+                filter: "commute_length",
+                sort: "bottom",
+                color: "#00798C",
+                symbol:"mi."
+            }
+        ];
+
+        for (let chart in chartData) {
+            this.generateData(this.data, chartData[chart]);
+        };
+    }
+
+    generateData(d, chart) {
         for (let prop in d) {
             if (d.hasOwnProperty(prop)) {
-                if (d[prop]['average_modulemark'] < 40) {
+                if (d[prop][chart.filter] < 40) {
                     delete d[prop];
                 }
             }
@@ -42,13 +97,25 @@ class HorizontalCharts {
         }
 
         const sortedData = newArr.sort(function(a, b) {
-            return b['value'] - a['value']
+            return chart.sort == "top" ? b['value'] - a['value'] : a['value'] - b['value'];
         }).slice(0, 10);
 
-        this.createBarChart(sortedData);
+        this.createBarChart(sortedData, chart);
     }
 
-    createBarChart(d) {
+    createBarChart(d, chart) {
+        const container = document.createElement('div');
+        container.className = 'horizontal-chart-container--chart';
+        container.id = chart.id;
+        container.tabIndex = '0';
+        this.parentDIV.appendChild(container);
+
+        const title = document.createElement('h2');
+        title.className = 'horizontal-chart-container--title';
+        title.tabIndex = '0';
+        title.innerHTML = `${(chart.title)}`;
+        container.appendChild(title);
+
         for (var x = 0; x < d.length; x++) {
             const i = d[x];
             const percentageofTotal = i.value;
@@ -59,29 +126,38 @@ class HorizontalCharts {
             const label = document.createElement('p');
             label.className = 'bar-chart_label';
             label.tabIndex = '0';
-            label.innerHTML = i.course;
+            label.innerHTML = i.course.replace('FT', '')
+            .replace('and', '&')
+            .replace(/Communications|Communication/, 'Comm.')
+            .replace('Management', 'Mngmt')
+            .replace('Quantity', 'Qty')
+            .replace('Commercial', 'Cml')
+            .replace('& Architecture', '& Arch');
             sectionContainer.appendChild(label);
 
             const barContainer = document.createElement('div');
             barContainer.className = 'bar-chart_barContainer';
             sectionContainer.appendChild(barContainer);
 
+            const value = document.createElement('span');
+            value.className = 'bar-chart_value bar-tooltiptext';
+            value.tabIndex = '0';
+            value.innerHTML = `${(i.value)}${chart.symbol}`;
+            barContainer.appendChild(value);
+
             const bar = document.createElement('div');
             bar.className = 'bar-chart_bar';
-            bar.style.width = (this.isNewsApp || this.isAmp) ? `${percentageofTotal}%` : '0%';
+            bar.style.width = `${percentageofTotal}%`;
+            bar.style.backgroundColor = chart.color;
+            bar.style.border = `1px solid ${chart.color}`
             bar.setAttribute('aria-hidden', 'true');
             bar.setAttribute('data-percentage', `${percentageofTotal}%`);
             barContainer.appendChild(bar);
 
-            const value = document.createElement('span');
-            value.className = 'bar-chart_value';
-            value.tabIndex = '0';
-            value.innerHTML = `${(i.value)}%`;
-            barContainer.appendChild(value);
-
-            this.container.appendChild(sectionContainer);
+            container.appendChild(sectionContainer);
         }
 
+        this.animateRows(container);
     }
 
     animateRows(container) {
@@ -90,11 +166,8 @@ class HorizontalCharts {
         for (let t = 0; t < bars.length; t++) {
             const bar = bars[t];
             const width = bar.getAttribute('data-percentage');
-            bar.style.width = width; // eslint-disable-line
+            bar.style.width = width;
             bar.setAttribute('aria-valuenow', width);
-            // setTimeout(() => {
-            //
-            // }, t * 80);
         }
     }
 
