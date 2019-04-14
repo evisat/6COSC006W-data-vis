@@ -1,1 +1,21 @@
-@import "./scss/stylesheet.scss";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,600');
+// @import "./scss/stylesheet.scss";
+@import "./components/scatter-chart/scatter-chart.scss";
+@import "./components/donut-chart/donut-chart.scss";
+@import "./components/horizontal-chart/horizontal-chart.scss";
+@import "./components/waffle-chart/waffle-chart.scss";
+
+.main-content--container {
+    background-color: #fffcf9;
+    color: #282828;
+    // height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}

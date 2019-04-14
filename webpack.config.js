@@ -9,9 +9,13 @@ module.exports = {
         filename: 'application.js',
         path: path.resolve(__dirname, 'dist')
     },
+    resolve: {
+        alias: {
+            waypoints: `${__dirname}/node_modules/waypoints/lib/noframework.waypoints`
+        }
+    },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(scss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
@@ -25,13 +29,17 @@ module.exports = {
             {
                 test: /\.hbs/,
                 loader: "handlebars-loader"
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
         ]
     },
     plugins: [
         new webpack.LoaderOptionsPlugin({
             options: {
-              handlebarsLoader: {}
+                handlebarsLoader: {}
             }
         }),
         new HtmlWebpackPlugin({
