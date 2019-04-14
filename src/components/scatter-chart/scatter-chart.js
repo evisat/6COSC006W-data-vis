@@ -3,7 +3,8 @@ import * as d3 from 'd3';
 class ScatterCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
-        this.parentDIV = document.querySelector('.scatterplot-container');
+        document.querySelector('#scatterplot-title').innerHTML = "Scatterplot showing the relationship between module attendance and marks for courses based in <span id='campusName'>Cavendish Campus</span>"
+        this.parentDIV = document.querySelector('.form-campus');
 
         this.generateData(this.data);
     }
@@ -25,7 +26,12 @@ class ScatterCharts {
             }
         };
 
-        const dropdownList = document.getElementById("campus-select");
+        const dropdownList = document.createElement('select');
+        dropdownList.id = 'campus-select';
+        this.parentDIV.appendChild(dropdownList);
+
+        document.querySelector('#dropdownList-label').innerHTML = "Select campus";
+
         const groupedByCampus = this.groupBy(d, 'campus_name');
 
         Object.keys(groupedByCampus).forEach((i) => {
