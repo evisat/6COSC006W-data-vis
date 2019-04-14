@@ -1,9 +1,6 @@
-import * as d3 from 'd3';
-
 class HorizontalCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
-        this.total = 100;
         this.parentDIV = document.querySelector('.horizontal-chart-container');
 
         this.chartData(this.data);

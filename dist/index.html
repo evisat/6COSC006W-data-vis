@@ -1,59 +1,65 @@
 <html lang="en-US">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>6COSC006W-data-vis</title>
-    <body>
-        <div class="waffle-chart-container">
-            <h2>Average number of <span id="degreeValue">BA</span> students per accommodation type</h2>
-        
-            <div class="radio-buttons-container">
-                <div class="class-radio class-radio-inline">
-                    <input type="radio" id="radio-BA" name="radio-class" value="BA" checked />
-                    <label for="radio-BA">BA</label>
-                </div>
-                <div class="class-radio class-radio-inline">
-                    <input type="radio" id="radio-BEng" name="radio-class" value="BEng" />
-                    <label for="radio-BEng">BEng</label>
-                </div>
-                <div class="class-radio class-radio-inline">
-                    <input type="radio" id="radio-BMus" name="radio-class" value="BMus" />
-                    <label for="radio-BMus">BMus</label>
-                </div>
-                <div class="class-radio class-radio-inline">
-                    <input type="radio" id="radio-BSc" name="radio-class" value="BSc" />
-                    <label for="radio-BSc">BSc</label>
-                </div>
-                <div class="class-radio class-radio-inline">
-                    <input type="radio" id="radio-LLB" name="radio-class" value="LLB" />
-                    <label for="radio-LLB">LLB</label>
-                </div>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>6COSC006W-data-vis</title>
+    <style>
+        .noJS-container {
+            background: #eee;
+            float: left;
+            width: 100%;
+            text-align: center;
+        }
+
+        p.noJS-container--message {
+            font-size: 18px;
+            line-height: 1.6em;
+            color: #282828;
+            padding: 0;
+            font-weight: 100;
+            -webkit-font-smoothing: antialiased;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="noJS-container">
+        <p class="noJS-container--message">Sorry, your browser does not support JavaScript!</p>
+    </div>
+    <div class="main-content--container" style="display:none">
+        <div class="scatterplot-container">
+            <h2 id="scatterplot-title">Scatterplot showing the relationship between module attendance and marks for courses based in <span id="campusName">Cavendish Campus</span></h2>
+            <label for="campus-select"> Select campus </label>
+            <div class="form-campus">
+                <select id=campus-select>
+                </select>
             </div>
-        
-            <div id="title">
-            </div>
-            <div id="waffle-charts">
+            <div class="scatter-plot">
             </div>
             <div id="legend">
+                <div class="equation"></div>
+                <div class="equation"></div>
             </div>
-            <p id=moreInfo>
-                *Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about
-                <a href="https://en.wikipedia.org/wiki/Travel_to_work_area" target="_blank">TTWAs</a>
-            </p>
+        </div>
+        <div class="donut-charts-container">
+            <h2 class="donut-charts-container--title"></h2>
+            <div class="donut-radio-buttons-container"></div>
+            <div id="donut-charts"></div>
+            <div id="donut-legend"></div>
         </div>
         <div class="horizontal-chart-container">
-            <div id="title">
-            </div>
-            <div id="horizontal-charts">
-            </div>
         </div>
-        
-        // Top 10 highest performing courses
-        
-        
-        
-        <div class="bar-chart-section-container">
-            <h2 class="bar-chart-section-container--title"></h2>
-            <div class="bar-chart-section-container--chart"></div>
+        <div class="waffle-chart-container">
+            <h2 class="waffle-chart-container--title"></h2>
+            <div class="radio-buttons-container"></div>
+            <div id="waffle-charts"></div>
+            <div id="legend"></div>
+            <p id="moreInfo"></p>
         </div>
-    <script type="text/javascript" src="application.js"></script></body>
+    </div>
+    <script>
+    document.querySelector('.main-content--container').style.display = 'block';
+    document.querySelector('.noJS-container').style.display = 'none';
+    </script>
+<script type="text/javascript" src="application.js"></script></body>
 </html>
