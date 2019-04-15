@@ -41,6 +41,8 @@ class WaffleCharts {
             radioLabel.innerHTML = `${radioArray[i]}`;
             radioButton.appendChild(radioLabel);
         }
+
+        document.querySelector('#radio-BA').checked = true;
     }
 
     getData(d) {

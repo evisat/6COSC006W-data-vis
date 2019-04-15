@@ -4,7 +4,7 @@ class DonutCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         document.querySelector('.donut-charts-container--title').innerHTML =
-        "Average classifications of <span id='degreeValue'>BA</span> students per level of study";
+            "Average classifications of <span id='degreeValue'>BA</span> students per level of study";
 
         this.generateRadioButtons();
         this.generateData(this.data);
@@ -56,6 +56,8 @@ class DonutCharts {
             radioLabel.innerHTML = `${radioArray[i]}`;
             radioButton.appendChild(radioLabel);
         }
+
+        document.querySelector('#donut-radio-BA').checked = true;
     }
 
     getTotal(d) {
@@ -142,7 +144,6 @@ class DonutCharts {
 
 
         const path = g.selectAll('path')
-            .attr('class', 'data-path')
             .data(pie(data))
             .enter()
             .append('g')
@@ -166,32 +167,32 @@ class DonutCharts {
             })
             .append('path')
             .attr('d', arc)
-            .attr('fill', (fillData, i) => color(fillData.data.key))
-            .attr('class', 'data-path')
-            .on('mouseover', function() {
+            .attr('fill', (d, i) => color(d.data.key))
+            .attr('class', (d => "data-path path" + d.data.key.replace(':', '')))
+            .on('mouseover', function(d) {
+                const classNameOfNodes = "path" + d.data.key.replace(':', '');
+
+                var element = d3.selectAll('.' + classNameOfNodes)['_groups'][0]
                 const _thisPath = this,
                     parentNode = _thisPath.parentNode;
 
-                if (_thisPath !== activeSegment) {
+                const dataTexts = d3.selectAll('.data-text')
+                    .classed('data-text--show', false);
 
-                    activeSegment = _thisPath;
-
-                    const dataTexts = d3.selectAll('.data-text')
-                        .classed('data-text--show', false);
-
+                element.forEach(function(target, i) {
                     const paths = d3.selectAll('.data-path')
                         .transition()
                         .duration(250)
                         .attr('d', arc);
 
-                    d3.select(_thisPath)
+                    d3.selectAll(element)
                         .transition()
                         .duration(250)
                         .attr('d', arcHover);
 
-                    const thisDataValue = d3.select(parentNode).select('.data-text__value')
+                    const thisDataValue = d3.select(element[i].parentNode.querySelectorAll('.data-text__value')[0])
                         .classed('data-text--show', true);
-                }
+                });
 
 
             })
