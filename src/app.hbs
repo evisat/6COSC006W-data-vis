@@ -22,20 +22,41 @@
         }
     </style>
 </head>
+
 <body>
     <div class="noJS-container">
         <p class="noJS-container--message">Sorry, your browser does not support JavaScript!</p>
     </div>
-    <div class="main-content--container" style="display:none">
-        {{!-- {{>./components/main}} --}}
+    <div class="main-content--container" id="fullpage" style="display:none">
+        <div class="title-container section fp-auto-height">
+            <h1 class="title-container--title"></h1>
+        </div>
+        <div class="text-section--container section fp-auto-height" id="section2-container">
+            <h2 class="section-header" id="section2-header">Why?</h2>
+            <p class="section-text" id="section2-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
         {{>./components/scatter-chart/scatter-chart}}
+        <div id="stopHere"></div>
+        <div class="text-section--container prediction-container section fp-auto-height" id="section4-container">
+            <h2 class="section-header" id="section2-header">What grades will you get?</h2>
+            <p class="section-text" id="section2-text">How the prediction works.....
+        </div>
         {{>./components/donut-chart/donut-chart}}
         {{>./components/horizontal-chart/horizontal-chart}}
         {{>./components/waffle-chart/waffle-chart}}
+        <div class="text-section--container section fp-auto-height" id="section7-container">
+            <h2 class="section-header" id="section7-header">Conclusions</h2>
+            <p class="section-text" id="section7-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="text-section--container section fp-auto-height" id="section8-container">
+            <h2 class="section-header" id="section8-header">About the project</h2>
+            <p class="section-text" id="section8-text">Where did the data come from.... libraries used etc.</p>
+        </div>
     </div>
     <script>
-    document.querySelector('.main-content--container').style.display = 'block';
-    document.querySelector('.noJS-container').style.display = 'none';
+        document.querySelector('.main-content--container').style.display = 'block';
+        document.querySelector('.noJS-container').style.display = 'none';
     </script>
 </body>
+
 </html>

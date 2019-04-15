@@ -1,3 +1,7 @@
+#horizchart-container {
+    height: 1200px !important;
+}
+
 .bar-chart_container {
     display: block;
     margin-bottom: 5px;
@@ -7,27 +11,28 @@
     position: relative;
     display: inline-block;
     width: 84%;
+    background-color: #EBEBEB;
 
     @media (min-width: 580px) {
-        width: 55%;
+        width: 43%;
     }
 }
 
 p.bar-chart_label {
     margin: 0 0 4px;
-    font-size: 1em;
 
     @media (min-width: 580px) {
+        font-size: 0.7em;
         display: inline-block;
-        min-width: 41%;
+        min-width: 52%;
         vertical-align: top;
         text-align: right;
-        margin-right: 18px;
+        margin-right: 8px;
     }
 }
 
 div.bar-chart_bar {
-    height: 26px;
+    height: 19px;
     background-color: #D1495B;
     display: inline-block;
     -webkit-transition: width 0.8s;
@@ -38,7 +43,7 @@ div.bar-chart_bar {
 
 .bar-chart_barContainer .bar-tooltiptext {
   visibility: hidden;
-  height: 26px;
+  height: 19px;
   width: 80px;
   background-color: #282828;
   color: #fff;
@@ -53,12 +58,17 @@ div.bar-chart_bar {
   visibility: visible;
 }
 
+.horiz-chart-container {
+    width: 62%;
+}
+
 .horizontal-chart-container--chart {
-    width: 45%;
+    width: 48%;
     display: inline-block;
-    margin: 10px 55px 10px 10px;
+    margin: 10px 6px 10px 10px;
 }
 
 .horizontal-chart-container--title {
     margin-top: 24px;
+    font-size: 1em;
 }

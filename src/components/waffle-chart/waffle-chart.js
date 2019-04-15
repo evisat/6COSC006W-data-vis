@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 class WaffleCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
+        console.log('sdsds', this.data);
         document.querySelector('.waffle-chart-container--title').innerHTML =
             "Average number of <span id='degreeValue'>BA</span> students per accommodation type";
         document.querySelector('#moreInfo').innerHTML =
@@ -52,6 +53,7 @@ class WaffleCharts {
             .style("opacity", 0)
 
         const groupedByLevels = this.groupBy(d, 'study_level')
+        console.log('RAUL', this.getTotal(groupedByLevels));
 
         let ordered = {};
         Object.keys(groupedByLevels).sort().forEach(function(key) {
@@ -61,10 +63,10 @@ class WaffleCharts {
         let levels;
         for (let level in ordered) {
             levels = ordered[level]
-            this.bakeWaffles(this.waffleData(levels), level, div);
+            this.bakeWaffles(this.waffleData(levels), level, div, this.getTotal(groupedByLevels));
         }
 
-        this.generateLegend(this.waffleData(levels))
+        this.generateLegend(this.waffleData(levels), this.getTotal(groupedByLevels))
     }
 
     waffleData(data) {
@@ -96,23 +98,13 @@ class WaffleCharts {
         return newobj
     }
 
-    getTotal(d) {
-        let sum = 0
-        for (let i in d) {
-            sum += d[i].population
-        }
-        return sum
-    }
 
-
-    bakeWaffles(data, title, div) {
-        const Total = this.getTotal(data);
-
+    bakeWaffles(data, title, div, ttl) {
         let total = 0;
         let width,
             height,
-            widthSquares = 16,
-            heightSquares = 9,
+            widthSquares = 14,
+            heightSquares = 7,
             squareSize = 25,
             squareValue = 0,
             gap = 1,
@@ -132,7 +124,6 @@ class WaffleCharts {
 
         //value of a square
         squareValue = total / (widthSquares * heightSquares);
-
         //remap data
         data.forEach(function(d, i) {
             d.population = +d.population;
@@ -200,7 +191,7 @@ class WaffleCharts {
                 element.forEach(function(target, i) {
                     element[i].setAttribute("fill", ttColors(data[d.groupIndex].age))
 
-                    div.html("<span style = 'font-weight: bold'>" + (d["population"] / Total * 100).toFixed(2) + "%</span>")
+                    div.html("<span style = 'font-weight: bold'>" + (d["population"] / ttl[title] * 100).toFixed(2) + "%</span>")
                     div.style("visibility", "visible")
                         .style("left", (d3.event.pageX - 20) + "px")
                         .style("top", (d3.event.pageY - 35) + "px")
@@ -247,6 +238,15 @@ class WaffleCharts {
             .attr('class', 'waffle-chart-legend--text')
             .html(d => d);
 
+    }
+
+    getTotal(d) {
+        const newobj = {
+            "Level 4": d['Level 4'].length,
+             "Level 5": d['Level 5'].length,
+             "Level 6": d['Level 6'].length
+        }
+        return newobj;
     }
 
     generateData(d) {

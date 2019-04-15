@@ -13,7 +13,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            waypoints: `${__dirname}/node_modules/waypoints/lib/noframework.waypoints`
+            fullpage: `${__dirname}/node_modules/fullpage.js/dist/fullpage.min.js`
         }
     },
     module: {

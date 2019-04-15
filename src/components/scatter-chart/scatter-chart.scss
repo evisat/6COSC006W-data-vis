@@ -1,11 +1,30 @@
-.scatter-plot {
-    width: 85%;
-    margin: 0 auto;
+#scatterplot-container {
+    height: 2200px !important;
+
+    .scatter-plot {
+        width: 57%;
+        float: left;
+    }
+
+    .form-campus-container {
+        display: inline-block;
+    }
+}
+
+#navWrap {
+    height:70px
+}
+
+.sticky {
+    position: fixed;
+}
+
+#navwrapitem {
+    display: none;
 }
 
 #scatterplot-title {
     width: 100%;
-
 }
 
 .scatter-plot--svg {
@@ -13,10 +32,10 @@
 }
 
 .form-campus {
-    position: relative;
+    position: absolute;
     background-color: #fff;
     width: auto;
-    max-width: 13%;
+    max-width: 20%;
     border: 1px solid #eaeaea;
 
     select {
