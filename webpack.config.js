@@ -3,8 +3,7 @@ const webpack = require('webpack');
 const Handlebars = require('handlebars');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const MinifyPlugin = require("babel-minify-webpack-plugin");
+const MinifyPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: ['babel-polyfill', './src/app.js'],
@@ -52,7 +51,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({ //<--key to reduce React's size
             'process.env': {
-                'NODE_ENV': JSON.stringify('production')
+                'NODE_ENV': JSON.stringify('development')
             }
         }),
         new CompressionPlugin({
@@ -60,21 +59,6 @@ module.exports = {
         }),
         new MinifyPlugin()
     ],
-    optimization: {
-        minimizer: [
-            // we specify a custom UglifyJsPlugin here to get source maps in production
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                uglifyOptions: {
-                    compress: false,
-                    ecma: 6,
-                    mangle: true
-                },
-                sourceMap: true
-            })
-        ]
-    },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,

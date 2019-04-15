@@ -4,9 +4,9 @@ class WaffleCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         document.querySelector('.waffle-chart-container--title').innerHTML =
-        "Average number of <span id='degreeValue'>BA</span> students per accommodation type";
+            "Average number of <span id='degreeValue'>BA</span> students per accommodation type";
         document.querySelector('#moreInfo').innerHTML =
-        "*Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about <a href='https://en.wikipedia.org/wiki/Travel_to_work_area' target='_blank'>TTWAs</a>"
+            "*Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about <a href='https://en.wikipedia.org/wiki/Travel_to_work_area' target='_blank'>TTWAs</a>"
 
         this.generateRadioButtons();
         this.generateData(this.data);
@@ -175,6 +175,7 @@ class WaffleCharts {
             .append("rect")
             .attr("width", squareSize)
             .attr("height", squareSize)
+            .attr("class", d => 'class' + d.groupIndex + '' + title.replace(' ', ''))
             .attr("fill", d => myColors(data[d.groupIndex].age))
             .attr("x", function(d, i) {
                 //group n squares for column
@@ -186,15 +187,23 @@ class WaffleCharts {
                 return (heightSquares * squareSize) - ((row * squareSize) + (row * gap))
             })
             .on("mouseover", function(d) {
+                const classNameOfNodes = 'class' + d.groupIndex + '' + title.replace(' ', '')
                 div.transition()
                     .duration(100)
                     .style("opacity", 1)
-                var element = d3.select(this)
-                element.style("fill", d => ttColors(data[d.groupIndex].age))
-                div.html("<span style = 'font-weight: bold'>" + (d["population"] / Total * 100).toFixed(2) + "%</span>")
-                div.style("visibility", "visible")
-                    .style("left", (d3.event.pageX - 20) + "px")
-                    .style("top", (d3.event.pageY - 35) + "px")
+
+                var element = d3.selectAll('.' + classNameOfNodes)['_groups'][0]
+
+
+                element.forEach(function(target, i) {
+                    element[i].setAttribute("fill", ttColors(data[d.groupIndex].age))
+
+                    div.html("<span style = 'font-weight: bold'>" + (d["population"] / Total * 100).toFixed(2) + "%</span>")
+                    div.style("visibility", "visible")
+                        .style("left", (d3.event.pageX - 20) + "px")
+                        .style("top", (d3.event.pageY - 35) + "px")
+                });
+
             })
             .on("mousemove", function(d) {
                 div.style("left", (d3.event.pageX - 20) + "px")
@@ -204,8 +213,12 @@ class WaffleCharts {
                 div.transition()
                     .duration(500)
                 div.style("visibility", "hidden")
-                var element = d3.select(this)
-                element.style("fill", d => myColors(data[d.groupIndex].age))
+                const classNameOfNodes = 'class' + d.groupIndex + '' + title.replace(' ', '')
+
+                var element = d3.selectAll('.' + classNameOfNodes)['_groups'][0]
+                element.forEach(function(target, i) {
+                    element[i].setAttribute("fill", myColors(data[d.groupIndex].age))
+                });
             })
     }
 
