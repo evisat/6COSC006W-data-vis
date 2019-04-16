@@ -37,6 +37,7 @@ class WaffleCharts {
             radioButton.appendChild(radioInput);
 
             const radioLabel = document.createElement('label');
+            radioLabel.className = 'radio-label';
             radioLabel.setAttribute('for', `radio-${radioArray[i]}`);
             radioLabel.innerHTML = `${radioArray[i]}`;
             radioButton.appendChild(radioLabel);
@@ -110,11 +111,11 @@ class WaffleCharts {
 
         const myColors = d3.scaleOrdinal()
             .domain(["UoW Halls", "Commuter", "Other inc. Private Halls", "Unknown"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#424B54"]);
+            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
 
         const ttColors = d3.scaleOrdinal()
             .domain(["UoW Halls", "Commuter", "Other inc. Private Halls", "Unknown"])
-            .range(["#ba8839", "#91323f", "#00515e", "#23282d"]);
+            .range(["#ba8839", "#91323f", "#014d59", "#121c21"]);
         //total
         total = d3.sum(data, function(d) {
             return d.population;
@@ -216,7 +217,7 @@ class WaffleCharts {
     generateLegend(d) {
         const myColors = d3.scaleOrdinal()
             .domain(["UoW Halls", "Commuter", "Other inc. Private Halls", "Unknown"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#424B54"]);
+            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
 
 
         const legendDiv = d3.select("#legend");
