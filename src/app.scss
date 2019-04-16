@@ -30,6 +30,7 @@ $md-radio-ripple-size: 11px;
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,600');
 @import "./components/scatter-chart/scatter-chart.scss";
+@import "./components/predict-grades/predict-grades.scss";
 @import "./components/donut-chart/donut-chart.scss";
 @import "./components/horizontal-chart/horizontal-chart.scss";
 @import "./components/waffle-chart/waffle-chart.scss";
@@ -81,12 +82,8 @@ body {
                 border-left: solid 2px #00798C;
             }
 
-            #section4-header {
-                border-left: solid 2px #EDAE49;
-            }
-
             #section8-header {
-                border-left: solid 2px #21323a;
+                border-left: solid 2px #EDAE49;
             }
 
             #section9-header {
@@ -190,6 +187,8 @@ body {
                 cursor: pointer;
             }
         }
+
+        .dropdown .dropdown-menu{ max-height:150px; overflow:auto; } 
     }
 }
 

@@ -1,0 +1,109 @@
+#prediction-sliderPercAtten {
+    .range-slider {
+        display: block;
+        width: 50%;
+        margin: 10px auto;
+        -webkit-appearance: none;
+        height: 15px;
+        background: #EBEBEB;
+        outline: none;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #D1495B;
+        cursor: pointer;
+    }
+
+    .range-slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #D1495B;
+        cursor: pointer;
+    }
+}
+
+#predict-container {
+    position: relative;
+
+    .small-scatter-plot {
+        width: 50%;
+        padding: 20px;
+        position: absolute;
+        top: 19%;
+        left: 67%;
+        margin: -70px 0 0 -170px;
+
+        @media (min-width: 1440px) {
+            width: 48%;
+        }
+    }
+
+    .prediction-options-container {
+        display: inline-block;
+        width: 50%;
+        padding: 20px;
+        position: absolute;
+        top: 19%;
+        left: 15%;
+        margin: -70px 0 0 -170px;
+
+        h2,
+        p {
+            text-align: center;
+        }
+
+        #predict-explain-text {
+            width: 81%;
+            margin: 0 auto 15px;
+        }
+
+        .degreeType-select-form,
+        .course-select-form {
+            position: relative;
+            background-color: #fff;
+            width: auto;
+            max-width: 36%;
+            border: 1px solid #eaeaea;
+            margin: 0 auto;
+
+            @media (min-width: 1440px) {
+                max-width: 30%;
+            }
+
+            select {
+                font-size: 1rem;
+                font-weight: 200;
+                width: 100%;
+                padding: 8px 24px 8px 10px;
+                border: none;
+                background-color: transparent;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+
+                &:active,
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+
+            &:after {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                margin-top: -2px;
+                right: 8px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #aaa;
+            }
+        }
+    }
+}
