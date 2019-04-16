@@ -3,7 +3,6 @@ import * as d3 from 'd3';
 class WaffleCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
-        console.log('sdsds', this.data);
         document.querySelector('.waffle-chart-container--title').innerHTML =
             "Average number of <span id='degreeValue'>BA</span> students per accommodation type";
         document.querySelector('#moreInfo').innerHTML =
@@ -53,7 +52,6 @@ class WaffleCharts {
             .style("opacity", 0)
 
         const groupedByLevels = this.groupBy(d, 'study_level')
-        console.log('RAUL', this.getTotal(groupedByLevels));
 
         let ordered = {};
         Object.keys(groupedByLevels).sort().forEach(function(key) {
@@ -105,7 +103,7 @@ class WaffleCharts {
             height,
             widthSquares = 14,
             heightSquares = 7,
-            squareSize = 25,
+            squareSize = 20,
             squareValue = 0,
             gap = 1,
             theData = [];

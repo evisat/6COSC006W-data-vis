@@ -15,16 +15,22 @@ body {
         scroll-behavior: smooth;
 
         .title-container--title {
+            font-size: 2.3em;
+            width: 49%;
+            left: 42%;
             padding: 20px;
             position: absolute;
             top: 42%;
-            left: 37%;
             margin: -70px 0 0 -170px;
-            font-size: 2.6em;
             font-weight: 500;
-            width: 47%;
             text-align: left;
-            border-left: solid 2px rgb(209, 73, 91);
+            border-left: solid 2px #D1495B;
+
+            @media (min-width: 1440px) {
+                font-size: 2.6em;
+                width: 47%;
+                left: 40%;
+            }
         }
 
         .text-section--container {
@@ -38,9 +44,23 @@ body {
                 margin: -70px 0 0 -170px;
                 font-size: 2.6em;
                 font-weight: 500;
-                width: 11%;
                 text-align: left;
-                border-left: solid 1px black;
+            }
+
+            #section2-header {
+                border-left: solid 1px #00798C;
+            }
+
+            #section4-header {
+                border-left: solid 1px #EDAE49;
+            }
+
+            #section8-header {
+                border-left: solid 1px #424B54;
+            }
+
+            #section9-header {
+                border-left: solid 1px #D1495B;
             }
 
             p.section-text {
@@ -54,6 +74,10 @@ body {
                 width: 70%;
                 text-align: left;
             }
+        }
+
+        .sticky {
+            position: fixed;
         }
     }
 }

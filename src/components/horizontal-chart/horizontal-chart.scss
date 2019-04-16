@@ -1,74 +1,93 @@
 #horizchart-container {
-    height: 1200px !important;
-}
+    height: 1000px !important;
 
-.bar-chart_container {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.bar-chart_barContainer {
-    position: relative;
-    display: inline-block;
-    width: 84%;
-    background-color: #EBEBEB;
-
-    @media (min-width: 580px) {
-        width: 43%;
-    }
-}
-
-p.bar-chart_label {
-    margin: 0 0 4px;
-
-    @media (min-width: 580px) {
-        font-size: 0.7em;
+    .horz-text-container {
         display: inline-block;
-        min-width: 52%;
-        vertical-align: top;
-        text-align: right;
-        margin-right: 8px;
+        height: 70px;
+
+
+        #navwrapitemHoriz {
+            visibility: hidden;
+            text-align: center;
+
+            #navwrapitemHoriz-text {
+                width: 81%;
+                margin: 0 auto;
+            }
+        }
     }
-}
 
-div.bar-chart_bar {
-    height: 19px;
-    background-color: #D1495B;
-    display: inline-block;
-    -webkit-transition: width 0.8s;
-    transition: width 0.8s;
-    transition-timing-function: ease-out;
-    border: 1px solid #D1495B;
-}
+    .horiz-chart-container {
+        width: 70%;
+        float: left;
 
-.bar-chart_barContainer .bar-tooltiptext {
-  visibility: hidden;
-  height: 19px;
-  width: 80px;
-  background-color: #282828;
-  color: #fff;
-  text-align: center;
+        .horizontal-chart-container--chart {
+            width: 48%;
+            display: inline-block;
+            margin: 10px 6px 10px 10px;
 
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
+            .horizontal-chart-container--title {
+                margin: 24px 0 5px;
+                font-size: 1em;
+            }
+        }
 
-.bar-chart_barContainer:hover .bar-tooltiptext {
-  visibility: visible;
-}
+        .bar-chart_container {
+            display: block;
+            margin-bottom: 5px;
 
-.horiz-chart-container {
-    width: 62%;
-}
+            p.bar-chart_label {
+                margin: 0 0 4px;
 
-.horizontal-chart-container--chart {
-    width: 48%;
-    display: inline-block;
-    margin: 10px 6px 10px 10px;
-}
+                @media (min-width: 580px) {
+                    font-size: 0.7em;
+                    display: inline-block;
+                    min-width: 52%;
+                    vertical-align: top;
+                    text-align: right;
+                    margin-right: 8px;
+                }
+            }
 
-.horizontal-chart-container--title {
-    margin: 24px 0 5px;
-    font-size: 1em;
+            .bar-chart_barContainer {
+                position: relative;
+                display: inline-block;
+                width: 84%;
+                background-color: #EBEBEB;
+
+                .bar-chart_bar {
+                    height: 19px;
+                    background-color: #D1495B;
+                    display: inline-block;
+                    -webkit-transition: width 0.8s;
+                    transition: width 0.8s;
+                    transition-timing-function: ease-out;
+                    border: 1px solid #D1495B;
+                }
+
+                .bar-tooltiptext {
+                    visibility: hidden;
+                    height: 19px;
+                    width: 80px;
+                    background-color: #282828;
+                    color: #fff;
+                    text-align: center;
+                    position: absolute;
+                    z-index: 1;
+                }
+
+                @media (min-width: 580px) {
+                    width: 43%;
+                }
+            }
+        }
+
+        .bar-chart_barContainer:hover .bar-tooltiptext {
+            visibility: visible;
+        }
+
+        @media (min-width: 1440px) {
+            width: 62%;
+        }
+    }
 }

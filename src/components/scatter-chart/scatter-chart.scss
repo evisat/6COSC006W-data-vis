@@ -2,8 +2,12 @@
     height: 2200px !important;
 
     .scatter-plot {
-        width: 57%;
+        width: 60%;
         float: left;
+
+        @media (min-width: 1440px) {
+            width: 57%;
+        }
     }
 
     .form-campus-container {
@@ -12,19 +16,28 @@
 }
 
 #navWrap {
-    height:70px
-}
-
-.sticky {
-    position: fixed;
+    height: 70px
 }
 
 #navwrapitem {
-    display: none;
+    visibility: hidden;
+    text-align: center;
+
+    #navwrapitem-text {
+        width: 81%;
+        margin: 0 auto;
+    }
+
+    label.dropdownList-label {
+        margin: 27px 0 5px;
+        display: block;
+        font-weight: 600;
+    }
 }
 
 #scatterplot-title {
     width: 100%;
+    font-size: 1.3em;
 }
 
 .scatter-plot--svg {
@@ -35,8 +48,13 @@
     position: relative;
     background-color: #fff;
     width: auto;
-    max-width: 20%;
+    max-width: 36%;
     border: 1px solid #eaeaea;
+    margin: 0 auto;
+
+    @media (min-width: 1440px) {
+        max-width: 30%;
+    }
 
     select {
         font-size: 1rem;

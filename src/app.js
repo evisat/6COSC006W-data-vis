@@ -27,6 +27,7 @@ new WaffleCharts({
 new fullpage('#fullpage', {
     licenseKey: '',
     autoScrolling: false,
+    fitToSection: false,
 });
 
 let last_known_scroll_position = 0;
@@ -45,25 +46,40 @@ window.addEventListener('scroll', function(e) {
     }
 });
 
+const scatterSection = document.querySelector('#scatterplot-container').offsetTop;
+const horizChartSection = document.querySelector('#horizchart-container').offsetTop;
+const donutChartSection = document.querySelector('#donut--container').offsetTop;
+
+let navWrap;
+let nav;
+let startPosition;
+let stopPosition;
+
+let str = '';
+
 function scrollDiv(scroll_pos) {
-        const navWrap = document.querySelector('#navWrap');
-        const nav = document.querySelector('#navwrapitem');
+    const y = scroll_pos
 
-        const startPosition = navWrap.offsetTop;
-        const stopPosition = document.querySelector('#stopHere').offsetTop - nav.offsetHeight;
+    str = (y > scatterSection && y < horizChartSection) ? '' : (y > horizChartSection) ? 'Horiz' : '';
 
-        const y = scroll_pos
+    str = (y > donutChartSection) ? 'Horiz' : '';
 
-        if (y > startPosition + 20) {
-            nav.setAttribute('class', 'sticky');
-            nav.style.display = 'block';
-            if (y > stopPosition) {
-                nav.style.top = `${stopPosition - y}px`;
-            } else {
-                nav.style.top = "90px";
-            }
+    navWrap = document.querySelector(`#navWrap${str}`);
+    nav = document.querySelector(`#navwrapitem${str}`);
+
+    startPosition = navWrap.offsetTop;
+    stopPosition = document.querySelector(`#stopHere${str}`).offsetTop - nav.offsetHeight;
+
+    if (y > startPosition + 10) {
+        nav.setAttribute('class', 'sticky');
+        nav.style.visibility = 'visible';
+        if (y > stopPosition) {
+            nav.style.top = `${stopPosition - y}px`;
         } else {
-            nav.setAttribute('class', '');
-            nav.style.display = 'none';
+            nav.style.top = "10px";
         }
+    } else {
+        nav.setAttribute('class', '');
+        nav.style.visibility = 'hidden';
+    }
 }
