@@ -103,9 +103,21 @@ body {
             }
         }
 
+        label.dropdownList-label {
+            margin: 27px 0 5px;
+            display: block;
+            font-weight: 600;
+        }
+
         .sticky {
             position: fixed;
         }
+
+        // .unsticky {
+        //     width: 38%;
+        //     position: absolute;
+        //     right: -53px;
+        // }
 
         input[type="radio"] {
             display: none;
@@ -188,7 +200,7 @@ body {
             }
         }
 
-        .dropdown .dropdown-menu{ max-height:150px; overflow:auto; } 
+        .dropdown .dropdown-menu{ max-height:150px; overflow:auto; }
     }
 }
 

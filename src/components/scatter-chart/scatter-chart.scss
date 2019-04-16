@@ -1,5 +1,9 @@
 #scatterplot-container {
-    height: 2200px !important;
+    height: 2050px !important;
+
+    @media (min-width: 1440px) {
+        height: 2080px !important;
+    }
 
     .scatter-plot {
         width: 60%;
@@ -27,17 +31,12 @@
         width: 81%;
         margin: 0 auto;
     }
-
-    label.dropdownList-label {
-        margin: 27px 0 5px;
-        display: block;
-        font-weight: 600;
-    }
 }
 
 #scatterplot-title {
     width: 100%;
-    font-size: 1.3em;
+    font-size: 1em;
+    margin: 0;
 }
 
 .scatter-plot--svg {

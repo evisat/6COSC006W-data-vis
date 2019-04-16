@@ -26,7 +26,20 @@
     }
 }
 
+#predict-average-mark {
+    font-size: 2em;
+    position: absolute;
+    left: 79px;
+    top: 500px;
+}
+
+span#pred-color {
+    color: #D1495B;
+    font-weight: 600;
+}
+
 #predict-container {
+    height: 900px !important;
     position: relative;
 
     .small-scatter-plot {
@@ -50,6 +63,7 @@
         top: 19%;
         left: 15%;
         margin: -70px 0 0 -170px;
+        text-align: center;
 
         h2,
         p {
