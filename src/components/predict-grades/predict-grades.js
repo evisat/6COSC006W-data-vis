@@ -35,15 +35,14 @@ class PredictGrades {
         const perctsliderTxt = document.querySelector('#perct-slider-value');
 
         rangeSlider.oninput = function() {
-            d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+            d3.selectAll(".small-scatter-plot--svg .linesOfIntersection").remove();
             let predictedMarks = self.getPredictedMarks(this.value, d);
-            predictedAverageTxt.innerHTML = `${predictedMarks}%`;
+            predictedAverageTxt.innerHTML = "Average module mark: <span id='pred-color'>" + predictedMarks + "%</span>";
             perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
         }
     }
 
     getPredictedMarks(percValue, d) {
-        d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
         const x = d3.scaleLinear()
             .domain([-1 * 1.95, d3.max(d, d => d['perc_attendance'])])
             .range([0, 440])
@@ -113,21 +112,20 @@ class PredictGrades {
         const predictedAverageTxt = document.querySelector('#predict-average-mark');
         const perctsliderTxt = document.querySelector('#perct-slider-value');
 
-        d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+        // d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
 
         let predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
-        predictedAverageTxt.innerHTML = `${predictedMarks}%`;
+        predictedAverageTxt.innerHTML = "Average module mark: <span id='pred-color'>" + predictedMarks + "%</span>";
         perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
 
         dropdownListCourse.addEventListener('change', (i) => {
             courseName = i.target.value;
-            d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
-            predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
-            predictedAverageTxt.innerHTML = `${predictedMarks}%`;
-            perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
             d3.selectAll('.small-scatter-plot svg').remove();
             this.generateScatterplot(groupedByCourseName[courseName], courseName);
             this.createRangeSlider(groupedByCourseName[courseName]);
+            predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
+            predictedAverageTxt.innerHTML = "Average module mark: <span id='pred-color'>" + predictedMarks + "%</span>";
+            perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
         });
     }
 
@@ -210,7 +208,7 @@ class PredictGrades {
             .attr("text-anchor", "end")
             .attr("x", width / 2 + margin.left + 70)
             .attr("y", height + margin.top - 20)
-            .style("font-size", "16px")
+            .style("font-size", "14px")
             .text("Average module attendance (%)");
 
         // Y axis label:
@@ -219,15 +217,15 @@ class PredictGrades {
             .attr("transform", "rotate(-90)")
             .attr("y", -margin.left + 20)
             .attr("x", -margin.top - height / 2 + 140)
-            .style("font-size", "16px")
+            .style("font-size", "14px")
             .text("Average module mark (%)")
 
         svg.append("text")
             .attr("x", width / 2 + margin.right - 20)
-            .attr("y", -30)
+            .attr("y", -20)
             .attr("class", "scatter-title")
             .attr("text-anchor", "middle")
-            .style("font-size", "18px")
+            .style("font-size", "14px")
             .style("font-weight", "600")
             .text(title)
             .call(this.wrap, 260);
