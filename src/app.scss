@@ -81,7 +81,7 @@ body {
             #section2-header {
                 border-left: solid 2px #00798C;
             }
-            
+
             #section8-header {
                 border-left: solid 2px #EDAE49;
             }
@@ -187,6 +187,8 @@ body {
                 cursor: pointer;
             }
         }
+
+        .dropdown .dropdown-menu{ max-height:150px; overflow:auto; } 
     }
 }
 

@@ -27,18 +27,29 @@
 }
 
 #predict-container {
+    position: relative;
+
     .small-scatter-plot {
         width: 50%;
-        float: left;
+        padding: 20px;
+        position: absolute;
+        top: 19%;
+        left: 67%;
+        margin: -70px 0 0 -170px;
 
         @media (min-width: 1440px) {
-            width: 57%;
+            width: 48%;
         }
     }
 
     .prediction-options-container {
         display: inline-block;
         width: 50%;
+        padding: 20px;
+        position: absolute;
+        top: 19%;
+        left: 15%;
+        margin: -70px 0 0 -170px;
 
         h2,
         p {

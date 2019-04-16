@@ -16,30 +16,74 @@ class PredictGrades {
         }, {});
     }
 
-    createRangeSlider() {
+    createRangeSlider(d) {
         const self = this;
+        const predictedAverageTxt = document.querySelector('#predict-average-mark');
+
         document.querySelector('.perc-select-form').innerHTML = '';
 
         const rangeSlider = document.createElement('input');
         rangeSlider.type = 'range';
-        rangeSlider.min = '0';
-        rangeSlider.max = '100';
+        rangeSlider.min = `${Math.min.apply(Math, d.map(function(o) { return o['perc_attendance']}))}`;
+        rangeSlider.max = `${Math.max.apply(Math, d.map(function(o) { return o['perc_attendance']}))}`;
         rangeSlider.value = '50';
         rangeSlider.className = 'range-slider';
         rangeSlider.step = '0.01';
         rangeSlider.id = 'slider-range';
         document.querySelector('.perc-select-form').appendChild(rangeSlider);
         document.querySelector('#prediction-sliderPercAtten label').innerHTML = "Select attendance";
+        const perctsliderTxt = document.querySelector('#perct-slider-value');
 
         rangeSlider.oninput = function() {
-            console.log('this.value2', this.value);
-            self.getPredictedMarks(this.value);
+            d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+            let predictedMarks = self.getPredictedMarks(this.value, d);
+            predictedAverageTxt.innerHTML = `${predictedMarks}%`;
+            perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
         }
     }
 
-    getPredictedMarks(percValue) {
-        // return (this.b0 + (percValue * this.b1));
-        console.log('prediction', (this.b0 + (percValue * this.b1)).toFixed(2));
+    getPredictedMarks(percValue, d) {
+        d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+        const x = d3.scaleLinear()
+            .domain([-1 * 1.95, d3.max(d, d => d['perc_attendance'])])
+            .range([0, 440])
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(d, d => d['average_modulemark'])])
+            .range([450, 0])
+            .nice()
+
+        const pValue = (this.b0 + (percValue * this.b1)).toFixed(2);
+
+        const svg = d3.select(".small-scatter-plot--svg");
+
+        svg
+            .append("line")
+            .attr("class", "linesOfIntersection")
+            .attr("x1", x(parseFloat(percValue)))
+            .attr("x2", x(parseFloat(percValue)))
+            .attr("y1", y(0))
+            .attr("y2", y(pValue))
+            .style("stroke-width", 2)
+            .style("stroke", "#000")
+            .attr("transform",
+                "translate(" + 50 + ", " + 50 + ")")
+            .style("stroke-dasharray", (3, 3));
+
+        svg
+            .append("line")
+            .attr("class", "linesOfIntersection")
+            .attr("x1", x(0))
+            .attr("x2", x(parseFloat(percValue)) - 7)
+            .attr("y1", y(pValue))
+            .attr("y2", y(pValue))
+            .style("stroke-width", 2)
+            .style("stroke", "#000")
+            .attr("transform",
+                "translate(" + 50 + ", " + 50 + ")")
+            .style("stroke-dasharray", (3, 3));
+
+        return pValue;
     }
 
     createCourseDropdown(d) {
@@ -50,7 +94,9 @@ class PredictGrades {
         document.querySelector('.course-select-form').appendChild(dropdownListCourse);
         document.querySelector('#prediction-dropdownCourse label').innerHTML = "Select course";
 
-        const groupedByCourseName = this.groupBy(d, 'course_title');
+        const data = d.sort((a, b) => (a['course_title'].substr(a['course_title'].indexOf(' ') + 1) > b['course_title'].substr(b['course_title'].indexOf(' ') + 1)) ? 1 : ((b['course_title'].substr(b['course_title'].indexOf(' ') + 1) > a['course_title'].substr(a['course_title'].indexOf(' ') + 1)) ? -1 : 0));
+
+        const groupedByCourseName = this.groupBy(data, 'course_title');
 
         Object.keys(groupedByCourseName).forEach((i) => {
             const option = document.createElement("option");
@@ -64,12 +110,21 @@ class PredictGrades {
         this.createRangeSlider(groupedByCourseName[courseName]);
 
         const rangeSlider = document.querySelector('#slider-range');
+        const predictedAverageTxt = document.querySelector('#predict-average-mark');
+        const perctsliderTxt = document.querySelector('#perct-slider-value');
 
-        this.getPredictedMarks(rangeSlider.value);
+        d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+
+        let predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
+        predictedAverageTxt.innerHTML = `${predictedMarks}%`;
+        perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
 
         dropdownListCourse.addEventListener('change', (i) => {
             courseName = i.target.value;
-            this.getPredictedMarks(rangeSlider.value);
+            d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+            predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
+            predictedAverageTxt.innerHTML = `${predictedMarks}%`;
+            perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
             d3.selectAll('.small-scatter-plot svg').remove();
             this.generateScatterplot(groupedByCourseName[courseName], courseName);
             this.createRangeSlider(groupedByCourseName[courseName]);
@@ -108,8 +163,8 @@ class PredictGrades {
             bottom: 40,
             left: 50
         };
-        let width = 220 - margin.left - margin.right;
-        let height = 240 - margin.top - margin.bottom;
+        let width = 520 - margin.left - margin.right;
+        let height = 540 - margin.top - margin.bottom;
 
         let svg = d3.select(".small-scatter-plot")
             .append("svg")
@@ -153,9 +208,9 @@ class PredictGrades {
         // Add X axis label:
         svg.append("text")
             .attr("text-anchor", "end")
-            .attr("x", width / 2 + margin.left + 20)
+            .attr("x", width / 2 + margin.left + 70)
             .attr("y", height + margin.top - 20)
-            .style("font-size", "10px")
+            .style("font-size", "16px")
             .text("Average module attendance (%)");
 
         // Y axis label:
@@ -163,22 +218,23 @@ class PredictGrades {
             .attr("text-anchor", "end")
             .attr("transform", "rotate(-90)")
             .attr("y", -margin.left + 20)
-            .attr("x", -margin.top - height / 2 + 110)
-            .style("font-size", "10px")
+            .attr("x", -margin.top - height / 2 + 140)
+            .style("font-size", "16px")
             .text("Average module mark (%)")
 
         svg.append("text")
             .attr("x", width / 2 + margin.right - 20)
-            .attr("y", -20)
+            .attr("y", -30)
             .attr("class", "scatter-title")
             .attr("text-anchor", "middle")
-            .style("font-size", "12px")
+            .style("font-size", "18px")
             .style("font-weight", "600")
             .text(title)
-            .call(this.wrap, 160);
+            .call(this.wrap, 260);
 
         // Add dots
         svg.append('g')
+            .attr('class', 'small-plot-circles')
             .selectAll("dot")
             .data(d)
             .enter()
