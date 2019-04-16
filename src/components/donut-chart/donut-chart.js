@@ -93,7 +93,7 @@ class DonutCharts {
             bottom: 20,
             left: 10
         };
-        const width = 450 - margin.left - margin.right,
+        const width = 380 - margin.left - margin.right,
             height = 350 - margin.top - margin.bottom;
 
         let activeSegment;
@@ -110,13 +110,13 @@ class DonutCharts {
         const max = d3.max(data, (maxData) => maxData.value);
 
         const svg = el.append('svg')
-            .attr('viewBox', `0 0 ${viewWidth + thickness} ${viewHeight + thickness}`)
+            .attr('viewBox', `0 0 350 ${viewHeight + thickness}`)
             .attr('class', 'pie')
             .attr('width', viewWidth)
             .attr('height', svgHeight);
 
         svg.append("text")
-            .attr("x", (viewWidth / 2.4))
+            .attr("x", (viewWidth / 2))
             .attr("y", 30)
             .attr("dy", -10)
             .attr("class", "pie-title")

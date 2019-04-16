@@ -1,7 +1,7 @@
 class HorizontalCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
-        this.parentDIV = document.querySelector('.horizontal-chart-container');
+        this.parentDIV = document.querySelector('.horiz-chart-container');
 
         this.chartData(this.data);
     }

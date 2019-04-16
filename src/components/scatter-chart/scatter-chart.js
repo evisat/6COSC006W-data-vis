@@ -30,7 +30,7 @@ class ScatterCharts {
         dropdownList.id = 'campus-select';
         this.parentDIV.appendChild(dropdownList);
 
-        document.querySelector('#dropdownList-label').innerHTML = "Select campus";
+        document.querySelector('.dropdownList-label').innerHTML = "Select campus";
 
         const groupedByCampus = this.groupBy(d, 'campus_name');
 
@@ -58,7 +58,7 @@ class ScatterCharts {
             .domain(["Cavendish Campus", "Harrow Campus", "Marylebone Campus", "Regent Campus"])
             .range(["#EDAE49", "#D1495B", "#00798C", "#424B54"])
 
-        const d = data.sort((a, b) => (a['course_title'].substr(a['course_title'].indexOf(' ')+1) > b['course_title'].substr(b['course_title'].indexOf(' ')+1)) ? 1 : ((b['course_title'].substr(b['course_title'].indexOf(' ')+1) > a['course_title'].substr(a['course_title'].indexOf(' ')+1)) ? -1 : 0));
+        const d = data.sort((a, b) => (a['course_title'].substr(a['course_title'].indexOf(' ') + 1) > b['course_title'].substr(b['course_title'].indexOf(' ') + 1)) ? 1 : ((b['course_title'].substr(b['course_title'].indexOf(' ') + 1) > a['course_title'].substr(a['course_title'].indexOf(' ') + 1)) ? -1 : 0));
 
         const groupedByCourse = this.groupBy(d, 'course_code')
 

@@ -16,6 +16,11 @@
     cursor: pointer;
   }
 }
+
+div#donut--container {
+    position: relative;
+}
+
 .data-text {
   transition: transform .2s ease-in-out;
   fill: #666;
