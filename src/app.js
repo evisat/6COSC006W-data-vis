@@ -1,5 +1,6 @@
 import css from './app.scss';
 import ScatterCharts from './components/scatter-chart/scatter-chart';
+import PredictGrades from './components/predict-grades/predict-grades';
 import WaffleCharts from './components/waffle-chart/waffle-chart';
 import HorizontalCharts from './components/horizontal-chart/horizontal-chart';
 import DonutCharts from './components/donut-chart/donut-chart';
@@ -9,6 +10,10 @@ import fullpage from 'fullpage';
 document.querySelector('.title-container--title').innerHTML = "A Visual Analysis of Student Commute Time, Attendance and Performance at University";
 
 new ScatterCharts({
+    data: JSON.stringify(data)
+})
+
+new PredictGrades({
     data: JSON.stringify(data)
 })
 
