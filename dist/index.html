@@ -22,36 +22,75 @@
         }
     </style>
 </head>
+
 <body>
     <div class="noJS-container">
         <p class="noJS-container--message">Sorry, your browser does not support JavaScript!</p>
     </div>
-    <div class="main-content--container" style="display:none">
-        <div class="scatterplot-container">
-            <h2 id="scatterplot-title"></h2>
-            <label id="dropdownList-label" for="campus-select"></label>
-            <div class="form-campus"></div>
-            <div class="scatter-plot"></div>
+    <div class="main-content--container" id="fullpage" style="display:none">
+        <div class="title-container section fp-auto-height">
+            <h1 class="title-container--title"></h1>
         </div>
-        <div class="donut-charts-container">
+        <div class="text-section--container section fp-auto-height" id="section2-container">
+            <h2 class="section-header" id="section2-header">Why?</h2>
+            <p class="section-text" id="section2-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="scatterplot-container section fp-auto-height" id="scatterplot-container">
+            <div class="form-campus-container" id="navWrap">
+                <nav id="navwrapitem">
+                    <h2>Attendance and Performance</h2>
+                    <p id="navwrapitem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed elementum tempus egestas sed sed risus. Morbi leo urna molestie at elementum eu facilisis sed odio. Suspendisse faucibus interdum posuere lorem. Odio facilisis mauris sit amet massa vitae. Eu sem integer vitae justo eget magna fermentum iaculis eu. Consectetur libero id faucibus nisl. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Ut faucibus pulvinar elementum integer enim. Pharetra convallis posuere morbi leo urna molestie. Vel orci porta non pulvinar. Ut diam quam nulla porttitor massa id neque aliquam.
+                    </p>
+                    <label class="dropdownList-label" for="campus-select"></label>
+                    <div class="form-campus"></div>
+                </nav>
+            </div>
+            <div class="scatter-plot">
+                <h2 id="scatterplot-title"></h2>
+            </div>
+        </div>
+        <div id="stopHere"></div>
+        <div class="text-section--container prediction-container section fp-auto-height" id="section4-container">
+            <h2 class="section-header" id="section4-header">What grades will you get?</h2>
+            <p class="section-text" id="section4-text">How the prediction works.....
+        </div>
+        <div class="donut-charts-container section fp-auto-height" id="donut--container">
             <h2 class="donut-charts-container--title"></h2>
             <div class="donut-radio-buttons-container"></div>
             <div id="donut-charts"></div>
             <div id="donut-legend"></div>
         </div>
-        <div class="horizontal-chart-container">
+        <div class="horizontal-chart-container section fp-auto-height" id="horizchart-container">
+            <div class="horz-text-container" id="navWrapHoriz">
+                <nav id="navwrapitemHoriz">
+                    <h2>Some Title</h2>
+                    <p id="navwrapitemHoriz-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed elementum tempus egestas sed sed risus. Morbi leo urna molestie at elementum eu facilisis sed odio. Suspendisse faucibus interdum posuere lorem. Odio facilisis mauris sit amet massa vitae. Eu sem integer vitae justo eget magna fermentum iaculis eu. Consectetur libero id faucibus nisl. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Ut faucibus pulvinar elementum integer enim. Pharetra convallis posuere morbi leo urna molestie. Vel orci porta non pulvinar. Ut diam quam nulla porttitor massa id neque aliquam.
+                    </p>
+                </nav>
+            </div>
+            <div class="horiz-chart-container"></div>
         </div>
-        <div class="waffle-chart-container">
+        <div id="stopHereHoriz"></div>
+        <div class="waffle-chart-container section fp-auto-height">
             <h2 class="waffle-chart-container--title"></h2>
             <div class="radio-buttons-container"></div>
             <div id="waffle-charts"></div>
             <div id="legend"></div>
             <p id="moreInfo"></p>
         </div>
+        <div class="text-section--container section fp-auto-height" id="section7-container">
+            <h2 class="section-header" id="section8-header">Conclusions</h2>
+            <p class="section-text" id="section8-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="text-section--container section fp-auto-height" id="section8-container">
+            <h2 class="section-header" id="section9-header">About the project</h2>
+            <p class="section-text" id="section9-text">Where did the data come from.... libraries used etc.</p>
+        </div>
     </div>
     <script>
-    document.querySelector('.main-content--container').style.display = 'block';
-    document.querySelector('.noJS-container').style.display = 'none';
+        document.querySelector('.main-content--container').style.display = 'block';
+        document.querySelector('.noJS-container').style.display = 'none';
     </script>
 <script type="text/javascript" src="application.js"></script></body>
+
 </html>
