@@ -35,7 +35,7 @@ class PredictGrades {
         const perctsliderTxt = document.querySelector('#perct-slider-value');
 
         rangeSlider.oninput = function() {
-            d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+            d3.selectAll(".small-scatter-plot--svg .linesOfIntersection").remove();
             let predictedMarks = self.getPredictedMarks(this.value, d);
             predictedAverageTxt.innerHTML = `${predictedMarks}%`;
             perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
@@ -43,7 +43,6 @@ class PredictGrades {
     }
 
     getPredictedMarks(percValue, d) {
-        d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
         const x = d3.scaleLinear()
             .domain([-1 * 1.95, d3.max(d, d => d['perc_attendance'])])
             .range([0, 440])
@@ -113,7 +112,7 @@ class PredictGrades {
         const predictedAverageTxt = document.querySelector('#predict-average-mark');
         const perctsliderTxt = document.querySelector('#perct-slider-value');
 
-        d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
+        // d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
 
         let predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
         predictedAverageTxt.innerHTML = `${predictedMarks}%`;
@@ -121,13 +120,12 @@ class PredictGrades {
 
         dropdownListCourse.addEventListener('change', (i) => {
             courseName = i.target.value;
-            d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
-            predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
-            predictedAverageTxt.innerHTML = `${predictedMarks}%`;
-            perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
             d3.selectAll('.small-scatter-plot svg').remove();
             this.generateScatterplot(groupedByCourseName[courseName], courseName);
             this.createRangeSlider(groupedByCourseName[courseName]);
+            predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
+            predictedAverageTxt.innerHTML = `${predictedMarks}%`;
+            perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
         });
     }
 
