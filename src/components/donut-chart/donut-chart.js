@@ -52,6 +52,7 @@ class DonutCharts {
             radioButton.appendChild(radioInput);
 
             const radioLabel = document.createElement('label');
+            radioLabel.className = 'radio-label';
             radioLabel.setAttribute('for', `donut-radio-${radioArray[i]}`);
             radioLabel.innerHTML = `${radioArray[i]}`;
             radioButton.appendChild(radioLabel);
@@ -85,7 +86,7 @@ class DonutCharts {
 
         const myColors = d3.scaleOrdinal()
             .domain(["1st", "2:i", "2:ii", "3rd"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#424B54"]);
+            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
 
         const margin = {
             top: 20,
@@ -209,7 +210,7 @@ class DonutCharts {
     createLegend(d) {
         const myColors = d3.scaleOrdinal()
             .domain(["1st", "2:i", "2:ii", "3rd"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#424B54"]);
+            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
 
 
         const legendDiv = d3.select("#donut-legend");

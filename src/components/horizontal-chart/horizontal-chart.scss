@@ -38,15 +38,12 @@
 
             p.bar-chart_label {
                 margin: 0 0 4px;
-
-                @media (min-width: 580px) {
-                    font-size: 0.7em;
-                    display: inline-block;
-                    min-width: 52%;
-                    vertical-align: top;
-                    text-align: right;
-                    margin-right: 8px;
-                }
+                font-size: 0.7em;
+                display: inline-block;
+                min-width: 52%;
+                vertical-align: top;
+                text-align: right;
+                margin-right: 8px;
             }
 
             .bar-chart_barContainer {
@@ -66,6 +63,7 @@
                 }
 
                 .bar-tooltiptext {
+                    font-size: 0.7em;
                     visibility: hidden;
                     height: 19px;
                     width: 80px;

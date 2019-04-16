@@ -56,7 +56,7 @@ class ScatterCharts {
     getData(data, campusName) {
         const color = d3.scaleOrdinal()
             .domain(["Cavendish Campus", "Harrow Campus", "Marylebone Campus", "Regent Campus"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#424B54"])
+            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"])
 
         const d = data.sort((a, b) => (a['course_title'].substr(a['course_title'].indexOf(' ') + 1) > b['course_title'].substr(b['course_title'].indexOf(' ') + 1)) ? 1 : ((b['course_title'].substr(b['course_title'].indexOf(' ') + 1) > a['course_title'].substr(a['course_title'].indexOf(' ') + 1)) ? -1 : 0));
 
