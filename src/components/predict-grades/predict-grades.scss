@@ -31,6 +31,11 @@
     position: absolute;
     left: 79px;
     top: 500px;
+
+    @media (min-width: 1700px) {
+        left: 200px;
+        top: 600px;
+    }
 }
 
 span#pred-color {
@@ -39,8 +44,12 @@ span#pred-color {
 }
 
 #predict-container {
-    height: 900px !important;
+    height: 700px !important;
     position: relative;
+
+    @media (min-width: 1700px) {
+        height: 800px !important;
+    }
 
     .small-scatter-plot {
         width: 50%;
@@ -73,6 +82,10 @@ span#pred-color {
         #predict-explain-text {
             width: 81%;
             margin: 0 auto 15px;
+
+            @media (min-width: 1700px) {
+                font-size: 1.3em
+            }
         }
 
         .degreeType-select-form,
@@ -103,6 +116,10 @@ span#pred-color {
                 &:focus {
                     outline: none;
                     box-shadow: none;
+                }
+
+                @media (min-width: 1700px) {
+                    font-size: 1.2em;
                 }
             }
 

@@ -5,6 +5,10 @@
         height: 2080px !important;
     }
 
+    @media (min-width: 1700px) {
+        height: 1600px !important;
+    }
+
     .scatter-plot {
         width: 60%;
         float: left;
@@ -30,6 +34,16 @@
     #navwrapitem-text {
         width: 81%;
         margin: 0 auto;
+
+        @media (min-width: 1700px) {
+            font-size: 1.2em;
+        }
+    }
+}
+
+.right-text-title {
+    @media (min-width: 1700px) {
+        font-size: 2.5em;
     }
 }
 
@@ -37,6 +51,10 @@
     width: 100%;
     font-size: 1em;
     margin: 0;
+
+    @media (min-width: 1700px) {
+        font-size: 1.5em;
+    }
 }
 
 .scatter-plot--svg {
@@ -70,6 +88,10 @@
         &:focus {
             outline: none;
             box-shadow: none;
+        }
+
+        @media (min-width: 1700px) {
+            font-size: 1.2em;
         }
     }
 

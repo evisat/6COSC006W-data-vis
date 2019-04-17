@@ -36,8 +36,9 @@ $md-radio-ripple-size: 11px;
 @import "./components/waffle-chart/waffle-chart.scss";
 
 body {
-    background-color: #fffcf9;
+    background-color: #fcf6ef;
     color: #282828;
+    overflow-x: hidden;
 
     .main-content--container {
         margin: 50px;
@@ -62,6 +63,30 @@ body {
                 width: 47%;
                 left: 40%;
             }
+
+            @media (min-width: 1700px) {
+                font-size: 3.5em;
+                width: 50%;
+                left: 38%;
+                top: 35%;
+            }
+        }
+
+        .full-outer-container {
+            position: relative;
+            top: 19%;
+            left: 13%;
+        }
+
+        .full-inner-container {
+            width: 103%;
+            padding: 20px;
+            position: absolute;
+            margin: -70px 0 0 -170px;
+
+            @media (min-width: 1700px) {
+                width: 90%;
+            }
         }
 
         .text-section--container {
@@ -76,6 +101,10 @@ body {
                 font-size: 2.6em;
                 font-weight: 500;
                 text-align: left;
+
+                @media (min-width: 1700px) {
+                    font-size: 4em;
+                }
             }
 
             #section2-header {
@@ -100,6 +129,10 @@ body {
                 font-weight: 500;
                 width: 70%;
                 text-align: left;
+
+                @media (min-width: 1700px) {
+                    font-size: 2em;
+                }
             }
         }
 
@@ -107,6 +140,10 @@ body {
             margin: 27px 0 5px;
             display: block;
             font-weight: 600;
+
+            @media (min-width: 1700px) {
+                font-size: 1.4em;
+            }
         }
 
         .sticky {
@@ -133,9 +170,13 @@ body {
         }
 
         .rect {
-            width: 20px;
+            width: 18px;
             float: left;
             margin-right: 10px;
+
+            @media (min-width: 1400px) {
+                width: 20px;
+            }
         }
 
         label.radio-label {
@@ -158,14 +199,14 @@ body {
 
             &:before {
                 left: 0;
-                top: 0;
+                top: 3px;
                 width: $md-radio-size;
                 height: $md-radio-size;
                 border: 2px solid $md-radio-border-color;
             }
 
             &:after {
-                top: $md-radio-size / 2 - $md-radio-checked-size / 2;
+                top: 7px;
                 left: $md-radio-size / 2 - $md-radio-checked-size / 2;
                 width: $md-radio-checked-size;
                 height: $md-radio-checked-size;
@@ -200,7 +241,20 @@ body {
             }
         }
 
-        .dropdown .dropdown-menu{ max-height:150px; overflow:auto; }
+        .dropdown .dropdown-menu {
+            max-height: 150px;
+            overflow: auto;
+        }
+
+        .right-text-container {
+            display: inline-block;
+            width: 50%;
+            text-align: center;
+        }
+
+        @media (min-width: 1700px) {
+            margin: 100px;
+        }
     }
 }
 
