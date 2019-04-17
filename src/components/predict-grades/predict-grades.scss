@@ -44,11 +44,11 @@ span#pred-color {
 }
 
 #predict-container {
-    height: 900px !important;
+    height: 700px !important;
     position: relative;
 
     @media (min-width: 1700px) {
-        height: 1000px !important;
+        height: 800px !important;
     }
 
     .small-scatter-plot {

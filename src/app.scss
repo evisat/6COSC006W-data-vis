@@ -38,6 +38,7 @@ $md-radio-ripple-size: 11px;
 body {
     background-color: #fcf6ef;
     color: #282828;
+    overflow-x: hidden;
 
     .main-content--container {
         margin: 50px;
@@ -76,12 +77,16 @@ body {
             top: 19%;
             left: 13%;
         }
-        
+
         .full-inner-container {
             width: 103%;
             padding: 20px;
             position: absolute;
             margin: -70px 0 0 -170px;
+
+            @media (min-width: 1700px) {
+                width: 90%;
+            }
         }
 
         .text-section--container {
@@ -165,9 +170,13 @@ body {
         }
 
         .rect {
-            width: 20px;
+            width: 18px;
             float: left;
             margin-right: 10px;
+
+            @media (min-width: 1400px) {
+                width: 20px;
+            }
         }
 
         label.radio-label {

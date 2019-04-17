@@ -155,7 +155,7 @@ class WaffleCharts {
             .attr("dy", -10)
             .attr("class", "pie-title")
             .attr("text-anchor", "middle")
-            .style("font-size", "20px")
+            .style("font-size", "16px")
             .style("font-weight", "500")
             .text(title);
 
