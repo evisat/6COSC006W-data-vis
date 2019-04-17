@@ -47,16 +47,15 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: '6COSC006W-data-vis',
-            template: 'src/app.hbs'
+            template: 'src/app.hbs',
+            jsExtension: ".gz"
         }),
         new webpack.DefinePlugin({ //<--key to reduce React's size
             'process.env': {
                 'NODE_ENV': JSON.stringify('development')
             }
         }),
-        new CompressionPlugin({
-            test: /\.js(\?.*)?$/i
-        }),
+        new CompressionPlugin(),
         new MinifyPlugin()
     ],
     devServer: {
