@@ -4,7 +4,10 @@ class DonutCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         document.querySelector('.donut-charts-container--title').innerHTML =
-            "Average classifications of <span id='degreeValue'>BA</span> students per level of study";
+            "Overall classifications of <span id='degreeValue'>BA</span> students per level of study";
+        document.querySelector('#donutText-title').innerHTML = "Degree classification of students";
+        document.querySelector('#donut-explain-text').innerHTML =
+            "The charts below show the percentage of students that were awarded each overall degree classification on each of the different levels of undergraduate degree types. A degree type … what is it (footnote) Talk about the progression to final year and possible reason for it. BEng has higher first than LLB - There is a large proportion of students that get a 1st in STEM subjects compared to non STEM subjects.";
 
         this.generateRadioButtons();
         this.generateData(this.data);
@@ -101,8 +104,7 @@ class DonutCharts {
 
             width = 480 - margin.left - margin.right;
             height = 450 - margin.top - margin.bottom;
-        }
-        else if (window.innerWidth > 1400 & window.innerWidth < 1800) {
+        } else if (window.innerWidth > 1400 & window.innerWidth < 1800) {
             margin = {
                 top: 30,
                 right: 20,
@@ -112,7 +114,7 @@ class DonutCharts {
 
             width = 430 - margin.left - margin.right;
             height = 400 - margin.top - margin.bottom;
-       } else {
+        } else {
             margin = {
                 top: 20,
                 right: 10,

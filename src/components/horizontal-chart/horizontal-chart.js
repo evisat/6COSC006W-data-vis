@@ -2,7 +2,10 @@ class HorizontalCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         this.parentDIV = document.querySelector('.horiz-chart-container');
-
+        document.querySelector('#horizText-title').innerHTML =
+            "Courses ranked by module marks, attendance and commute length";
+        document.querySelector('#navwrapitemHoriz-text').innerHTML =
+            "The charts show the ranking of courses based blablabla. Talk about how each variable data is collected or where its based from.";
         this.chartData(this.data);
     }
 
@@ -14,14 +17,13 @@ class HorizontalCharts {
     }
 
     chartData(d) {
-        const chartData = [
-            {
+        const chartData = [{
                 title: "Top 10 courses by average module marks",
                 id: "top-10-avg",
                 filter: "average_modulemark",
                 sort: "top",
                 color: "#D1495B",
-                symbol:"%"
+                symbol: "%"
             },
             {
                 title: "Bottom 10 courses by average module marks",
@@ -29,7 +31,7 @@ class HorizontalCharts {
                 filter: "average_modulemark",
                 sort: "bottom",
                 color: "#D1495B",
-                symbol:"%"
+                symbol: "%"
             },
             {
                 title: "Top 10 courses by average module attendance",
@@ -37,7 +39,7 @@ class HorizontalCharts {
                 filter: "perc_attendance",
                 sort: "top",
                 color: "#EDAE49",
-                symbol:"%"
+                symbol: "%"
             },
             {
                 title: "Bottom 10 courses by average module attendance",
@@ -45,7 +47,7 @@ class HorizontalCharts {
                 filter: "perc_attendance",
                 sort: "bottom",
                 color: "#EDAE49",
-                symbol:"%"
+                symbol: "%"
             },
             {
                 title: "Top 10 courses by commute length",
@@ -53,7 +55,7 @@ class HorizontalCharts {
                 filter: "commute_length",
                 sort: "top",
                 color: "#00798C",
-                symbol:"miles"
+                symbol: "miles"
             },
             {
                 title: "Bottom 10 courses by commute length",
@@ -61,7 +63,7 @@ class HorizontalCharts {
                 filter: "commute_length",
                 sort: "bottom",
                 color: "#00798C",
-                symbol:"miles"
+                symbol: "miles"
             }
         ];
 
@@ -124,12 +126,12 @@ class HorizontalCharts {
             label.className = 'bar-chart_label';
             label.tabIndex = '0';
             label.innerHTML = i.course.replace('FT', '')
-            .replace('and', '&')
-            .replace(/Communications|Communication/, 'Comm.')
-            .replace('Management', 'Mngmt')
-            .replace('Quantity', 'Qty')
-            .replace('Commercial', 'Cml')
-            .replace('& Architecture', '& Arch');
+                .replace('and', '&')
+                .replace(/Communications|Communication/, 'Comm.')
+                .replace('Management', 'Mngmt')
+                .replace('Quantity', 'Qty')
+                .replace('Commercial', 'Cml')
+                .replace('& Architecture', '& Arch');
             sectionContainer.appendChild(label);
 
             const barContainer = document.createElement('div');

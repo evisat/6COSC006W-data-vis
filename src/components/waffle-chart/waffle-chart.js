@@ -7,7 +7,10 @@ class WaffleCharts {
             "Average number of <span id='degreeValue'>BA</span> students per accommodation type";
         document.querySelector('#moreInfo').innerHTML =
             "*Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about <a href='https://en.wikipedia.org/wiki/Travel_to_work_area' target='_blank'>TTWAs</a>"
-
+        document.querySelector('#waffleText-title').innerHTML =
+            "Accomodation type of students"
+        document.querySelector('#waffle-explain-text').innerHTML =
+            "Describe what it actually shows and pick out significant higher values."
         this.generateRadioButtons();
         this.generateData(this.data);
     }
@@ -242,8 +245,8 @@ class WaffleCharts {
     getTotal(d) {
         const newobj = {
             "Level 4": d['Level 4'].length,
-             "Level 5": d['Level 5'].length,
-             "Level 6": d['Level 6'].length
+            "Level 5": d['Level 5'].length,
+            "Level 6": d['Level 6'].length
         }
         return newobj;
     }

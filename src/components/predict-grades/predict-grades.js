@@ -6,6 +6,10 @@ class PredictGrades {
         this.parentDIV = document.querySelector('.prediction-options-container');
         this.b0 = 0;
         this.b1 = 0;
+        document.querySelector('#predText-title').innerHTML =
+            "What grade will you get?";
+        document.querySelector('#predict-explain-text').innerHTML =
+            "Based on the results for the average module marks against average module attendance by students in your course, the following graph shows what your likely grade will be depending on your attendance.";
         this.createDegreeTypeDropdown(this.data);
     }
 

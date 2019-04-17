@@ -4,6 +4,8 @@ class ScatterCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         document.querySelector('#scatterplot-title').innerHTML = "Scatterplot showing the relationship between module attendance and marks for courses based in <span id='campusName'>Cavendish Campus</span>"
+        document.querySelector('#scatterText-title').innerHTML = "Attendance and Performance"
+        document.querySelector('#navwrapitem-text').innerHTML = "The scatterplots are showing a relationship between average module attendance and average module marks for each course in a given campus. Overall talk about analysis results."
         this.parentDIV = document.querySelector('.form-campus');
 
         this.generateData(this.data);
