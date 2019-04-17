@@ -1,4 +1,53 @@
 #waffle-container {
+    .radio-buttons-container {
+        display: inline-block;
+        width: 48%;
+
+        .class-radio,
+        .radio-label-text {
+            display: block;
+            margin: 0 auto 10px;
+            width: 30%
+        }
+    }
+
+    .bottom-chart-container {
+        margin-top: 30px;
+
+        h2.waffle-chart-container--title {
+            font-size: 1em;
+        }
+
+        #waffle-charts {
+            position: relative;
+
+            svg.waffle {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            #legend {
+                display: inline-block;
+                position: absolute;
+                top: 100px;
+                right: -38px;
+
+                .waffle-chart-legend--items {
+                    margin-bottom: 5px;
+
+                    .waffle-chart-legend--text {
+                        display: inline-block;
+                        margin-right: 10px;
+                    }
+
+                    &:last-child .waffle-chart-legend--text:after {
+                        content: " *";
+                    }
+                }
+            }
+        }
+    }
+
     div.tooltip {
         position: absolute;
         text-align: left;
@@ -9,35 +58,6 @@
         border: 1px solid lightgrey;
         pointer-events: none;
         opacity: 0.5;
-    }
-
-    #waffle-charts {
-        .waffle {
-            margin: 10px;
-        }
-    }
-
-    #legend {
-        .waffle-chart-legend--items {
-            display: inline-block;
-        }
-
-        .waffle-chart-legend--text {
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        &:last-child .waffle-chart-legend--text:after {
-          content: " *";
-        }
-    }
-
-    .class-radio {
-        margin: 5px 0;
-
-        &.class-radio-inline {
-            display: inline-block;
-        }
     }
 
 }

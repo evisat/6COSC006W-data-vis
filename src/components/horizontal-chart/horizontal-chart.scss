@@ -13,6 +13,10 @@
             #navwrapitemHoriz-text {
                 width: 81%;
                 margin: 0 auto;
+
+                @media (min-width: 1700px) {
+                    font-size: 1.2em;
+                }
             }
         }
     }

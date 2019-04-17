@@ -82,20 +82,47 @@ class DonutCharts {
     }
 
     bakeDonut(d, title) {
+        let margin,
+            width,
+            height;
         const Total = this.getTotal(d);
 
         const myColors = d3.scaleOrdinal()
             .domain(["1st", "2:i", "2:ii", "3rd"])
             .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
 
-        const margin = {
-            top: 20,
-            right: 10,
-            bottom: 20,
-            left: 10
-        };
-        const width = 380 - margin.left - margin.right,
-            height = 350 - margin.top - margin.bottom;
+        if (window.innerWidth >= 1800) {
+            margin = {
+                top: 30,
+                right: 20,
+                bottom: 30,
+                left: 20
+            };
+
+            width = 480 - margin.left - margin.right;
+            height = 450 - margin.top - margin.bottom;
+        }
+        else if (window.innerWidth > 1400 & window.innerWidth < 1800) {
+            margin = {
+                top: 30,
+                right: 20,
+                bottom: 30,
+                left: 20
+            };
+
+            width = 430 - margin.left - margin.right;
+            height = 400 - margin.top - margin.bottom;
+       } else {
+            margin = {
+                top: 20,
+                right: 10,
+                bottom: 20,
+                left: 10
+            };
+
+            width = 360 - margin.left - margin.right;
+            height = 330 - margin.top - margin.bottom;
+        }
 
         let activeSegment;
         const data = d,
@@ -103,7 +130,7 @@ class DonutCharts {
             viewHeight = height,
             svgWidth = viewHeight,
             svgHeight = viewHeight,
-            thickness = 60,
+            thickness = window.innerWidth >= 1800 ? 80 : (window.innerWidth > 1400 & window.innerWidth < 1800) ? 80 : 60,
             el = d3.select('#donut-charts'),
             radius = Math.min(svgWidth, svgHeight) / 2,
             color = myColors
@@ -248,6 +275,7 @@ class DonutCharts {
 
         this.getData(selectedDegree);
 
+        document.querySelector('.donut-radio-label-text').innerHTML = "Select degree type";
         const radios = document.getElementsByName('donut-radio-class')
 
         for (let i = 0, max = radios.length; i < max; i++) {

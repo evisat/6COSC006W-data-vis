@@ -99,12 +99,12 @@ class WaffleCharts {
 
 
     bakeWaffles(data, title, div, ttl) {
+        const squareSize = window.innerWidth > 1800 ? 30 : window.innerWidth > 1400 ? 24 : 20;
         let total = 0;
         let width,
             height,
             widthSquares = 14,
             heightSquares = 7,
-            squareSize = 20,
             squareValue = 0,
             gap = 1,
             theData = [];
@@ -264,6 +264,7 @@ class WaffleCharts {
 
         this.getData(selectedDegree);
 
+        document.querySelector('.radio-label-text').innerHTML = "Select degree type";
         const radios = document.getElementsByName('radio-class')
 
         for (let i = 0, max = radios.length; i < max; i++) {
