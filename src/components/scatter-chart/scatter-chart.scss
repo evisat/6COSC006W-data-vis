@@ -28,8 +28,10 @@
 }
 
 #navwrapitem {
+    width: 40%;
     visibility: hidden;
     text-align: center;
+    display: inline-block;
 
     #navwrapitem-text {
         width: 81%;
