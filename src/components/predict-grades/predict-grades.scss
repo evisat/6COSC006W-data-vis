@@ -24,6 +24,20 @@
         background: #D1495B;
         cursor: pointer;
     }
+
+    .range-slider::-ms-thumb {
+        width: 25px;
+        height: 25px;
+        background: #D1495B;
+        cursor: pointer;
+    }
+
+    .range-slider::-ms-track {
+        width: 25px;
+        height: 25px;
+        background: #D1495B;
+        cursor: pointer;
+    }
 }
 
 #predict-average-mark {
@@ -32,7 +46,7 @@
     left: 79px;
     top: 500px;
 
-    @media (min-width: 1700px) {
+    @media (min-width: 1800px) {
         left: 200px;
         top: 600px;
     }
@@ -47,7 +61,7 @@ span#pred-color {
     height: 700px !important;
     position: relative;
 
-    @media (min-width: 1700px) {
+    @media (min-width: 1800px) {
         height: 800px !important;
     }
 
@@ -83,7 +97,7 @@ span#pred-color {
             width: 81%;
             margin: 0 auto 15px;
 
-            @media (min-width: 1700px) {
+            @media (min-width: 1800px) {
                 font-size: 1.3em
             }
         }
@@ -118,7 +132,7 @@ span#pred-color {
                     box-shadow: none;
                 }
 
-                @media (min-width: 1700px) {
+                @media (min-width: 1800px) {
                     font-size: 1.2em;
                 }
             }

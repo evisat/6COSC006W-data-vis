@@ -1,4 +1,10 @@
 #waffle-container {
+    height: 700px !important;
+
+    @media (min-width: 1800px) {
+        height: 900px !important;
+    }
+
     .radio-buttons-container {
         display: inline-block;
         width: 48%;
@@ -9,7 +15,7 @@
             margin: 0 auto 10px;
             width: 30%;
 
-            @media (min-width: 1700px) {
+            @media (min-width: 1800px) {
                 font-size: 1.3em;
                 margin: 0 auto 15px;
             }
@@ -18,7 +24,7 @@
 
     p#waffle-explain-text {
 
-        @media (min-width: 1700px) {
+        @media (min-width: 1800px) {
             font-size: 1.3em;
         }
     }
@@ -44,6 +50,11 @@
                 top: 70px;
                 right: 0px;
                 font-size: 0.8em;
+
+                @media (min-width: 1800px) {
+                    top: 150px;
+                    right: -135px;
+                }
             }
 
             .waffle-chart-legend--items {
@@ -57,11 +68,6 @@
                 &:last-child .waffle-chart-legend--text:after {
                     content: " *";
                 }
-            }
-
-            @media (min-width: 1700px) {
-                top: 150px;
-                right: -135px;
             }
         }
     }
