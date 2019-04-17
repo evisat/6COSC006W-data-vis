@@ -38,7 +38,7 @@
         <div class="scatterplot-container section fp-auto-height" id="scatterplot-container">
             <div class="form-campus-container" id="navWrap">
                 <nav id="navwrapitem">
-                    <h2>Attendance and Performance</h2>
+                    <h2 class="right-text-title">Attendance and Performance</h2>
                     <p id="navwrapitem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed elementum tempus egestas sed sed risus. Morbi leo urna molestie at elementum eu facilisis sed odio. Suspendisse faucibus interdum posuere lorem. Odio facilisis mauris sit amet massa vitae. Eu sem integer vitae justo eget magna fermentum iaculis eu. Consectetur libero id faucibus nisl. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Ut faucibus pulvinar elementum integer enim. Pharetra convallis posuere morbi leo urna molestie. Vel orci porta non pulvinar. Ut diam quam nulla porttitor massa id neque aliquam.
                     </p>
                     <label class="dropdownList-label" for="campus-select"></label>
@@ -52,7 +52,7 @@
         <div id="stopHere"></div>
         <div class="prediction-container section fp-auto-height" id="predict-container">
             <div class="prediction-options-container">
-                    <h2>What grade will you get?</h2>
+                    <h2 class="right-text-title">What grade will you get?</h2>
                     <p id="predict-explain-text">Based on the results for the average module marks against average module attendance by students in your course, the following graph shows what your likely grade will be in comparison to your attendance.
                     </p>
                     <div id="prediction-dropdownDegreeType">
@@ -75,15 +75,30 @@
             </div>
         </div>
         <div class="donut-charts-container section fp-auto-height" id="donut--container">
-            <h2 class="donut-charts-container--title"></h2>
-            <div class="donut-radio-buttons-container"></div>
-            <div id="donut-charts"></div>
-            <div id="donut-legend"></div>
+            <div class="full-outer-container">
+                <div class="full-inner-container">
+                    <div class="top-text-container">
+                        <div class="donut-radio-buttons-container">
+                            <label class="dropdownList-label donut-radio-label-text" for="donut-radio-class"></label>
+                        </div>
+                        <div class="right-text-container">
+                            <h2 class="right-text-title">Degree classification of students</h2>
+                            <p id="donut-explain-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed elementum tempus egestas sed sed risus. Morbi leo urna molestie at elementum eu facilisis sed odio. Suspendisse faucibus interdum posuere lorem. Odio facilisis mauris sit amet massa vitae. Eu sem integer vitae justo eget magna fermentum iaculis eu. Consectetur libero id faucibus nisl. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar.</p>
+                        </div>
+                    </div>
+                    <div class="bottom-chart-container">
+                        <h2 class="donut-charts-container--title"></h2>
+                        <div id="donut-charts">
+                            <div id="donut-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="horizontal-chart-container section fp-auto-height" id="horizchart-container">
             <div class="horz-text-container" id="navWrapHoriz">
                 <nav id="navwrapitemHoriz">
-                    <h2>Some Title</h2>
+                    <h2 class="right-text-title">Some Title</h2>
                     <p id="navwrapitemHoriz-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed elementum tempus egestas sed sed risus. Morbi leo urna molestie at elementum eu facilisis sed odio. Suspendisse faucibus interdum posuere lorem. Odio facilisis mauris sit amet massa vitae. Eu sem integer vitae justo eget magna fermentum iaculis eu. Consectetur libero id faucibus nisl. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Ut faucibus pulvinar elementum integer enim. Pharetra convallis posuere morbi leo urna molestie. Vel orci porta non pulvinar. Ut diam quam nulla porttitor massa id neque aliquam.
                     </p>
                 </nav>
@@ -92,11 +107,27 @@
         </div>
         <div id="stopHereHoriz"></div>
         <div class="waffle-chart-container section fp-auto-height" id="waffle-container">
-            <h2 class="waffle-chart-container--title"></h2>
-            <div class="radio-buttons-container"></div>
-            <div id="waffle-charts"></div>
-            <div id="legend"></div>
-            <p id="moreInfo"></p>
+            <div class="full-outer-container">
+                <div class="full-inner-container">
+                    <div class="top-text-container">
+                        <div class="radio-buttons-container">
+                            <label class="dropdownList-label radio-label-text" for="radio-class"></label>
+                        </div>
+                        <div class="right-text-container">
+                            <h2 class="right-text-title">Accomodation type of students</h2>
+                            <p id="waffle-explain-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed elementum tempus egestas sed sed risus. Morbi leo urna molestie at elementum eu facilisis sed odio. Suspendisse faucibus interdum posuere lorem. Odio facilisis mauris sit amet massa vitae. Eu sem integer vitae justo eget magna fermentum iaculis eu. Consectetur libero id faucibus nisl. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar.</p>
+                        </div>
+                    </div>
+                    <div class="bottom-chart-container" id="bottom-chart-container-waffle">
+                        <h2 class="waffle-chart-container--title"></h2>
+                        <div id="waffle-charts">
+                            <div id="legend"></div>
+                        </div>
+                        <p id="moreInfo"></p>
+        
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="text-section--container section fp-auto-height" id="section7-container">
             <h2 class="section-header" id="section8-header">Conclusions</h2>
