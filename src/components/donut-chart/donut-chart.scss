@@ -1,4 +1,8 @@
 #donut--container {
+    @media (min-width: 1800px) {
+        height: 1000px !important;
+    }
+
     .donut-radio-buttons-container {
         display: inline-block;
         width: 48%;
@@ -51,6 +55,10 @@
                         display: inline-block;
                         margin-right: 10px;
                     }
+                }
+
+                @media (min-width: 1800px) {
+                    top: 180px;
                 }
             }
         }
