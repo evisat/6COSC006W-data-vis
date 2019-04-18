@@ -7,7 +7,7 @@ class DonutCharts {
             "Overall classifications of <span id='degreeValue'>BA</span> students per level of study";
         document.querySelector('#donutText-title').innerHTML = "Degree classification of students";
         document.querySelector('#donut-explain-text').innerHTML =
-            "The charts below show the percentage of students that were awarded each overall degree classification on each of the different levels of undergraduate degree types. There is a significant increase in the number of 1st class degrees awarded to students from their first year of study to their last. Additionally, students under the BEng degree typically have a higher percentage of 1st class than those students under BA, Showing students studying STEM subjects are more likely to achieve firsts compared to non-STEM.";
+            "The charts below show the percentage of students that were awarded each overall degree classification on each of the different levels of undergraduate degree types. There is a significant increase in the number of 1st class degrees awarded to students in their last year of study compared to their first. Additionally, students under the BEng degree typically have a higher percentage of 1st class than those students under BA, Showing students studying STEM subjects are more likely to achieve firsts compared to non-STEM.";
 
         this.generateRadioButtons();
         this.generateData(this.data);

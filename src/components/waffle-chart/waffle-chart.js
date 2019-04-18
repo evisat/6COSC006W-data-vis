@@ -10,7 +10,7 @@ class WaffleCharts {
         document.querySelector('#waffleText-title').innerHTML =
             "Student accommodation type"
         document.querySelector('#waffle-explain-text').innerHTML =
-            "The waffle charts below show the percentage of students under each accommodation type split into the three levels of study.  For each degree type, we can see there is a drop in the rate of students living at UoW Halls, especially for BMus and BA. The university halls for these degree types are located on campus, so this could be the reason for the large percentage of students living in this accommodation type during their first year of studies. Whereas halls for students that are studying BEng or BSc are nearly an hour away from the campus. Meaning the cost of travel and rent is higher than what would be spent if students were living at home."
+            "The waffle charts below show the percentage of students under each accommodation type split into the three levels of study.  For each degree type, we can see there is a drop in the rate of students living at UoW (University of Westminster) Halls, especially for BMus and BA. The university halls for these degree types are located on campus, so this could be the reason for the large percentage of students living in this accommodation type during their first year of studies. Whereas halls for students that are studying BEng or BSc are nearly an hour away from the campus. Meaning the cost of travel and rent is higher than what would be spent if students were living at home."
         this.generateRadioButtons();
         this.generateData(this.data);
     }
