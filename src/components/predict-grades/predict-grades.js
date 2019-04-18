@@ -30,7 +30,7 @@ class PredictGrades {
         rangeSlider.type = 'range';
         rangeSlider.min = `${Math.min.apply(Math, d.map(function(o) { return o['perc_attendance']}))}`;
         rangeSlider.max = `${Math.max.apply(Math, d.map(function(o) { return o['perc_attendance']}))}`;
-        rangeSlider.value = '50';
+        rangeSlider.value = 50;
         rangeSlider.className = 'range-slider';
         rangeSlider.step = '0.01';
         rangeSlider.id = 'slider-range';
@@ -116,8 +116,6 @@ class PredictGrades {
         const predictedAverageTxt = document.querySelector('#predict-average-mark');
         const perctsliderTxt = document.querySelector('#perct-slider-value');
 
-        // d3.select(".small-scatter-plot--svg .linesOfIntersection").remove();
-
         let predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
         predictedAverageTxt.innerHTML = "Average module mark: <span id='pred-color'>" + predictedMarks + "%</span>";
         perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
@@ -129,6 +127,7 @@ class PredictGrades {
             this.createRangeSlider(groupedByCourseName[courseName]);
             predictedMarks = this.getPredictedMarks(rangeSlider.value, groupedByCourseName[courseName]);
             predictedAverageTxt.innerHTML = "Average module mark: <span id='pred-color'>" + predictedMarks + "%</span>";
+            rangeSlider.value = 50;
             perctsliderTxt.innerHTML = `${rangeSlider.value}%`;
         });
     }
@@ -234,7 +233,7 @@ class PredictGrades {
             .text(title)
             .call(this.wrap, 260);
 
-        // Add dots
+        // Add circles to chart
         svg.append('g')
             .attr('class', 'small-plot-circles')
             .selectAll("dot")
