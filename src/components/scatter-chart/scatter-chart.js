@@ -5,7 +5,7 @@ class ScatterCharts {
         this.data = JSON.parse(config.data);
         document.querySelector('#scatterplot-title').innerHTML = "Scatterplot showing the relationship between module attendance and marks for courses based in <span id='campusName'>Cavendish Campus</span>"
         document.querySelector('#scatterText-title').innerHTML = "Attendance and Performance"
-        document.querySelector('#navwrapitem-text').innerHTML = "The scatterplots are showing a relationship between average module attendance and average module marks for each course in a given campus. Overall talk about analysis results."
+        document.querySelector('#navwrapitem-text').innerHTML = "The scatterplots are showing a relationship between average module attendance and average module marks for each course in a given campus. The linear regression line shows a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus."
         this.parentDIV = document.querySelector('.form-campus');
 
         this.generateData(this.data);

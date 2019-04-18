@@ -4,13 +4,13 @@ class WaffleCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         document.querySelector('.waffle-chart-container--title').innerHTML =
-            "Average number of <span id='degreeValue'>BA</span> students per accommodation type";
+            "Overall accommodation type of <span id='degreeValue'>BA</span> students per level study";
         document.querySelector('#moreInfo').innerHTML =
-            "*Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about <a href='https://en.wikipedia.org/wiki/Travel_to_work_area' target='_blank'>TTWAs</a>"
+            "*Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about <a href='https://en.wikipedia.org/wiki/Travel_to_work_area' target='_blank'>TTWAs</a>."
         document.querySelector('#waffleText-title').innerHTML =
-            "Accomodation type of students"
+            "Student accommodation type"
         document.querySelector('#waffle-explain-text').innerHTML =
-            "Describe what it actually shows and pick out significant higher values."
+            "The waffle charts below show the percentage of students under each accommodation type split into the three levels of study.  For each degree type, we can see there is a drop in the rate of students living at UoW Halls, especially for BMus and BA. The university halls for these degree types are located on campus, so this could be the reason for the large percentage of students living in this accommodation type during their first year of studies. Whereas halls for students that are studying BEng or BSc are nearly an hour away from the campus. Meaning the cost of travel and rent is higher than what would be spent if students were living at home."
         this.generateRadioButtons();
         this.generateData(this.data);
     }

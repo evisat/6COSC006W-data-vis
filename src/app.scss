@@ -34,11 +34,13 @@ $md-radio-ripple-size: 11px;
 @import "./components/donut-chart/donut-chart.scss";
 @import "./components/horizontal-chart/horizontal-chart.scss";
 @import "./components/waffle-chart/waffle-chart.scss";
+@import "./components/section-nine/section-nine.scss";
 
 body {
     background-color: #fcf6ef;
     color: #282828;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
 
     .main-content--container {
         margin: 50px;
@@ -115,10 +117,6 @@ body {
                 border-left: solid 2px #EDAE49;
             }
 
-            #section9-header {
-                border-left: solid 2px #D1495B;
-            }
-
             p.section-text {
                 padding: 20px;
                 position: absolute;
@@ -127,11 +125,15 @@ body {
                 margin: -70px 0 0 -170px;
                 font-size: 1.5em;
                 font-weight: 500;
-                width: 70%;
+                width: 80%;
                 text-align: left;
 
                 @media (min-width: 1800px) {
-                    font-size: 2em;
+                    font-size: 1.8em;
+                }
+
+                @media (min-width: 1400px) {
+                    width: 70%;
                 }
             }
         }

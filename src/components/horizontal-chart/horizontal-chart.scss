@@ -50,6 +50,10 @@
                 vertical-align: top;
                 text-align: right;
                 margin-right: 8px;
+
+                @media (min-width: 1800px) {
+                    font-size: 0.9em;
+                }
             }
 
             .bar-chart_barContainer {
