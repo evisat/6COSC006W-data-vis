@@ -1,5 +1,5 @@
 # A Visual Analysis of Student Commute Time, Attendance and Performance at University
-https://evisat.github.io/6COSC006W-data-vis/dist/index.html
+View the website here: https://evisat.github.io/6COSC006W-data-vis/dist/index.html
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
