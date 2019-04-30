@@ -17,7 +17,7 @@ if (window.innerWidth < 1280) {
     document.querySelector('.main-content--container').style.display = 'block';
     document.querySelector('#mobile-compatible').style.display = 'none';
 
-    document.querySelector('.title-container--title').innerHTML = "A Visual Analysis of Student Commute Time, Attendance and Performance at University";
+    document.querySelector('.title-container--title').innerHTML = "A Visual Analysis of Student Commute Length, Attendance and Performance at University";
 
     new ScatterCharts({
         data: JSON.stringify(data)
