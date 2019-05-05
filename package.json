@@ -1,6 +1,6 @@
 {
     "name": "6cosc006w-data-vis",
-    "version": "12.5.1",
+    "version": "12.5.5",
     "description": "A Visual Analysis of Student Commute Length, Attendance and Performance at University",
     "main": "application.js",
     "scripts": {

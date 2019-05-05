@@ -4,7 +4,7 @@ class WaffleCharts {
     constructor(config) {
         this.data = JSON.parse(config.data);
         document.querySelector('.waffle-chart-container--title').innerHTML =
-            "Overall accommodation type of <span id='degreeValue'>BA</span> students per level study";
+            "Overall accommodation type of <span id='degreeValueWaffle'>BA</span> students per level study";
         document.querySelector('#moreInfo').innerHTML =
             "*Term time postcode is not known or is located outside of the campus travel to work area (TTWA). Learn more about <a href='https://en.wikipedia.org/wiki/Travel_to_work_area' target='_blank'>TTWAs</a>."
         document.querySelector('#waffleText-title').innerHTML =
@@ -195,14 +195,19 @@ class WaffleCharts {
 
                     div.html("<span style = 'font-weight: bold'>" + (d["population"] / ttl[title] * 100).toFixed(2) + "%</span>")
                     div.style("visibility", "visible")
-                        .style("left", (d3.event.pageX - 20) + "px")
-                        .style("top", (d3.event.pageY - 35) + "px")
+                        .style("left", (d3.event.pageX - 5) + "px")
+                        .style("top", (d3.event.pageY - 15) + "px")
                 });
 
             })
             .on("mousemove", function(d) {
-                div.style("left", (d3.event.pageX - 20) + "px")
-                    .style("top", (d3.event.pageY - 65) + "px")
+                if (window.innerWidth >= 1800) {
+                    div.style("left", (d3.event.pageX - 80) + "px")
+                        .style("top", (d3.event.pageY - 100) + "px")
+                } else {
+                    div.style("left", (d3.event.pageX - 40) + "px")
+                        .style("top", (d3.event.pageY - 60) + "px")
+                }
             })
             .on("mouseout", function(d) {
                 div.transition()
@@ -273,7 +278,7 @@ class WaffleCharts {
         for (let i = 0, max = radios.length; i < max; i++) {
             radios[i].onclick = () => {
                 selectedDegree = groupedByDegree[radios[i].value];
-                document.getElementById("degreeValue").innerHTML = radios[i].value;
+                document.getElementById("degreeValueWaffle").innerHTML = radios[i].value;
                 d3.selectAll('#waffle-charts svg').remove();
                 d3.selectAll('#legend div').remove();
                 this.getData(selectedDegree);
