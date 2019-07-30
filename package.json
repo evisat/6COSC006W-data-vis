@@ -1,6 +1,6 @@
 {
     "name": "6cosc006w-data-vis",
-    "version": "12.5.6",
+    "version": "12.5.8",
     "description": "A Visual Analysis of Student Commute Length, Attendance and Performance at University",
     "main": "application.js",
     "scripts": {
@@ -34,7 +34,7 @@
         "handlebars-loader": "^1.7.1",
         "html-webpack-plugin": "^3.2.0",
         "json-loader": "^0.5.7",
-        "node-sass": "^4.11.0",
+        "node-sass": "^4.12.0",
         "sass-loader": "^7.1.0",
         "style-loader": "^0.23.1",
         "uglifyjs-webpack-plugin": "^2.1.2",
