@@ -14,21 +14,21 @@
         appearance: none;
         width: 25px;
         height: 25px;
-        background: #D1495B;
+        background: #9B2736;
         cursor: pointer;
     }
 
     .range-slider::-moz-range-thumb {
         width: 25px;
         height: 25px;
-        background: #D1495B;
+        background: #9B2736;
         cursor: pointer;
     }
 
     .range-slider::-ms-thumb {
         width: 25px;
         height: 25px;
-        background: #D1495B;
+        background: #9B2736;
         cursor: pointer;
     }
 }
@@ -46,17 +46,12 @@
 }
 
 span#pred-color {
-    color: #D1495B;
+    color: #9B2736;
     font-weight: 600;
 }
 
 #predict-container {
-    height: 700px !important;
     position: relative;
-
-    @media (min-width: 1800px) {
-        height: 800px !important;
-    }
 
     .small-scatter-plot {
         width: 50%;
@@ -97,7 +92,6 @@ span#pred-color {
 
         .degreeType-select-form,
         .course-select-form {
-            position: relative;
             background-color: #fff;
             width: auto;
             max-width: 36%;
@@ -132,7 +126,6 @@ span#pred-color {
 
             &:after {
                 content: " ";
-                position: absolute;
                 top: 50%;
                 margin-top: -2px;
                 right: 8px;

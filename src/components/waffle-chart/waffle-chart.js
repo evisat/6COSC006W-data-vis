@@ -1,8 +1,8 @@
 import * as d3 from 'd3';
 
 class WaffleCharts {
-    constructor(config) {
-        this.data = JSON.parse(config.data);
+    constructor(data) {
+        this.data = data;
         document.querySelector('.waffle-chart-container--title').innerHTML =
             "Overall accommodation type of <span id='degreeValueWaffle'>BA</span> students per level study";
         document.querySelector('#moreInfo').innerHTML =
@@ -114,7 +114,7 @@ class WaffleCharts {
 
         const myColors = d3.scaleOrdinal()
             .domain(["UoW Halls", "Commuter", "Other inc. Private Halls", "Unknown"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
+            .range(["#005244", "#9B2736", "#01556A", "#5A497E"]);
 
         const ttColors = d3.scaleOrdinal()
             .domain(["UoW Halls", "Commuter", "Other inc. Private Halls", "Unknown"])
@@ -225,7 +225,7 @@ class WaffleCharts {
     generateLegend(d) {
         const myColors = d3.scaleOrdinal()
             .domain(["UoW Halls", "Commuter", "Other inc. Private Halls", "Unknown"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
+            .range(["#005244", "#9B2736", "#01556A", "#5A497E"]);
 
 
         const legendDiv = d3.select("#legend");

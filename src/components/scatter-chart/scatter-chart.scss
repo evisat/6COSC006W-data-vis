@@ -1,112 +1,140 @@
-#scatterplot-container {
-    height: 2050px !important;
-
-    @media (min-width: 1440px) {
-        height: 2080px !important;
-    }
-
-    @media (min-width: 1800px) {
-        height: 1600px !important;
-    }
-
-    .scatter-plot {
-        width: 60%;
-        float: left;
+.scatterplot-container {
+    .scatterplot-container-charts {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        display: block;
+        box-sizing: border-box;
 
         @media (min-width: 1440px) {
             width: 57%;
         }
-    }
 
-    .form-campus-container {
-        display: inline-block;
-    }
-}
+        &--title {
+            border-left: solid 2px #01556a;
+            padding: 0 0 0 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
 
-#navWrap {
-    height: 70px
-}
+        &--description {
+            font-size: 0.8rem;
+            margin: 0 0 0.25rem 0;
+        }
 
-#navwrapitem {
-    width: 40%;
-    visibility: hidden;
-    text-align: center;
-    display: inline-block;
+        &--chart {
+            background-color: #fff;
+            padding: 0.6em;
+            width: 100%;
+            max-width: inherit;
+            box-sizing: border-box;
+        }
 
-    #navwrapitem-text {
-        width: 81%;
-        margin: 0 auto;
-
-        @media (min-width: 1800px) {
-            font-size: 1.2em;
+        &--description-two {
+            font-size: 0.8rem;
         }
     }
-}
 
-.right-text-title {
-    @media (min-width: 1800px) {
-        font-size: 2em;
+    .form-campus {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        margin-bottom: 0.25rem;
+        display: inline-block;
+        width: 58%;
+
+        select {
+            font-size: 1rem;
+            font-weight: 200;
+            width: 100%;
+            padding: 8px 24px 8px 10px;
+            border: none;
+            background-color: transparent;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+            &:active,
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+            @media (min-width: 1800px) {
+                font-size: 1.2em;
+            }
+        }
+
+        &:after {
+            content: " ";
+            top: 50%;
+            margin-top: -2px;
+            right: 8px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #aaa;
+            position: absolute;
+        }
+    }
+
+    &> div:first-child {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
 }
 
-#scatterplot-title {
-    width: 100%;
-    font-size: 1em;
-    margin: 0;
+@each $campus, $colour in $campus-colours {
+    .title-#{$campus} {
+        color: $colour;
+        font-weight: 600;
+    }
 
-    @media (min-width: 1800px) {
-        font-size: 1.5em;
+    .dot-#{$campus} {
+        height: 0.5rem;
+        width: 0.5rem;
+        background-color: $colour;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .container--#{$campus} path {
+        stroke: $colour;
+    }
+
+    .container--#{$campus} .dot {
+        fill: $colour;
+        opacity: 0.35;
     }
 }
 
 .scatter-plot--svg {
-    margin: 5px;
+    max-width: 100%;
 }
 
-.form-campus {
-    position: relative;
-    background-color: #fff;
-    width: auto;
-    max-width: 36%;
-    border: 1px solid #eaeaea;
-    margin: 0 auto;
+.y-axis .tick line,
+.x-axis .tick line {
+    stroke: #6e6e73;
+    stroke-width: 1px;
+}
 
-    @media (min-width: 1440px) {
-        max-width: 35%;
-    }
+.x-axis .domain {
+    stroke: #6e6e73;
+    stroke-width: 1px;
+}
 
-    select {
-        font-size: 1rem;
-        font-weight: 200;
-        max-width: 100%;
-        padding: 8px 24px 8px 10px;
-        border: none;
-        background-color: transparent;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
+.y-axis .domain {
+    display: none;
+}
 
-        &:active,
-        &:focus {
-            outline: none;
-            box-shadow: none;
-        }
+svg text {
+    font-size: 1rem;
+    fill: #6e6e73;
+}
 
-        @media (min-width: 1800px) {
-            font-size: 1.2em;
-        }
-    }
-
-    &:after {
-        content: " ";
-        position: absolute;
-        top: 50%;
-        margin-top: -2px;
-        right: 8px;
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid #aaa;
-    }
+.x-axis .tick:first-of-type {
+    display: none;
 }

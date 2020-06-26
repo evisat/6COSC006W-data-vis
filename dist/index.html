@@ -7,11 +7,11 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141502377-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-141502377-1');
+        gtag('config', 'UA-141502377-1');
     </script>
     <style>
         .usermessage-container {
@@ -34,122 +34,119 @@
 </head>
 
 <body>
-    <div class="usermessage-container" id="mobile-compatible" style="display:none">
-        <p class="usermessage" id="mobile-compatible-message">Sorry, this website has not been optimised for this screen size. For the best experience, please view on a laptop or desktop device.</p>
-    </div>
-    <div class="main-content--container" id="fullpage" style="display:none">
-        <div class="title-container section fp-auto-height">
-            <h1 class="title-container--title"></h1>
-        </div>
-        <div class="text-section--container section fp-auto-height" id="section2-container">
-            <h2 class="section-header" id="section2-header"></h2>
-            <p class="section-text" id="section2-text"></p>
-        </div>
-        <div class="scatterplot-container section fp-auto-height" id="scatterplot-container">
-            <div class="form-campus-container" id="navWrap">
-                <nav id="navwrapitem">
-                    <h2 class="right-text-title" id="scatterText-title"></h2>
-                    <p id="navwrapitem-text"></p>
-                    <label class="dropdownList-label" for="campus-select"></label>
-                    <div class="form-campus"></div>
-                </nav>
+    <div id="fullpage">
+        <div class="main-content--container hidden">
+            <div class="title-container section">
+                <h1 class="title-container--title"></h1>
             </div>
-            <div class="scatter-plot">
-                <h2 id="scatterplot-title"></h2>
+            <div class="text-section--container section">
+                <h2 class="text-section--container-header"></h2>
+                <p class="text-section--container-text"></p>
             </div>
-        </div>
-        <div id="stopHere"></div>
-        <div class="prediction-container section fp-auto-height" id="predict-container">
-            <div class="prediction-options-container">
-                    <h2 class="right-text-title" id="predText-title"></h2>
-                    <p id="predict-explain-text"></p>
-                    <div id="prediction-dropdownDegreeType">
-                        <label class="dropdownList-label" for="select-degreeType"></label>
-                        <div class="degreeType-select-form" id="form-degree-select"></div>
-                    </div>
-                    <div id="prediction-dropdownCourse">
-                        <label class="dropdownList-label" for="select-course"></label>
-                        <div class="course-select-form" id="form-course-select"></div>
-                    </div>
-                    <div id="prediction-sliderPercAtten">
-                        <label class="dropdownList-label" for="slider-range"></label>
-                        <div class="perc-select-form"></div>
-                    </div>
-                    <p id="perct-slider-value"></p>
-                    <p id="predict-average-mark"></p>
+            <div class="scatterplot-container section fp-auto-height">
+                <div class="scatterplot-container-charts">
+                    <div class="scatterplot-container-charts--chart"></div>
+                </div>
+                <div class="form-campus-container" id="navWrap">
+                    <nav id="navwrapitem">
+                        <p id="navwrapitem-text"></p>
+                        <label class="dropdownList-label" for="campus-select"></label>
+                        <div class="form-campus"></div>
+                    </nav>
+                </div>
             </div>
-            <div class="small-scatter-plot">
-            </div>
-        </div>
-        <div class="donut-charts-container section fp-auto-height" id="donut--container">
-            <div class="full-outer-container">
-                <div class="full-inner-container">
-                    <div class="top-text-container">
-                        <div class="donut-radio-buttons-container">
-                            <p class="dropdownList-label donut-radio-label-text"></p>
+            <div id="stopHere"></div>
+            <div class="prediction-container section fp-auto-height" id="predict-container">
+                <div class="prediction-options-container">
+                        <h2 class="right-text-title" id="predText-title"></h2>
+                        <p id="predict-explain-text"></p>
+                        <div id="prediction-dropdownDegreeType">
+                            <label class="dropdownList-label" for="select-degreeType"></label>
+                            <div class="degreeType-select-form" id="form-degree-select"></div>
                         </div>
-                        <div class="right-text-container">
-                            <h2 class="right-text-title" id="donutText-title"></h2>
-                            <p id="donut-explain-text"></p>
+                        <div id="prediction-dropdownCourse">
+                            <label class="dropdownList-label" for="select-course"></label>
+                            <div class="course-select-form" id="form-course-select"></div>
                         </div>
-                    </div>
-                    <div class="bottom-chart-container">
-                        <h2 class="donut-charts-container--title"></h2>
-                        <div id="donut-charts">
-                            <div id="donut-legend"></div>
+                        <div id="prediction-sliderPercAtten">
+                            <label class="dropdownList-label" for="slider-range"></label>
+                            <div class="perc-select-form"></div>
+                        </div>
+                        <p id="perct-slider-value"></p>
+                        <p id="predict-average-mark"></p>
+                </div>
+                <div class="small-scatter-plot"></div>
+            </div>
+            <div class="donut-charts-container section fp-auto-height" id="donut--container">
+                <div class="full-outer-container">
+                    <div class="full-inner-container">
+                        <div class="top-text-container">
+                            <div class="donut-radio-buttons-container">
+                                <p class="dropdownList-label donut-radio-label-text"></p>
+                            </div>
+                            <div class="right-text-container">
+                                <h2 class="right-text-title" id="donutText-title"></h2>
+                                <p id="donut-explain-text"></p>
+                            </div>
+                        </div>
+                        <div class="bottom-chart-container">
+                            <h2 class="donut-charts-container--title"></h2>
+                            <div id="donut-charts">
+                                <div id="donut-legend"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="horizontal-chart-container section fp-auto-height" id="horizchart-container">
-            <div class="horz-text-container" id="navWrapHoriz">
-                <nav id="navwrapitemHoriz">
-                    <h2 class="right-text-title" id="horizText-title"></h2>
-                    <p id="navwrapitemHoriz-text"></p>
-                </nav>
+            <div class="horizontal-chart-container section fp-auto-height" id="horizchart-container">
+                <div class="horz-text-container" id="navWrapHoriz">
+                    <nav id="navwrapitemHoriz">
+                        <h2 class="right-text-title" id="horizText-title"></h2>
+                        <p id="navwrapitemHoriz-text"></p>
+                    </nav>
+                </div>
+                <div class="horiz-chart-container"></div>
             </div>
-            <div class="horiz-chart-container"></div>
-        </div>
-        <div id="stopHereHoriz"></div>
-        <div class="waffle-chart-container section fp-auto-height" id="waffle-container">
-            <div class="full-outer-container">
-                <div class="full-inner-container">
-                    <div class="top-text-container">
-                        <div class="radio-buttons-container">
-                            <p class="dropdownList-label radio-label-text" for="radio-class"></p>
+            <div id="stopHereHoriz"></div>
+            <div class="waffle-chart-container section fp-auto-height" id="waffle-container">
+                <div class="full-outer-container">
+                    <div class="full-inner-container">
+                        <div class="top-text-container">
+                            <div class="radio-buttons-container">
+                                <p class="dropdownList-label radio-label-text" for="radio-class"></p>
+                            </div>
+                            <div class="right-text-container">
+                                <h2 class="right-text-title" id="waffleText-title"></h2>
+                                <p id="waffle-explain-text"></p>
+                            </div>
                         </div>
-                        <div class="right-text-container">
-                            <h2 class="right-text-title" id="waffleText-title"></h2>
-                            <p id="waffle-explain-text"></p>
+                        <div class="bottom-chart-container" id="bottom-chart-container-waffle">
+                            <h2 class="waffle-chart-container--title"></h2>
+                            <div id="waffle-charts">
+                                <div id="legend"></div>
+                            </div>
+                            <p id="moreInfo"></p>
+            
                         </div>
-                    </div>
-                    <div class="bottom-chart-container" id="bottom-chart-container-waffle">
-                        <h2 class="waffle-chart-container--title"></h2>
-                        <div id="waffle-charts">
-                            <div id="legend"></div>
-                        </div>
-                        <p id="moreInfo"></p>
-        
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="text-section--container section fp-auto-height" id="section8-container">
-            <h2 class="section-header" id="section8-header"></h2>
-            <p class="section-text" id="section8-text"></p>
-        </div>
-        <div class="text-section--container section fp-auto-height" id="section9-container">
-            <h2 class="section-header" id="section9-header"></h2>
-            <p class="section-text" id="section9-text-one"></p></br>
-            <p class="section-text" id="section9-text-two"></p>
-            <p class="section-text" id="section9-text-three"></p>
-            <p class="section-text" id="section9-text-four"></p>
-            <p class="section-text" id="section9-text-five"></p>
+            <div class="text-section--container section fp-auto-height" id="section8-container">
+                <h2 class="section-header" id="section8-header"></h2>
+                <p class="section-text" id="section8-text"></p>
+            </div>
+            <div class="text-section--container section fp-auto-height" id="section9-container">
+                <h2 class="section-header" id="section9-header"></h2>
+                <p class="section-text" id="section9-text-one"></p></br>
+                <p class="section-text" id="section9-text-two"></p>
+                <p class="section-text" id="section9-text-three"></p>
+                <p class="section-text" id="section9-text-four"></p>
+                <p class="section-text" id="section9-text-five"></p>
+            </div>
         </div>
     </div>
     <script>
-        document.querySelector('.main-content--container').style.display = 'block';
+        document.querySelector('.main-content--container').classList.remove('hidden');
     </script>
 <script type="text/javascript" src="application.js"></script></body>
 

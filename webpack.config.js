@@ -32,10 +32,6 @@ module.exports = {
             {
                 test: /\.hbs/,
                 loader: "handlebars-loader"
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
             }
         ]
     },

@@ -1,6 +1,6 @@
 class HorizontalCharts {
-    constructor(config) {
-        this.data = JSON.parse(config.data);
+    constructor(data) {
+        this.data = data;
         this.parentDIV = document.querySelector('.horiz-chart-container');
         document.querySelector('#horizText-title').innerHTML =
             "Courses ranked by average mark, attendance and commute length";
@@ -22,7 +22,7 @@ class HorizontalCharts {
                 id: "top-10-avg",
                 filter: "average_modulemark",
                 sort: "top",
-                color: "#D1495B",
+                color: "#9B2736",
                 symbol: "%"
             },
             {
@@ -30,7 +30,7 @@ class HorizontalCharts {
                 id: "bottom-10-avg",
                 filter: "average_modulemark",
                 sort: "bottom",
-                color: "#D1495B",
+                color: "#9B2736",
                 symbol: "%"
             },
             {
@@ -38,7 +38,7 @@ class HorizontalCharts {
                 id: "top-10-att",
                 filter: "perc_attendance",
                 sort: "top",
-                color: "#EDAE49",
+                color: "#005244",
                 symbol: "%"
             },
             {
@@ -46,7 +46,7 @@ class HorizontalCharts {
                 id: "bottom-10-att",
                 filter: "perc_attendance",
                 sort: "bottom",
-                color: "#EDAE49",
+                color: "#005244",
                 symbol: "%"
             },
             {
@@ -54,7 +54,7 @@ class HorizontalCharts {
                 id: "top-10-comm",
                 filter: "commute_length",
                 sort: "top",
-                color: "#00798C",
+                color: "#01556A",
                 symbol: "miles"
             },
             {
@@ -62,7 +62,7 @@ class HorizontalCharts {
                 id: "bottom-10-comm",
                 filter: "commute_length",
                 sort: "bottom",
-                color: "#00798C",
+                color: "#01556A",
                 symbol: "miles"
             }
         ];

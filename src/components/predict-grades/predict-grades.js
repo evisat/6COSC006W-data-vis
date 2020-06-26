@@ -1,8 +1,8 @@
 import * as d3 from 'd3';
 
 class PredictGrades {
-    constructor(config) {
-        this.data = JSON.parse(config.data);
+    constructor(data) {
+        this.data = data;
         this.parentDIV = document.querySelector('.prediction-options-container');
         this.b0 = 0;
         this.b1 = 0;
@@ -247,7 +247,7 @@ class PredictGrades {
                 return y(d['average_modulemark']);
             })
             .attr("r", 2)
-            .style("fill", '#D1495B')
+            .style("fill", '#9B2736')
 
         let lineData = this.calcLinear(d);
         lineData.forEach((dta) => {

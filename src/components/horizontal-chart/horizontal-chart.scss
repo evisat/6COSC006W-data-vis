@@ -1,26 +1,7 @@
 #horizchart-container {
-    height: 1000px !important;
-
     .horz-text-container {
         display: inline-block;
         height: 70px;
-
-
-        #navwrapitemHoriz {
-            width: 33%;
-            visibility: hidden;
-            text-align: center;
-            display: inline-block;
-
-            #navwrapitemHoriz-text {
-                width: 81%;
-                margin: 0 auto;
-
-                @media (min-width: 1800px) {
-                    font-size: 1.2em;
-                }
-            }
-        }
     }
 
     .horiz-chart-container {
@@ -64,12 +45,12 @@
 
                 .bar-chart_bar {
                     height: 19px;
-                    background-color: #D1495B;
+                    background-color: #9B2736;
                     display: inline-block;
                     -webkit-transition: width 0.8s;
                     transition: width 0.8s;
                     transition-timing-function: ease-out;
-                    border: 1px solid #D1495B;
+                    border: 1px solid #9B2736;
                 }
 
                 .bar-tooltiptext {

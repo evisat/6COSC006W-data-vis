@@ -1,17 +1,20 @@
-<html lang="en-US">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
     <link rel="icon" type="image/png" href="https://i.ibb.co/VLcBLNX/favicon.png">
     <title>{{htmlWebpackPlugin.options.title}}</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141502377-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-141502377-1');
+        gtag('config', 'UA-141502377-1');
     </script>
     <style>
         .usermessage-container {
@@ -34,26 +37,25 @@
 </head>
 
 <body>
-    <div class="usermessage-container" id="mobile-compatible" style="display:none">
-        <p class="usermessage" id="mobile-compatible-message">Sorry, this website has not been optimised for this screen size. For the best experience, please view on a laptop or desktop device.</p>
-    </div>
-    <div class="main-content--container" id="fullpage" style="display:none">
-        <div class="title-container section fp-auto-height">
-            <h1 class="title-container--title"></h1>
+    <div id="fullpage">
+        <div class="main-content--container hidden">
+            <div class="title-container section">
+                <h1 class="title-container--title"></h1>
+            </div>
+            {{>./components/section-two/section-two}}
+            {{>./components/scatter-chart/scatter-chart}}
+            <div id="stopHere"></div>
+            {{>./components/predict-grades/predict-grades}}
+            {{>./components/donut-chart/donut-chart}}
+            {{>./components/horizontal-chart/horizontal-chart}}
+            <div id="stopHereHoriz"></div>
+            {{>./components/waffle-chart/waffle-chart}}
+            {{>./components/section-eight/section-eight}}
+            {{>./components/section-nine/section-nine}}
         </div>
-        {{>./components/section-two/section-two}}
-        {{>./components/scatter-chart/scatter-chart}}
-        <div id="stopHere"></div>
-        {{>./components/predict-grades/predict-grades}}
-        {{>./components/donut-chart/donut-chart}}
-        {{>./components/horizontal-chart/horizontal-chart}}
-        <div id="stopHereHoriz"></div>
-        {{>./components/waffle-chart/waffle-chart}}
-        {{>./components/section-eight/section-eight}}
-        {{>./components/section-nine/section-nine}}
     </div>
     <script>
-        document.querySelector('.main-content--container').style.display = 'block';
+        document.querySelector('.main-content--container').classList.remove('hidden');
     </script>
 </body>
 

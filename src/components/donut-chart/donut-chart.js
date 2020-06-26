@@ -1,8 +1,8 @@
 import * as d3 from 'd3';
 
 class DonutCharts {
-    constructor(config) {
-        this.data = JSON.parse(config.data);
+    constructor(data) {
+        this.data = data;
         document.querySelector('.donut-charts-container--title').innerHTML =
             "Overall classifications of <span id='degreeValue'>BA</span> students per level of study";
         document.querySelector('#donutText-title').innerHTML = "Degree classification of students";
@@ -92,7 +92,7 @@ class DonutCharts {
 
         const myColors = d3.scaleOrdinal()
             .domain(["1st", "2:i", "2:ii", "3rd"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
+            .range(["#005244", "#9B2736", "#01556A", "#5A497E"]);
 
         if (window.innerWidth >= 1800) {
             margin = {
@@ -239,7 +239,7 @@ class DonutCharts {
     createLegend(d) {
         const myColors = d3.scaleOrdinal()
             .domain(["1st", "2:i", "2:ii", "3rd"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"]);
+            .range(["#005244", "#9B2736", "#01556A", "#5A497E"]);
 
 
         const legendDiv = d3.select("#donut-legend");

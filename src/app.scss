@@ -4,6 +4,13 @@ $md-radio-size: 16px;
 $md-radio-checked-size: 8px;
 $md-radio-ripple-size: 11px;
 
+$campus-colours: (
+    CavendishCampus: #005244,
+    HarrowCampus: #9b2736,
+    MaryleboneCampus: #01556a,
+    RegentCampus: #5a497e,
+);
+
 @keyframes fadeGraphTextIn {
     from {
         opacity: 0;
@@ -16,7 +23,7 @@ $md-radio-ripple-size: 11px;
 
 @keyframes ripple {
     0% {
-        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0);
     }
 
     50% {
@@ -28,7 +35,8 @@ $md-radio-ripple-size: 11px;
     }
 }
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,600');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,600");
+@import "../node_modules/fullpage.js/dist/fullpage.css";
 @import "./components/scatter-chart/scatter-chart.scss";
 @import "./components/predict-grades/predict-grades.scss";
 @import "./components/donut-chart/donut-chart.scss";
@@ -37,96 +45,72 @@ $md-radio-ripple-size: 11px;
 @import "./components/section-nine/section-nine.scss";
 
 body {
-    background-color: #fcf6ef;
-    color: #282828;
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
+    // height: fit-content;
 
     .main-content--container {
-        margin: 50px;
-        font-family: 'Open Sans', sans-serif;
+        background-color: #fcf6ef;
+        color: #282828;
+        font-family: "Open Sans", sans-serif;
         font-weight: 300;
+        padding: 0 3.125rem;
+        padding: 0.8rem;
         scroll-behavior: smooth;
 
-        .title-container--title {
-            font-size: 2.3em;
-            width: 49%;
-            left: 42%;
-            padding: 20px;
-            position: absolute;
-            top: 42%;
-            margin: -70px 0 0 -170px;
-            font-weight: 500;
-            text-align: left;
-            border-left: solid 2px #D1495B;
-
-            @media (min-width: 1440px) {
-                font-size: 2.6em;
-                width: 47%;
-                left: 40%;
+        .title-container {
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
-            @media (min-width: 1800px) {
-                font-size: 3.5em;
-                width: 50%;
-                left: 38%;
-                top: 35%;
-            }
-        }
+            &--title {
+                font-size: 1.3rem;
+                width: 100%;
+                padding: 0 0 0 0.5rem;
+                font-weight: 600;
+                text-align: left;
+                border-left: solid 2px #9b2736;
 
-        .full-outer-container {
-            position: relative;
-            top: 19%;
-            left: 13%;
-        }
+                @media (min-width: 1440px) {
+                    font-size: 2.6rem;
+                    width: 47%;
+                    left: 40%;
+                }
 
-        .full-inner-container {
-            width: 103%;
-            padding: 20px;
-            position: absolute;
-            margin: -70px 0 0 -170px;
-
-            @media (min-width: 1800px) {
-                width: 90%;
+                @media (min-width: 1800px) {
+                    font-size: 3.5rem;
+                    width: 50%;
+                    left: 38%;
+                    top: 35%;
+                }
             }
         }
 
         .text-section--container {
-            position: relative;
+            text-align: left;
 
-            h2.section-header {
-                padding: 20px;
-                position: absolute;
-                top: 26%;
-                left: 18%;
-                margin: -70px 0 0 -170px;
-                font-size: 2.6em;
-                font-weight: 500;
-                text-align: left;
+            div {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            &-header {
+                border-left: solid 2px #01556a;
+                padding: 0 0 0 0.5rem;
+                font-size: 1.1rem;
+                font-weight: 600;
 
                 @media (min-width: 1800px) {
                     font-size: 4em;
                 }
             }
 
-            #section2-header {
-                border-left: solid 2px #00798C;
-            }
-
-            #section8-header {
-                border-left: solid 2px #EDAE49;
-            }
-
-            p.section-text {
-                padding: 20px;
-                position: absolute;
-                top: 42%;
-                left: 18%;
-                margin: -70px 0 0 -170px;
-                font-size: 1.5em;
+            &-text {
+                padding: 0;
+                font-size: 1rem;
+                width: 100%;
                 font-weight: 500;
-                width: 80%;
-                text-align: left;
 
                 @media (min-width: 1800px) {
                     font-size: 1.8em;
@@ -138,35 +122,32 @@ body {
             }
         }
 
+        #section8-header {
+            border-left: solid 2px #005244;
+        }
+
         label.dropdownList-label {
-            margin: 27px 0 5px;
-            display: block;
+            margin: 0.25rem 0 0.25rem;
             font-weight: 600;
+            display: inline-block;
+            padding: 8px 0 8px 0;
+            width: 40%;
+            text-align: right;
 
             @media (min-width: 1800px) {
                 font-size: 1.4em;
             }
         }
 
-        .sticky {
-            position: fixed;
-        }
-
-        // .unsticky {
-        //     width: 38%;
-        //     position: absolute;
-        //     right: -53px;
-        // }
-
         input[type="radio"] {
             display: none;
 
-            &:checked+label:before {
+            &:checked + label:before {
                 border-color: $md-radio-checked-color;
                 animation: ripple 0.2s linear forwards;
             }
 
-            &:checked+label:after {
+            &:checked + label:after {
                 transform: scale(1);
             }
         }
@@ -182,9 +163,7 @@ body {
         }
 
         label.radio-label {
-            display: inline-block;
             height: $md-radio-size;
-            position: relative;
             padding: 0 ($md-radio-size + 10px);
             margin-bottom: 0;
             cursor: pointer;
@@ -192,10 +171,9 @@ body {
 
             &:before,
             &:after {
-                position: absolute;
-                content: '';
+                content: "";
                 border-radius: 50%;
-                transition: all .3s ease;
+                transition: all 0.3s ease;
                 transition-property: transform, border-color;
             }
 
@@ -218,18 +196,18 @@ body {
         }
 
         .data-text {
-            transition: transform .2s ease-in-out;
+            transition: transform 0.2s ease-in-out;
             fill: #666;
 
             &__value {
                 font-size: 2.5rem;
-                transform: translateY(-.5rem);
+                transform: translateY(-0.5rem);
                 opacity: 0;
             }
 
             &--show {
                 transform: translateY(0);
-                animation: fadeGraphTextIn .5s forwards
+                animation: fadeGraphTextIn 0.5s forwards;
             }
 
             &:hover {
