@@ -13,7 +13,7 @@ import HorizontalCharts from './components/horizontal-chart/horizontal-chart';
 import './components/section-eight/section-eight';
 import './components/section-nine/section-nine';
 import DonutCharts from './components/donut-chart/donut-chart';
-import data from './assets/data/uowdata_clean';
+import data from './assets/data/uowdata_clean.json';
 import fullpage from 'fullpage';
 
 document.querySelector('.title-container--title').innerHTML = "A Visual Analysis of Student Commute Length, Attendance and Performance at University";
