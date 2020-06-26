@@ -9,14 +9,6 @@ class FormatChartData {
 
     createDropdownList(d) { 
         this.rawData = d;
-        // for (var prop in d) {
-        //     if (d.hasOwnProperty(prop)) {
-        //         if ((d[prop]['average_modulemark'] > 70) ||
-        //             d[prop]['perc_attendance'] > 70) {
-        //             delete d[prop];
-        //         }
-        //     }
-        // };
 
         // create dropdownlist
         this.dropdownList = document.createElement('select');

@@ -1,11 +1,11 @@
-import d3 from './d3-imports';
+import d3 from '../../utils/d3-imports';
 import chartConfig from './chart-config';
 import FormatScatterChartData from './format-scatter-chart-data';
 
 class ScatterCharts {
     constructor(data) {
         this.rawData = data;
-        this.container = document.querySelector('.scatterplot-container-charts--chart');
+        this.container = document.querySelector('.dv-scatterplot-container-charts--chart');
 
         this.margin = {
             top: 30,
@@ -18,9 +18,9 @@ class ScatterCharts {
         this.data = this.dataFormatter.createDropdownList(this.rawData);
         this.campusName = this.dataFormatter.campusName;
 
-        document.querySelector('.scatterplot-container-charts--description').innerHTML = `The scatterplot shows a relationship between average module attendance and average module marks for courses based in <span class="title-${this.campusName.replace(' ', '')}" id="campusName">${this.campusName}</span>`;
-        document.querySelector('.scatterplot-container-charts--title').innerHTML = 'Attendance and Performance';
-        document.querySelector('.scatterplot-container-charts--description-two').innerHTML = `The linear regression line shows a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus. Based on individual <span class="dot-scatter dot-${this.campusName.replace(' ', '')}"></span> data of students.`;
+        document.querySelector('.dv-scatterplot-container-charts--description').innerHTML = `The scatterplot shows a relationship between average module attendance and average module marks for courses based in <span class="title-${this.campusName.replace(' ', '')}" id="campusName">${this.campusName}</span>`;
+        document.querySelector('.dv-scatterplot-container-charts--title').innerHTML = 'Attendance and Performance';
+        document.querySelector('.dv-scatterplot-container-charts--description-two').innerHTML = `The linear regression line shows a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus. Based on individual <span class="dot-scatter dot-${this.campusName.replace(' ', '')}"></span> data of students.`;
 
         // initial sizing (will resize to the viewport when drawn)
         this.width = chartConfig.width - this.margin.left - this.margin.right;
@@ -223,14 +223,14 @@ class ScatterCharts {
     addEventListener() {
         document.querySelector('#campus-select').addEventListener('change', (i) => {
             this.data = this.dataFormatter.updateChartData(i);
-            d3.select(`.scatterplot-container-charts--chart .container--${this.campusName.replace(' ', '')}`).remove();
+            d3.select(`.dv-scatterplot-container-charts--chart .container--${this.campusName.replace(' ', '')}`).remove();
             this.campusName = this.dataFormatter.campusName;
             this.updateScatterplot(this.data);
         });
     }
 
     resize() {
-        const chart = d3.select(document.querySelector('.scatterplot-container-charts--chart svg'));
+        const chart = d3.select(document.querySelector('.dv-scatterplot-container-charts--chart svg'));
         const width = parseInt(this.container.clientWidth, 10);
         this.width = width - this.margin.left - this.margin.right;
 

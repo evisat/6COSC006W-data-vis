@@ -17,43 +17,27 @@
         gtag('config', 'UA-141502377-1');
     </script>
     <style>
-        .usermessage-container {
-            background: #EBEBEB;
-            float: left;
-            width: 100%;
-            text-align: center;
-        }
-
-        p.usermessage {
-            font-size: 18px;
-            line-height: 1.6em;
-            color: #282828;
-            padding: 0;
-            font-weight: 100;
-            -webkit-font-smoothing: antialiased;
-            font-size: 24px;
-        }
     </style>
 </head>
 
 <body>
     <div id="fullpage">
-        <div class="main-content--container hidden">
-            <div class="title-container section">
-                <h1 class="title-container--title"></h1>
+        <div class="dv-main-content--container hidden">
+            <div class="dv-title-container section">
+                <h1 class="dv-title-container--title"></h1>
             </div>
-            {{>./components/section-two/section-two}}
+            {{>./components/introduction/introduction}}
             {{>./components/scatter-chart/scatter-chart}}
             {{>./components/predict-grades/predict-grades}}
             {{>./components/donut-chart/donut-chart}}
             {{>./components/horizontal-chart/horizontal-chart}}
             {{>./components/waffle-chart/waffle-chart}}
-            {{>./components/section-eight/section-eight}}
-            {{>./components/section-nine/section-nine}}
+            {{>./components/conclusion/conclusion}}
+            {{>./components/credits/credits}}
         </div>
     </div>
     <script>
-        document.querySelector('.main-content--container').classList.remove('hidden');
+        document.querySelector('.dv-main-content--container').classList.remove('hidden');
     </script>
 </body>
 
