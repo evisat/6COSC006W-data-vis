@@ -19,13 +19,9 @@ import fullpage from 'fullpage';
 document.querySelector('.title-container--title').innerHTML = "A Visual Analysis of Student Commute Length, Attendance and Performance at University";
 
 new ScatterCharts(data);
-
 new PredictGrades(data);
-
 new DonutCharts(data);
-
 new HorizontalCharts(data);
-
 new WaffleCharts(data);
 
 new fullpage('#fullpage', {

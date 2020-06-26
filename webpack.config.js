@@ -2,8 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const Handlebars = require('handlebars');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const MinifyPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: ['babel-polyfill', './src/app.js'],
@@ -19,10 +17,12 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.(scss)$/,
+                exclude: /node_modules/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['@babel/preset-env'],
@@ -31,6 +31,7 @@ module.exports = {
             },
             {
                 test: /\.hbs/,
+                exclude: /node_modules/,
                 loader: "handlebars-loader"
             }
         ]
@@ -43,16 +44,9 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: '6COSC006W-data-vis',
-            template: 'src/app.hbs',
-            jsExtension: ".gz"
+            template: path.resolve(__dirname, 'src', 'app.hbs'),
+            filename: 'index.html'
         }),
-        new webpack.DefinePlugin({ //<--key to reduce React's size
-            'process.env': {
-                'NODE_ENV': JSON.stringify('development')
-            }
-        }),
-        new CompressionPlugin(),
-        new MinifyPlugin()
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
