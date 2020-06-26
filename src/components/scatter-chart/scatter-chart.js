@@ -35,22 +35,6 @@ class ScatterCharts {
         d3.select(window).on('resize', this.resize.bind(this));
     }
 
-    updateScatterplot(courseData) {
-        this.scaleX();
-        this.scaleY();
-
-        this.formatXAxis();
-        this.formatYAxis();
-
-        this.svg.append('g').attr('class', `container--${this.campusName.replace(' ', '')}`);
-        Object.keys(courseData).forEach((course) => {
-            this.addDots(courseData[course]);
-            this.addTrendLine(courseData[course]);
-        });
-
-        // this.drawScatterplot(courseData, campusName);
-    }
-
     drawScatterplot() {
         // create chart
         this.appendSVG();
@@ -65,15 +49,6 @@ class ScatterCharts {
         });
         this.addXAxisLabel();
         this.addYAxisLabel();
-    }
-
-    addEventListener() {
-        document.querySelector('#campus-select').addEventListener('change', (i) => {
-            this.data = this.dataFormatter.updateChartData(i);
-            d3.select(`.scatterplot-container-charts--chart .container--${this.campusName.replace(' ', '')}`).remove();
-            this.campusName = this.dataFormatter.campusName;
-            this.updateScatterplot(this.data);
-        });
     }
 
     appendSVG() {
@@ -231,6 +206,29 @@ class ScatterCharts {
         return (newData);
     }
 
+    updateScatterplot(courseData) {
+        this.scaleX();
+        this.scaleY();
+
+        this.formatXAxis();
+        this.formatYAxis();
+
+        this.svg.append('g').attr('class', `container--${this.campusName.replace(' ', '')}`);
+        Object.keys(courseData).forEach((course) => {
+            this.addDots(courseData[course]);
+            this.addTrendLine(courseData[course]);
+        });
+    }
+
+    addEventListener() {
+        document.querySelector('#campus-select').addEventListener('change', (i) => {
+            this.data = this.dataFormatter.updateChartData(i);
+            d3.select(`.scatterplot-container-charts--chart .container--${this.campusName.replace(' ', '')}`).remove();
+            this.campusName = this.dataFormatter.campusName;
+            this.updateScatterplot(this.data);
+        });
+    }
+
     resize() {
         const chart = d3.select(document.querySelector('.scatterplot-container-charts--chart svg'));
         const width = parseInt(this.container.clientWidth, 10);
@@ -254,17 +252,17 @@ class ScatterCharts {
         // update dots
         Object.keys(this.data).forEach((course) => {
             chart.selectAll(`.dot-${course}`)
-            .attr('cx', (d) => this.x(d['perc_attendance']))
-            .attr('cy', (d) => this.y(d['average_modulemark']));
+                .attr('cx', (d) => this.x(d['perc_attendance']))
+                .attr('cy', (d) => this.y(d['average_modulemark']));
         });
 
         // update lines
         Object.keys(this.data).forEach((course) => {
             const line = d3.line()
-            .x((d) => this.x(d.x))
-            .y((d) => this.y(d.yhat));
+                .x((d) => this.x(d.x))
+                .y((d) => this.y(d.yhat));
             chart.select(`.trend-line-${course}`)
-            .attr('d', line);
+                .attr('d', line);
         });
     }
 }
