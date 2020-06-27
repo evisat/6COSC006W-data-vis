@@ -5,44 +5,14 @@ $campus-colours: (
     RegentCampus: #5a497e,
 );
 
-$md-radio-checked-color: rgb(51, 122, 183);
-$md-radio-border-color: rgba(0, 0, 0, 0.54);
-$md-radio-size: 16px;
-$md-radio-checked-size: 8px;
-$md-radio-ripple-size: 11px;
-
-@keyframes fadeGraphTextIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes ripple {
-    0% {
-        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0);
-    }
-
-    50% {
-        box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(0, 0, 0, 0.1);
-    }
-
-    100% {
-        box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(0, 0, 0, 0);
-    }
-}
-
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,600");
 @import "../node_modules/fullpage.js/dist/fullpage.css";
 @import "./components/introduction/introduction.scss";
 @import "./components/scatter-chart/scatter-chart.scss";
 @import "./components/predict-grades/predict-grades.scss";
-@import "./components/donut-chart/donut-chart.scss";
 @import "./components/horizontal-chart/horizontal-chart.scss";
-@import "./components/waffle-chart/waffle-chart.scss";
+@import "./components/methodology/methodology.scss";
+@import "./components/conclusion/conclusion.scss";
 @import "./components/credits/credits.scss";
 
 .dv-main-content--container {
@@ -71,107 +41,6 @@ $md-radio-ripple-size: 11px;
             justify-content: center;
             align-items: center;
         }
-    }
-
-    #section8-header {
-        border-left: solid 2px #01556a;
-    }
-
-    input[type="radio"] {
-        display: none;
-
-        &:checked + label:before {
-            border-color: $md-radio-checked-color;
-            animation: ripple 0.2s linear forwards;
-        }
-
-        &:checked + label:after {
-            transform: scale(1);
-        }
-    }
-
-    .rect {
-        width: 18px;
-        float: left;
-        margin-right: 10px;
-
-        @media (min-width: 1400px) {
-            width: 20px;
-        }
-    }
-
-    label.radio-label {
-        height: $md-radio-size;
-        padding: 0 ($md-radio-size + 10px);
-        margin-bottom: 0;
-        cursor: pointer;
-        vertical-align: bottom;
-
-        &:before,
-        &:after {
-            content: "";
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            transition-property: transform, border-color;
-        }
-
-        &:before {
-            left: 0;
-            top: 3px;
-            width: $md-radio-size;
-            height: $md-radio-size;
-            border: 2px solid $md-radio-border-color;
-        }
-
-        &:after {
-            top: 7px;
-            left: $md-radio-size / 2 - $md-radio-checked-size / 2;
-            width: $md-radio-checked-size;
-            height: $md-radio-checked-size;
-            transform: scale(0);
-            background: $md-radio-checked-color;
-        }
-    }
-
-    .data-text {
-        transition: transform 0.2s ease-in-out;
-        fill: #666;
-
-        &__value {
-            font-size: 2.5rem;
-            transform: translateY(-0.5rem);
-            opacity: 0;
-        }
-
-        &--show {
-            transform: translateY(0);
-            animation: fadeGraphTextIn 0.5s forwards;
-        }
-
-        &:hover {
-            user-select: none;
-        }
-    }
-
-    .data-path {
-        &:hover {
-            cursor: pointer;
-        }
-    }
-
-    .dropdown .dropdown-menu {
-        max-height: 150px;
-        overflow: auto;
-    }
-
-    .right-text-container {
-        display: inline-block;
-        width: 50%;
-        text-align: center;
-    }
-
-    @media (min-width: 1800px) {
-        margin: 100px;
     }
 
     .section-header {
