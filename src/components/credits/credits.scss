@@ -1,19 +1,32 @@
-#section9-header {
-    border-left: solid 2px #005244;
-}
+.dv-credits {
+    .text-section--container {
+        width: 100%;
+        overflow: hidden;
+        display: block;
+        box-sizing: border-box;
 
-#section9-text-two {
-    top: 53%;
-}
+        @media (min-width: 560px) {
+            width: 45%;
+        }
 
-#section9-text-three {
-    top: 58%;
-}
+        &-header {
+            border-left: solid 2px #005244;
+        }
 
-#section9-text-four {
-    top: 63%;
-}
+        &-text {
+            padding: 0;
+            font-size: 1rem;
 
-#section9-text-five {
-    top: 72%;
+            @media (min-width: 560px) {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    & > div:first-child {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
 }

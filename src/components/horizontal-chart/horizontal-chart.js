@@ -5,7 +5,7 @@ class HorizontalCharts {
         document.querySelector('#horizText-title').innerHTML =
             "Courses ranked by average mark, attendance and commute length";
         document.querySelector('#navwrapitemHoriz-text').innerHTML =
-            "The charts show the ranking of courses based on average module marks, average module attendance and commute length. Attendance is recorded on the number of times a student uses their university card to swipe into timetabled lessons. Commute length is calculated in <a target='_blank' href='https://community.esri.com/groups/coordinate-reference-systems/blog/2014/09/01/geodetic-distances-how-long-is-that-line-again'>geodesic distance</a> in miles between the students' term-time address and campus address. Looking at the charts, we can see BEng Software Engineering is ranked the top course for attendance and module marks, strengthening the relationship. However, BA Film is ranked one of the top courses with students travelling the furthest to their campus, yet they are also ranked second highest for average module marks, proving yet again there is a weak relationship between the two variables.";
+            "The charts show the ranking of courses based on average module marks, average module attendance and commute length.  Looking at the charts, we can see BEng Software Engineering is ranked the top course for attendance and module marks, strengthening the relationship. However, BA Film is ranked one of the top courses with students travelling the furthest to their campus, yet they are also ranked second highest for average module marks, proving yet again there is a weak relationship between the two variables.";
         this.chartData(this.data);
     }
 
