@@ -8,9 +8,9 @@ class PredictGrades {
         this.container = document.querySelector('.dv-prediction-container-form--chart');
 
         this.margin = {
-            top: 30,
-            right: 35,
-            bottom: 50,
+            top: 25,
+            right: 25,
+            bottom: 40,
             left: 30,
         };
 
@@ -91,7 +91,7 @@ class PredictGrades {
     addXAxisLabel() {
         this.svg.append('text')
             .attr('class', 'x-axis-predict-label')
-            .attr('transform', 'translate(50, 170)')
+            .attr('transform', 'translate(50, 225)')
             .text('% attendance');
     }
 
@@ -247,8 +247,8 @@ class PredictGrades {
 
         this.rangeSlider = document.createElement('input');
         this.rangeSlider.type = 'range';
-        this.rangeSlider.min = `${Math.min.apply(Math, this.data.map(function (o) { return o['perc_attendance']}))}`;
-        this.rangeSlider.max = `${Math.max.apply(Math, this.data.map(function (o) { return o['perc_attendance']}))}`;
+        this.rangeSlider.min = `${Math.min.apply(Math, this.data.map(function (o) { return o['perc_attendance'] }))}`;
+        this.rangeSlider.max = `${Math.max.apply(Math, this.data.map(function (o) { return o['perc_attendance'] }))}`;
         this.rangeSlider.value = 50;
         this.rangeSlider.className = 'range-slider';
         this.rangeSlider.step = '0.01';
@@ -296,11 +296,11 @@ class PredictGrades {
             .attr("y2", this.y(this.pValue));
 
         chart.select(`.linesOfIntersection-x`)
-        .attr("x1", this.x(0))
-        .attr("x2", this.x(parseFloat(this.percValue)) - 7)
-        .attr("y1", this.y(this.pValue))
-        .attr("y2", this.y(this.pValue))
-        
+            .attr("x1", this.x(0))
+            .attr("x2", this.x(parseFloat(this.percValue)) - 7)
+            .attr("y1", this.y(this.pValue))
+            .attr("y2", this.y(this.pValue))
+
         document.querySelector('#predict-average-mark').innerHTML = "Average module mark: <span id='pred-color'>" + this.pValue + "%</span>";
         document.querySelector('#perct-slider-value').innerHTML = `${this.percValue}%`;
     }
@@ -323,7 +323,7 @@ class PredictGrades {
         this.formatXAxis();
         this.formatYAxis();
 
-        chart.select('.x-axis-predict-label').attr('transform', `translate(${(this.width - this.margin.left - this.margin.right - 10) / 2}, 170)`);
+        chart.select('.x-axis-predict-label').attr('transform', `translate(${(this.width - this.margin.left - this.margin.right - 10) / 2}, 225)`);
 
         // update dots
         chart.selectAll(`.dot-${this.data[0]['course_code']}`)
@@ -345,10 +345,10 @@ class PredictGrades {
             .attr("y2", this.y(this.pValue));
 
         chart.select(`.linesOfIntersection-x`)
-        .attr("x1", this.x(0))
-        .attr("x2", this.x(parseFloat(this.percValue)) - 7)
-        .attr("y1", this.y(this.pValue))
-        .attr("y2", this.y(this.pValue))
+            .attr("x1", this.x(0))
+            .attr("x2", this.x(parseFloat(this.percValue)) - 7)
+            .attr("y1", this.y(this.pValue))
+            .attr("y2", this.y(this.pValue))
     }
 }
 

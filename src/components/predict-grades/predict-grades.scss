@@ -42,9 +42,9 @@
                 }
 
                 .linesOfIntersection {
-                    stroke: #9B2736;
+                    stroke: #9b2736;
                     stroke-width: 2;
-                    stroke-dasharray: (3,3);
+                    stroke-dasharray: (3, 3);
                 }
 
                 .y-axis-predict .tick line,
@@ -74,10 +74,14 @@
             label.dropdownList-label {
                 margin: 0.25rem 0 0.25rem;
                 font-weight: 600;
-                padding: 8px 0 8px 0;
                 text-align: right;
                 flex: 1 0;
-    
+                font-size: 0.8rem;
+
+                @media (min-width: 370px) {
+                    font-size: 1rem;
+                }
+
                 @media (min-width: 1800px) {
                     font-size: 1.4em;
                 }
@@ -90,7 +94,7 @@
                 margin: 0 0 0.25rem 0.5rem;
                 flex: 1.5 0;
                 align-self: center;
-        
+
                 select {
                     font-size: 1rem;
                     font-weight: 200;
@@ -101,18 +105,18 @@
                     -webkit-appearance: none;
                     -moz-appearance: none;
                     appearance: none;
-        
+
                     &:active,
                     &:focus {
                         outline: none;
                         box-shadow: none;
                     }
-        
+
                     @media (min-width: 1800px) {
                         font-size: 1.2em;
                     }
                 }
-        
+
                 &:after {
                     content: " ";
                     top: 50%;
@@ -133,18 +137,28 @@
         margin: 0.25rem 0 0.25rem;
         font-weight: 600;
         display: block;
+        font-size: 0.8rem;
+
+        @media (min-width: 370px) {
+            font-size: 1rem;
+        }
     }
 
     #prediction-sliderPercAtten {
         display: flex;
-    
+
         #perct-slider-value {
             margin: 0.25rem 0 0.25rem;
             font-weight: 600;
             text-align: right;
             flex: 1 0;
+            font-size: 0.8rem;
+
+            @media (min-width: 370px) {
+                font-size: 1rem;
+            }
         }
-    
+
         .perc-select-form {
             position: relative;
             background-color: #fff;
@@ -153,7 +167,7 @@
             flex: 9 0;
             align-self: center;
         }
-    
+
         .range-slider {
             display: block;
             width: 100%;
@@ -161,7 +175,7 @@
             height: 15px;
             outline: none;
         }
-    
+
         .range-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -170,14 +184,14 @@
             background: #005244;
             cursor: pointer;
         }
-    
+
         .range-slider::-moz-range-thumb {
             width: 25px;
             height: 25px;
             background: #005244;
             cursor: pointer;
         }
-    
+
         .range-slider::-ms-thumb {
             width: 25px;
             height: 25px;
@@ -185,12 +199,17 @@
             cursor: pointer;
         }
     }
-    
+
     #predict-average-mark {
-        font-size: 1.2rem;
-        margin: 0.5rem 0;
+        font-size: 1rem;
+        margin: 0.3rem 0 0.5rem;
+
+        @media (min-width: 370px) {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
     }
-    
+
     span#pred-color {
         color: #005244;
         font-weight: 600;
