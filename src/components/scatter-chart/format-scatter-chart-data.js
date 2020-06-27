@@ -1,5 +1,3 @@
-import ScatterCharts from './scatter-chart';
-
 class FormatChartData {
     constructor() {
         this.rawData = {};

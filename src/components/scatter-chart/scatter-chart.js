@@ -1,5 +1,5 @@
 import d3 from '../../utils/d3-imports';
-import chartConfig from './chart-config';
+import chartConfig from './chart-config.json';
 import FormatScatterChartData from './format-scatter-chart-data';
 
 class ScatterCharts {
@@ -32,7 +32,7 @@ class ScatterCharts {
 
         // resize to fit page & add resize listener
         this.resize();
-        d3.select(window).on('resize', this.resize.bind(this));
+        d3.select(window).on('resize.one', this.resize.bind(this));
     }
 
     drawScatterplot() {
