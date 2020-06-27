@@ -1,4 +1,4 @@
-import css from './app.scss';
+import './app.scss';
 // polyfills
 import 'core-js/es7/array';
 import 'core-js/es6/array';

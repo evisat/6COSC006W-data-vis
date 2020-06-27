@@ -17,44 +17,30 @@
         gtag('config', 'UA-141502377-1');
     </script>
     <style>
-        .usermessage-container {
-            background: #EBEBEB;
-            float: left;
-            width: 100%;
-            text-align: center;
-        }
-
-        p.usermessage {
-            font-size: 18px;
-            line-height: 1.6em;
-            color: #282828;
-            padding: 0;
-            font-weight: 100;
-            -webkit-font-smoothing: antialiased;
-            font-size: 24px;
-        }
     </style>
 </head>
 
 <body>
     <div id="fullpage">
-        <div class="main-content--container hidden">
-            <div class="title-container section">
-                <h1 class="title-container--title"></h1>
+        <div class="dv-main-content--container hidden">
+            <div class="dv-title-container section">
+                <h1 class="dv-title-container--title"></h1>
             </div>
-            <div class="dv-section-two  section">
+            <div class="dv-introduction  section">
                 <div class="text-section--container">
-                    <h2 class="text-section--container-header"></h2>
+                    <h2 class="text-section--container-header section-header"></h2>
                     <p class="text-section--container-text"></p>
                 </div>
-            </div>            <div class="scatterplot-container section">
-                <div class="scatterplot-container-charts">
-                    <h2 class="scatterplot-container-charts--title"></h2>
-                    <p class="scatterplot-container-charts--description"></p>
-                    <label class="dropdownList-label" for="campus-select"></label>
-                    <div class="form-campus"></div>
-                    <div class="scatterplot-container-charts--chart"></div>
-                    <p class="scatterplot-container-charts--description-two"></p>
+            </div>            <div class="dv-scatterplot-container section">
+                <div class="dv-scatterplot-container-charts">
+                    <h2 class="dv-scatterplot-container-charts--title section-header"></h2>
+                    <p class="dv-scatterplot-container-charts--description"></p>
+                    <div class="dv-scatterplot-container-charts--dropdown">
+                        <label class="dropdownList-label" for="campus-select"></label>
+                        <div class="form-campus"></div>
+                    </div>
+                    <div class="dv-scatterplot-container-charts--chart"></div>
+                    <p class="dv-scatterplot-container-charts--description-two"></p>
                 </div>
             </div>            <div class="prediction-container section" id="predict-container">
                 <div class="prediction-options-container">
@@ -145,7 +131,7 @@
         </div>
     </div>
     <script>
-        document.querySelector('.main-content--container').classList.remove('hidden');
+        document.querySelector('.dv-main-content--container').classList.remove('hidden');
     </script>
 <script type="text/javascript" src="application.js"></script></body>
 
