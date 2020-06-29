@@ -15,6 +15,10 @@ $campus-colours: (
 @import "./components/conclusion/conclusion.scss";
 @import "./components/credits/credits.scss";
 
+body {
+    background-color: #1C3144;
+}
+
 .dv-main-content--container {
     -webkit-backface-visibility: hidden;
     background-color: #1C3144;
@@ -61,6 +65,10 @@ $campus-colours: (
         text-decoration: none;
         font-weight: 600;
         color: #fff;
+    }
+
+    .fp-section {
+        -webkit-transform: translate3d(0,0,0);
     }
 }
 

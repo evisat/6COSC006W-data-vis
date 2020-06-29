@@ -21,15 +21,6 @@ new ScatterCharts(data);
 new PredictGrades(data);
 new HorizontalCharts(data);
 
-window.addEventListener('load', () => {
-    new fullpage('#fullpage', {
-        navigation: false,
-        easing: 'easeInOutCubic',
-        scrollingSpeed: 1250,
-        animateAnchor: true,
-        touchSensitivity: 5,
-        normalScrollElementTouchThreshold: 5,
-        easing: 'easeInOutCubic',
-        easingcss3: 'ease',
-    });
-})
+new fullpage('#fullpage', {
+    navigation: false,
+});
