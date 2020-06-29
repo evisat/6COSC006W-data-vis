@@ -1,70 +1,29 @@
 class HorizontalCharts {
     constructor(data) {
         this.data = data;
-        this.parentDIV = document.querySelector('.horiz-chart-container');
-        document.querySelector('#horizText-title').innerHTML =
-            "Courses ranked by average mark, attendance and commute length";
-        document.querySelector('#navwrapitemHoriz-text').innerHTML =
-            "The charts show the ranking of courses based on average module marks, average module attendance and commute length.  Looking at the charts, we can see BEng Software Engineering is ranked the top course for attendance and module marks, strengthening the relationship. However, BA Film is ranked one of the top courses with students travelling the furthest to their campus, yet they are also ranked second highest for average module marks, proving yet again there is a weak relationship between the two variables.";
+        this.container = document.querySelector('.dv-horizontal-container--chart');
+        document.querySelector('.dv-horizontal-container--title').innerHTML =
+            "Commute length and attendance";
+        document.querySelector('.dv-horizontal-container--description').innerHTML =
+            "The horizontal chart shows average attendance and commute length for the top 5 courses with the highest average module marks."
+        this.createKeys();
         this.chartData(this.data);
     }
 
     groupBy(xs, key) {
-        return xs.reduce(function(rv, x) {
+        return xs.reduce(function (rv, x) {
             (rv[x[key]] = rv[x[key]] || []).push(x);
             return rv;
         }, {});
     }
 
+
     chartData(d) {
         const chartData = [{
-                title: "Top 10 courses by average module marks",
-                id: "top-10-avg",
-                filter: "average_modulemark",
-                sort: "top",
-                color: "#9B2736",
-                symbol: "%"
-            },
-            {
-                title: "Bottom 10 courses by average module marks",
-                id: "bottom-10-avg",
-                filter: "average_modulemark",
-                sort: "bottom",
-                color: "#9B2736",
-                symbol: "%"
-            },
-            {
-                title: "Top 10 courses by average module attendance",
-                id: "top-10-att",
-                filter: "perc_attendance",
-                sort: "top",
-                color: "#005244",
-                symbol: "%"
-            },
-            {
-                title: "Bottom 10 courses by average module attendance",
-                id: "bottom-10-att",
-                filter: "perc_attendance",
-                sort: "bottom",
-                color: "#005244",
-                symbol: "%"
-            },
-            {
-                title: "Top 10 courses by commute length",
-                id: "top-10-comm",
-                filter: "commute_length",
-                sort: "top",
-                color: "#01556A",
-                symbol: "miles"
-            },
-            {
-                title: "Bottom 10 courses by commute length",
-                id: "bottom-10-comm",
-                filter: "commute_length",
-                sort: "bottom",
-                color: "#01556A",
-                symbol: "miles"
-            }
+            filter: "average_modulemark",
+            sort: "top",
+            symbol: "%"
+        }
         ];
 
         for (let chart in chartData) {
@@ -72,52 +31,76 @@ class HorizontalCharts {
         };
     }
 
-    generateData(d, chart) {
-        for (let prop in d) {
-            if (d.hasOwnProperty(prop)) {
-                if (d[prop][chart.filter] < 40) {
-                    delete d[prop];
-                }
-            }
-        };
-
-        const groupedByCourse = this.groupBy(d, 'course_title');
-
+    getAverageAttendance(d, chart) {
         let newArr = [];
-        for (let data in groupedByCourse) {
-            const avgScore = groupedByCourse[data].reduce((sum, {
-                average_modulemark
-            }) => sum + average_modulemark, 0) / groupedByCourse[data].length;
+        d.forEach((i) => {
+            const courseName = i.course;
+            console.log('courseName', courseName);;
+
+            const avgScore = this.groupedByCourse[courseName].reduce((sum, {
+                perc_attendance
+            }) => sum + perc_attendance, 0) / this.groupedByCourse[courseName].length;
 
             newArr.push({
-                course: data,
+                course: courseName,
+                value: avgScore.toFixed(2)
+            });
+        });
+
+        return newArr;
+    }
+
+    getAverageCommute(d, chart) {
+        let newArr = [];
+        d.forEach((i) => {
+            const courseName = i.course;
+            console.log('courseName', courseName);;
+
+            const avgScore = this.groupedByCourse[courseName].reduce((sum, {
+                commute_length
+            }) => sum + commute_length, 0) / this.groupedByCourse[courseName].length;
+
+            newArr.push({
+                course: courseName,
+                value: avgScore.toFixed(2)
+            });
+        });
+
+        return newArr;
+    }
+
+    generateData(d, chart) {
+        this.groupedByCourse = this.groupBy(d, 'course_title');
+
+        let newArr = [];
+        for (let course in this.groupedByCourse) {
+            const avgScore = this.groupedByCourse[course].reduce((sum, {
+                average_modulemark
+            }) => sum + average_modulemark, 0) / this.groupedByCourse[course].length;
+
+            newArr.push({
+                course: course,
                 value: avgScore.toFixed(2)
             });
         }
 
-        const sortedData = newArr.sort(function(a, b) {
+        const sortedData = newArr.sort(function (a, b) {
             return chart.sort == "top" ? b['value'] - a['value'] : a['value'] - b['value'];
-        }).slice(0, 10);
+        }).slice(0, 5);
 
         this.createBarChart(sortedData, chart);
     }
 
     createBarChart(d, chart) {
-        const container = document.createElement('div');
-        container.className = 'horizontal-chart-container--chart';
-        container.id = chart.id;
-        container.tabIndex = '0';
-        this.parentDIV.appendChild(container);
-
-        const title = document.createElement('h2');
-        title.className = 'horizontal-chart-container--title';
-        title.tabIndex = '0';
-        title.innerHTML = `${(chart.title)}`;
-        container.appendChild(title);
+        console.log('d', d);
+        const averageAttendance = this.getAverageAttendance(d, chart);
+        const averageCommute = this.getAverageCommute(d, chart);
 
         for (var x = 0; x < d.length; x++) {
-            const i = d[x];
-            const percentageofTotal = i.value;
+            const attendance = averageAttendance[x];
+            const commute = averageCommute[x];
+            const averageAttValue = attendance.value;
+            const averageCommValue = commute.value;
 
             const sectionContainer = document.createElement('div');
             sectionContainer.className = 'bar-chart_container';
@@ -125,7 +108,7 @@ class HorizontalCharts {
             const label = document.createElement('p');
             label.className = 'bar-chart_label';
             label.tabIndex = '0';
-            label.innerHTML = i.course.replace('FT', '')
+            label.innerHTML = attendance.course.replace('FT', '')
                 .replace('and', '&')
                 .replace(/Communications|Communication/, 'Comm.')
                 .replace('Management', 'Mngmt')
@@ -138,31 +121,49 @@ class HorizontalCharts {
             barContainer.className = 'bar-chart_barContainer';
             sectionContainer.appendChild(barContainer);
 
-            const value = document.createElement('span');
-            value.className = 'bar-chart_value bar-tooltiptext';
-            value.style.width = `${percentageofTotal}%`;
-            value.tabIndex = '0';
-            value.innerHTML = `${(i.value)}${chart.symbol}`;
-            barContainer.appendChild(value);
-
             const bar = document.createElement('div');
             bar.className = 'bar-chart_bar';
-            bar.style.width = `${percentageofTotal}%`;
-            bar.style.backgroundColor = chart.color;
-            bar.style.border = `1px solid ${chart.color}`
+            bar.style.width = `${averageAttValue}%`;
+            bar.style.backgroundColor = '#ec7357';
             bar.setAttribute('aria-hidden', 'true');
-            bar.setAttribute('data-percentage', `${percentageofTotal}%`);
+            bar.setAttribute('data-percentage', `${averageAttValue}%`);
             barContainer.appendChild(bar);
 
-            container.appendChild(sectionContainer);
+            const value = document.createElement('span');
+            value.className = 'bar-chart_value bar-tooltiptext';
+            value.style.width = `${averageAttValue}%`;
+            value.tabIndex = '0';
+            value.innerHTML = `${(attendance.value)}${chart.symbol}`;
+            barContainer.appendChild(value);
+
+            const barContainerThree = document.createElement('div');
+            barContainerThree.className = 'bar-chart_barContainer';
+            sectionContainer.appendChild(barContainerThree);
+
+            const barthree = document.createElement('div');
+            barthree.className = 'bar-chart_bar';
+            barthree.style.width = `${averageCommValue}%`;
+            barthree.style.backgroundColor = '#a6c766';
+            barthree.setAttribute('aria-hidden', 'true');
+            barthree.setAttribute('data-percentage', `${averageCommValue}%`);
+            barContainerThree.appendChild(barthree);
+
+            const valuethree = document.createElement('span');
+            valuethree.className = 'bar-chart_value bar-tooltiptext';
+            valuethree.style.width = `${averageCommValue}miles`;
+            valuethree.tabIndex = '0';
+            valuethree.innerHTML = `${(commute.value)}${chart.symbol}`;
+            barContainerThree.appendChild(valuethree);
+
+            this.container.appendChild(sectionContainer);
         }
 
-        this.animateRows(container);
+        this.animateRows();
     }
 
-    animateRows(container) {
+    animateRows() {
         // Results.barChartHasAnimated = true;
-        const bars = container.querySelectorAll('.bar-chart_bar');
+        const bars = this.container.querySelectorAll('.bar-chart_bar');
         for (let t = 0; t < bars.length; t++) {
             const bar = bars[t];
             const width = bar.getAttribute('data-percentage');
@@ -184,5 +185,15 @@ class HorizontalCharts {
     //         }
     //     }
 
+    createKeys() {
+        const keys = ['Attendance', 'Commute Length'];
+        keys.forEach((key) => {
+            const div = document.createElement('div');
+            div.setAttribute('class', `dv-horizontal-container--keys-${key.replace(' ', '')} key-item`);
+            div.innerHTML = key;
+            document.querySelector('.dv-horizontal-container--keys').appendChild(div);
+        });
+
+    }
 }
 export default HorizontalCharts

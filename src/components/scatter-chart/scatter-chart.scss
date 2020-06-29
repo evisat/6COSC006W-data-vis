@@ -10,7 +10,7 @@
         }
 
         &--title {
-            border-left: solid 2px #5a497e;
+            border-left: solid 2px #ec7357;
         }
 
         &--description,
@@ -28,12 +28,14 @@
 
         &--description {
             margin: 0 0 0.25rem 0;
+        }
 
+        &--description-two {
+            margin: 0;
         }
 
         &--chart {
-            background-color: #fff;
-            padding: 0.6em;
+            padding: 0.4rem;
             width: 100%;
         }
 
@@ -64,7 +66,7 @@
                     font-size: 1rem;
                     font-weight: 200;
                     width: 100%;
-                    padding: 8px 24px 8px 10px;
+                    padding: 4px 24px 4px 10px;
                     border: none;
                     background-color: transparent;
                     -webkit-appearance: none;
@@ -108,8 +110,13 @@
 
 @each $campus, $colour in $campus-colours {
     .title-#{$campus} {
-        color: $colour;
+        padding: 0 0.3rem;
+        background: $colour;
+        color: #222;
+        display: block;
+        width: fit-content;
         font-weight: 600;
+        margin-top: 0.3rem;
     }
 
     .dot-#{$campus} {
@@ -147,7 +154,7 @@
 
 svg text {
     font-size: 1rem;
-    fill: #6e6e73;
+    fill: #D1D1D1;
 }
 
 .x-axis .tick:first-of-type {

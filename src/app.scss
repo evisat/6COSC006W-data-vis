@@ -1,8 +1,8 @@
 $campus-colours: (
-    CavendishCampus: #005244,
-    HarrowCampus: #9b2736,
-    MaryleboneCampus: #01556a,
-    RegentCampus: #5a497e,
+    CavendishCampus: #a6c766,
+    HarrowCampus: #ec7357,
+    MaryleboneCampus: #debade,
+    RegentCampus: #aaabbc,
 );
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,600");
@@ -16,8 +16,8 @@ $campus-colours: (
 @import "./components/credits/credits.scss";
 
 .dv-main-content--container {
-    background-color: #fcf6ef;
-    color: #222;
+    background-color: #1C3144;
+    color: #fff;
     font-family: "Open Sans", sans-serif;
     padding: 0.8rem;
 
@@ -28,7 +28,7 @@ $campus-colours: (
             padding: 0 0 0 0.5rem;
             font-weight: 500;
             text-align: left;
-            border-left: solid 2px #9b2736;
+            border-left: solid 2px #a6c766;
 
             @media (min-width: 560px) {
                 font-size: 2rem;
@@ -52,6 +52,13 @@ $campus-colours: (
         @media (min-width: 560px) {
             font-size: 1.5rem;
         }
+    }
+
+    a {
+        border-bottom: solid 1px #a6c766;
+        text-decoration: none;
+        font-weight: 600;
+        color: #fff;
     }
 }
 

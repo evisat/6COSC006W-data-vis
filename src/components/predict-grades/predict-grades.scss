@@ -10,7 +10,7 @@
         }
 
         &--title {
-            border-left: solid 2px #005244;
+            border-left: solid 2px #aaabbc;
         }
 
         &--description {
@@ -23,26 +23,27 @@
 
             @media (min-width: 560px) {
                 font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+                line-height: 2rem;
             }
         }
 
         &--chart {
-            background-color: #fff;
-            padding: 0.6em;
+            padding: 0.4rem;
             width: 100%;
 
             .predict-scatter-plot--svg {
                 .line {
-                    stroke: #005244;
+                    stroke: #debade;
                 }
 
                 .dot {
-                    fill: #005244;
+                    fill: #a6c766;
                     opacity: 0.5;
                 }
 
                 .linesOfIntersection {
-                    stroke: #9b2736;
+                    stroke: #a6c766;
                     stroke-width: 2;
                     stroke-dasharray: (3, 3);
                 }
@@ -99,7 +100,7 @@
                     font-size: 1rem;
                     font-weight: 200;
                     width: 100%;
-                    padding: 8px 24px 8px 10px;
+                    padding: 4px 24px 4px 10px;
                     border: none;
                     background-color: transparent;
                     -webkit-appearance: none;
@@ -162,9 +163,9 @@
         .perc-select-form {
             position: relative;
             background-color: #fff;
-            border: 1px solid #eaeaea;
+            border: 0;
             margin: 0 0 0.25rem 0.5rem;
-            flex: 9 0;
+            flex: 5 0;
             align-self: center;
         }
 
@@ -172,8 +173,9 @@
             display: block;
             width: 100%;
             -webkit-appearance: none;
-            height: 15px;
+            height: 17px;
             outline: none;
+            margin: 0;
         }
 
         .range-slider::-webkit-slider-thumb {
@@ -181,21 +183,21 @@
             appearance: none;
             width: 25px;
             height: 25px;
-            background: #005244;
+            background: #a6c766;
             cursor: pointer;
         }
 
         .range-slider::-moz-range-thumb {
             width: 25px;
             height: 25px;
-            background: #005244;
+            background: #a6c766;
             cursor: pointer;
         }
 
         .range-slider::-ms-thumb {
             width: 25px;
             height: 25px;
-            background: #005244;
+            background: #a6c766;
             cursor: pointer;
         }
     }
@@ -205,13 +207,17 @@
         margin: 0.3rem 0 0.5rem;
 
         @media (min-width: 370px) {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin: 0.5rem 0;
+        }
+
+        @media (min-width: 560px) {
+            margin: 1rem 0;
         }
     }
 
     span#pred-color {
-        color: #005244;
+        color: #a6c766;
         font-weight: 600;
     }
 

@@ -45,7 +45,7 @@ class ScatterCharts {
         this.svg.append('g').attr('class', `container--${this.campusName.replace(' ', '')}`);
         Object.keys(this.data).forEach((course) => {
             this.addDots(this.data[course]);
-            this.addTrendLine(this.data[course]);
+            // this.addTrendLine(this.data[course]);
         });
         this.addXAxisLabel();
         this.addYAxisLabel();
@@ -216,7 +216,7 @@ class ScatterCharts {
         this.svg.append('g').attr('class', `container--${this.campusName.replace(' ', '')}`);
         Object.keys(courseData).forEach((course) => {
             this.addDots(courseData[course]);
-            this.addTrendLine(courseData[course]);
+            // this.addTrendLine(courseData[course]);
         });
     }
 
