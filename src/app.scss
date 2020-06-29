@@ -20,6 +20,7 @@ $campus-colours: (
     color: #fff;
     font-family: "Open Sans", sans-serif;
     padding: 0.8rem;
+    -webkit-backface-visibility: hidden;
 
     .dv-title-container {
         &--title {
