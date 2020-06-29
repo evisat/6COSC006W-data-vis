@@ -35,7 +35,6 @@ class HorizontalCharts {
         let newArr = [];
         d.forEach((i) => {
             const courseName = i.course;
-            console.log('courseName', courseName);;
 
             const avgScore = this.groupedByCourse[courseName].reduce((sum, {
                 perc_attendance
@@ -54,7 +53,6 @@ class HorizontalCharts {
         let newArr = [];
         d.forEach((i) => {
             const courseName = i.course;
-            console.log('courseName', courseName);;
 
             const avgScore = this.groupedByCourse[courseName].reduce((sum, {
                 commute_length
@@ -92,7 +90,6 @@ class HorizontalCharts {
     }
 
     createBarChart(d, chart) {
-        console.log('d', d);
         const averageAttendance = this.getAverageAttendance(d, chart);
         const averageCommute = this.getAverageCommute(d, chart);
 
