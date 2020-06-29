@@ -16,11 +16,11 @@ $campus-colours: (
 @import "./components/credits/credits.scss";
 
 .dv-main-content--container {
+    -webkit-backface-visibility: hidden;
     background-color: #1C3144;
     color: #fff;
     font-family: "Open Sans", sans-serif;
     padding: 0.8rem;
-    -webkit-backface-visibility: hidden;
 
     .dv-title-container {
         &--title {
