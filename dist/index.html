@@ -1,155 +1,102 @@
-<html lang="en-US">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
     <link rel="icon" type="image/png" href="https://i.ibb.co/VLcBLNX/favicon.png">
     <title>6COSC006W-data-vis</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141502377-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-141502377-1');
+        gtag('config', 'UA-141502377-1');
     </script>
     <style>
-        .usermessage-container {
-            background: #EBEBEB;
-            float: left;
-            width: 100%;
-            text-align: center;
-        }
-
-        p.usermessage {
-            font-size: 18px;
-            line-height: 1.6em;
-            color: #282828;
-            padding: 0;
-            font-weight: 100;
-            -webkit-font-smoothing: antialiased;
-            font-size: 24px;
-        }
     </style>
 </head>
 
 <body>
-    <div class="usermessage-container" id="mobile-compatible" style="display:none">
-        <p class="usermessage" id="mobile-compatible-message">Sorry, this website has not been optimised for this screen size. For the best experience, please view on a laptop or desktop device.</p>
-    </div>
-    <div class="main-content--container" id="fullpage" style="display:none">
-        <div class="title-container section fp-auto-height">
-            <h1 class="title-container--title"></h1>
-        </div>
-        <div class="text-section--container section fp-auto-height" id="section2-container">
-            <h2 class="section-header" id="section2-header"></h2>
-            <p class="section-text" id="section2-text"></p>
-        </div>
-        <div class="scatterplot-container section fp-auto-height" id="scatterplot-container">
-            <div class="form-campus-container" id="navWrap">
-                <nav id="navwrapitem">
-                    <h2 class="right-text-title" id="scatterText-title"></h2>
-                    <p id="navwrapitem-text"></p>
-                    <label class="dropdownList-label" for="campus-select"></label>
-                    <div class="form-campus"></div>
-                </nav>
+    <div id="fullpage">
+        <div class="dv-main-content--container hidden">
+            <div class="dv-title-container section">
+                <h1 class="dv-title-container--title"></h1>
             </div>
-            <div class="scatter-plot">
-                <h2 id="scatterplot-title"></h2>
-            </div>
-        </div>
-        <div id="stopHere"></div>
-        <div class="prediction-container section fp-auto-height" id="predict-container">
-            <div class="prediction-options-container">
-                    <h2 class="right-text-title" id="predText-title"></h2>
-                    <p id="predict-explain-text"></p>
-                    <div id="prediction-dropdownDegreeType">
+            <div class="dv-introduction  section">
+                <div class="text-section--container">
+                    <h2 class="text-section--container-header section-header"></h2>
+                    <p class="text-section--container-text"></p>
+                </div>
+            </div>            <div class="dv-scatterplot-container section">
+                <div class="dv-scatterplot-container-charts">
+                    <h2 class="dv-scatterplot-container-charts--title section-header"></h2>
+                    <p class="dv-scatterplot-container-charts--description"></p>
+                    <div class="dv-scatterplot-container-charts--dropdown">
+                        <label class="dropdownList-label" for="campus-select"></label>
+                        <div class="form-campus"></div>
+                    </div>
+                    <div class="dv-scatterplot-container-charts--chart"></div>
+                    <p class="dv-scatterplot-container-charts--description-two"></p>
+                </div>
+            </div>            <div class="dv-prediction-container section">
+                <div class="dv-prediction-container-form">
+                    <h2 class="dv-prediction-container-form--title section-header"></h2>
+                    <p class="dv-prediction-container-form--description"></p>
+                    <div class="dv-prediction-container-form--dropdown dropdown-degree">
                         <label class="dropdownList-label" for="select-degreeType"></label>
                         <div class="degreeType-select-form" id="form-degree-select"></div>
                     </div>
-                    <div id="prediction-dropdownCourse">
+                    <div class="dv-prediction-container-form--dropdown dropdown-course">
                         <label class="dropdownList-label" for="select-course"></label>
                         <div class="course-select-form" id="form-course-select"></div>
                     </div>
+                    <div class="dv-prediction-container-form--chart"></div>
+                    <label class="prediction-slider-label" for="slider-range"></label>
                     <div id="prediction-sliderPercAtten">
-                        <label class="dropdownList-label" for="slider-range"></label>
+                        <p id="perct-slider-value"></p>
                         <div class="perc-select-form"></div>
                     </div>
-                    <p id="perct-slider-value"></p>
                     <p id="predict-average-mark"></p>
-            </div>
-            <div class="small-scatter-plot">
-            </div>
-        </div>
-        <div class="donut-charts-container section fp-auto-height" id="donut--container">
-            <div class="full-outer-container">
-                <div class="full-inner-container">
-                    <div class="top-text-container">
-                        <div class="donut-radio-buttons-container">
-                            <p class="dropdownList-label donut-radio-label-text"></p>
-                        </div>
-                        <div class="right-text-container">
-                            <h2 class="right-text-title" id="donutText-title"></h2>
-                            <p id="donut-explain-text"></p>
-                        </div>
-                    </div>
-                    <div class="bottom-chart-container">
-                        <h2 class="donut-charts-container--title"></h2>
-                        <div id="donut-charts">
-                            <div id="donut-legend"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="horizontal-chart-container section fp-auto-height" id="horizchart-container">
-            <div class="horz-text-container" id="navWrapHoriz">
-                <nav id="navwrapitemHoriz">
-                    <h2 class="right-text-title" id="horizText-title"></h2>
-                    <p id="navwrapitemHoriz-text"></p>
-                </nav>
+            <div class="horizontal-chart-container section" id="horizchart-container">
+                <div class="horz-text-container" id="navWrapHoriz">
+                    <nav id="navwrapitemHoriz">
+                        <h2 class="right-text-title" id="horizText-title"></h2>
+                        <p id="navwrapitemHoriz-text"></p>
+                    </nav>
+                </div>
+                <div class="horiz-chart-container"></div>
             </div>
-            <div class="horiz-chart-container"></div>
-        </div>
-        <div id="stopHereHoriz"></div>
-        <div class="waffle-chart-container section fp-auto-height" id="waffle-container">
-            <div class="full-outer-container">
-                <div class="full-inner-container">
-                    <div class="top-text-container">
-                        <div class="radio-buttons-container">
-                            <p class="dropdownList-label radio-label-text" for="radio-class"></p>
-                        </div>
-                        <div class="right-text-container">
-                            <h2 class="right-text-title" id="waffleText-title"></h2>
-                            <p id="waffle-explain-text"></p>
-                        </div>
-                    </div>
-                    <div class="bottom-chart-container" id="bottom-chart-container-waffle">
-                        <h2 class="waffle-chart-container--title"></h2>
-                        <div id="waffle-charts">
-                            <div id="legend"></div>
-                        </div>
-                        <p id="moreInfo"></p>
-        
+            <div class="dv-methodology  section">
+                <div class="text-section--container">
+                    <h2 class="text-section--container-header section-header"></h2>
+                    <p class="text-section--container-text"></p>
+                </div>
+            </div>            <div class="dv-conclusion section">
+                <div class="text-section--container">
+                    <h2 class="text-section--container-header section-header"></h2>
+                    <p class="text-section--container-text"></p>
+                </div>
+            </div>            <div class="dv-credits section">
+                <div class="text-section--container">
+                    <h2 class="text-section--container-header section-header"></h2>
+                    <div class="text-section--container-text">
+                        <p class="text-section--container-text--one"></p>
+                        <p class="text-section--container-text--two"></p>
+                        <p class="text-section--container-text--three"></p>
+                        <p class="text-section--container-text--four"></p>
+                        <p class="text-section--container-text--five"></p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="text-section--container section fp-auto-height" id="section8-container">
-            <h2 class="section-header" id="section8-header"></h2>
-            <p class="section-text" id="section8-text"></p>
-        </div>
-        <div class="text-section--container section fp-auto-height" id="section9-container">
-            <h2 class="section-header" id="section9-header"></h2>
-            <p class="section-text" id="section9-text-one"></p></br>
-            <p class="section-text" id="section9-text-two"></p>
-            <p class="section-text" id="section9-text-three"></p>
-            <p class="section-text" id="section9-text-four"></p>
-            <p class="section-text" id="section9-text-five"></p>
-        </div>
+            </div>        </div>
     </div>
     <script>
-        document.querySelector('.main-content--container').style.display = 'block';
+        document.querySelector('.dv-main-content--container').classList.remove('hidden');
     </script>
 <script type="text/javascript" src="application.js"></script></body>
 

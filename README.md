@@ -12,11 +12,11 @@ Run `git clone https://github.com/evisat/6COSC006W-data-vis.git` to get a copy o
 
 Run `npm install` to setup.
 
-Run `npm run dev` to build project for development.
+Run `npm run build` to build project for development.
 
 Run `npm run start` to build with live reloading.
 
-Run `npm run build` to build project for publication.
+Run `npm run build:prod` to build project for publication.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

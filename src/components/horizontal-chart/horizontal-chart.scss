@@ -1,101 +1,121 @@
-#horizchart-container {
-    height: 1000px !important;
+.dv-horizontal {
+    .dv-horizontal-container {
+        width: 100%;
+        overflow: hidden;
+        display: block;
+        box-sizing: border-box;
 
-    .horz-text-container {
-        display: inline-block;
-        height: 70px;
+        @media (min-width: 560px) {
+            width: 45%;
+        }
 
+        &--title {
+            border-left: solid 2px #a6c766;
+        }
 
-        #navwrapitemHoriz {
-            width: 33%;
-            visibility: hidden;
-            text-align: center;
-            display: inline-block;
+        &--description {
+            font-size: 0.8rem;
 
-            #navwrapitemHoriz-text {
-                width: 81%;
-                margin: 0 auto;
+            @media (min-width: 370px) {
+                font-size: 1rem;
+            }
 
-                @media (min-width: 1800px) {
-                    font-size: 1.2em;
+            @media (min-width: 560px) {
+                font-size: 1.2rem;
+            }
+        }
+
+        &--keys {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            color: #222;
+
+            .key-item {
+                text-align: left;
+                width: fit-content;
+                font-weight: 600;
+                font-size: 0.8rem;
+                padding: 0 0.3rem;
+                
+                @media (min-width: 370px) {
+                    font-size: 1rem;
+                }
+            }
+
+            .dv-horizontal-container--keys-Attendance.key-item {
+                background-color: #ec7357;
+            }
+
+            .dv-horizontal-container--keys-CommuteLength.key-item {
+                background-color: #a6c766;
+            }
+        }
+
+        .dv-horizontal-container--chart {
+            width: 100%;
+
+            .horizontal-chart-container--chart {
+                .horizontal-chart-container--title {
+                    margin: 24px 0 5px;
+                    font-size: 1rem;
+                }
+            }
+
+            .bar-chart_container {
+                display: block;
+                margin-bottom: 5px;
+
+                @media (min-width: 560px) {
+                    margin-bottom: 1rem;
+                }
+
+                p.bar-chart_label {
+                    margin: 0 0 4px;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+
+                    @media (min-width: 560px) {
+                        font-size: 1rem;
+                    }    
+                }
+
+                .bar-chart_barContainer {
+                    height: 19px;
+                    // display: inline-block;
+                    width: 100%;
+                    background-color: #ebebeb;
+                    position: relative;
+
+                    .bar-chart_bar {
+                        height: 19px;
+                        display: inline-block;
+                        -webkit-transition: width 0.8s;
+                        transition: width 0.8s;
+                        transition-timing-function: ease-out;
+                    }
+
+                    .bar-tooltiptext {
+                        align-self: center;
+                        position: absolute;
+                        font-size: 0.8em;
+                        height: 19px;
+                        width: 80px;
+                        color: #222;
+                        font-weight: 600;
+                        margin-left: 0.25rem;
+                        display: inline-block;
+                    }
                 }
             }
         }
     }
 
-    .horiz-chart-container {
-        width: 70%;
-        float: left;
-
-        .horizontal-chart-container--chart {
-            width: 48%;
-            display: inline-block;
-            margin: 10px 6px 10px 10px;
-
-            .horizontal-chart-container--title {
-                margin: 24px 0 5px;
-                font-size: 1em;
-            }
-        }
-
-        .bar-chart_container {
-            display: block;
-            margin-bottom: 5px;
-
-            p.bar-chart_label {
-                margin: 0 0 4px;
-                font-size: 0.7em;
-                display: inline-block;
-                min-width: 52%;
-                vertical-align: top;
-                text-align: right;
-                margin-right: 8px;
-
-                @media (min-width: 1800px) {
-                    font-size: 0.9em;
-                }
-            }
-
-            .bar-chart_barContainer {
-                position: relative;
-                display: inline-block;
-                width: 84%;
-                background-color: #EBEBEB;
-
-                .bar-chart_bar {
-                    height: 19px;
-                    background-color: #D1495B;
-                    display: inline-block;
-                    -webkit-transition: width 0.8s;
-                    transition: width 0.8s;
-                    transition-timing-function: ease-out;
-                    border: 1px solid #D1495B;
-                }
-
-                .bar-tooltiptext {
-                    font-size: 0.7em;
-                    visibility: hidden;
-                    height: 19px;
-                    width: 80px;
-                    background-color: #282828;
-                    color: #fff;
-                    text-align: center;
-                    position: absolute;
-                    z-index: 1;
-                }
-
-                @media (min-width: 580px) {
-                    width: 43%;
-                }
-            }
-        }
-
-        .bar-chart_barContainer:hover .bar-tooltiptext {
-            visibility: visible;
-        }
-
-        @media (min-width: 1440px) {
-            width: 62%;
-        }
+    & > div:first-child {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 }

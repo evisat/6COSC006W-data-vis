@@ -1,192 +1,159 @@
-import * as d3 from 'd3';
+import d3 from '../../utils/d3-imports';
+import chartConfig from './chart-config.json';
+import FormatScatterChartData from './format-scatter-chart-data';
 
 class ScatterCharts {
-    constructor(config) {
-        this.data = JSON.parse(config.data);
-        document.querySelector('#scatterplot-title').innerHTML = "Scatterplot showing the relationship between module attendance and marks for courses based in <span id='campusName'>Cavendish Campus</span>"
-        document.querySelector('#scatterText-title').innerHTML = "Attendance and Performance"
-        document.querySelector('#navwrapitem-text').innerHTML = "The scatterplots are showing a relationship between average module attendance and average module marks for each course in a given campus. The linear regression line shows a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus. Each circle on the chart represents one student."
-        this.parentDIV = document.querySelector('.form-campus');
+    constructor(data) {
+        this.rawData = data;
+        this.container = document.querySelector('.dv-scatterplot-container-charts--chart');
 
-        this.generateData(this.data);
-    }
-
-    groupBy(xs, key) {
-        return xs.reduce((rv, x) => {
-            (rv[x[key]] = rv[x[key]] || []).push(x);
-            return rv;
-        }, {});
-    }
-
-    generateData(d) {
-        for (var prop in d) {
-            if (d.hasOwnProperty(prop)) {
-                if ((d[prop]['average_modulemark'] > 70) ||
-                    d[prop]['perc_attendance'] > 70) {
-                    delete d[prop];
-                }
-            }
+        this.margin = {
+            top: 30,
+            right: 35,
+            bottom: 50,
+            left: 30,
         };
 
-        const dropdownList = document.createElement('select');
-        dropdownList.id = 'campus-select';
-        this.parentDIV.appendChild(dropdownList);
+        this.dataFormatter = new FormatScatterChartData();
+        this.data = this.dataFormatter.createDropdownList(this.rawData);
+        this.campusName = this.dataFormatter.campusName;
 
-        document.querySelector('.dropdownList-label').innerHTML = "Select campus";
+        document.querySelector('.dv-scatterplot-container-charts--description').innerHTML = `The scatterplot shows a relationship between average module attendance and average module marks for courses based in <span class="title-${this.campusName.replace(' ', '')}" id="campusName">${this.campusName}</span>`;
+        document.querySelector('.dv-scatterplot-container-charts--title').innerHTML = 'Attendance and Performance';
+        document.querySelector('.dv-scatterplot-container-charts--description-two').innerHTML = `The linear regression line shows a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus. Based on individual <span class="dot-scatter dot-${this.campusName.replace(' ', '')}"></span> data of students.`;
 
-        const groupedByCampus = this.groupBy(d, 'campus_name');
+        // initial sizing (will resize to the viewport when drawn)
+        this.width = chartConfig.width - this.margin.left - this.margin.right;
+        this.height = chartConfig.height - this.margin.top - this.margin.bottom;
 
-        Object.keys(groupedByCampus).forEach((i) => {
-            const option = document.createElement("option");
-            option.text = i;
-            option.value = i;
-            dropdownList.appendChild(option);
-        });
+        // create chart
+        this.drawScatterplot();
+        this.addEventListener();
 
-        let campusName = dropdownList.options[dropdownList.selectedIndex].value;
-
-        dropdownList.addEventListener('change', (i) => {
-            campusName = i.target.value
-            document.getElementById("campusName").innerHTML = i.target.value;
-            d3.selectAll('.scatter-plot svg').remove();
-            this.getData(groupedByCampus[campusName], campusName);
-        });
-
-        this.getData(groupedByCampus[campusName], campusName);
+        // resize to fit page & add resize listener
+        this.resize();
+        d3.select(window).on('resize.one', this.resize.bind(this));
     }
 
-    getData(data, campusName) {
-        const color = d3.scaleOrdinal()
-            .domain(["Cavendish Campus", "Harrow Campus", "Marylebone Campus", "Regent Campus"])
-            .range(["#EDAE49", "#D1495B", "#00798C", "#21323a"])
-
-        const d = data.sort((a, b) => (a['course_title'].substr(a['course_title'].indexOf(' ') + 1) > b['course_title'].substr(b['course_title'].indexOf(' ') + 1)) ? 1 : ((b['course_title'].substr(b['course_title'].indexOf(' ') + 1) > a['course_title'].substr(a['course_title'].indexOf(' ') + 1)) ? -1 : 0));
-
-        const groupedByCourse = this.groupBy(d, 'course_code')
-
-        let courses;
-        for (let course in groupedByCourse) {
-            courses = groupedByCourse[course].sort();
-            const title = groupedByCourse[course][0]['course_title'];
-            this.generateScatterplot(courses, title, color(campusName));
-        }
+    drawScatterplot() {
+        // create chart
+        this.appendSVG();
+        this.scaleX();
+        this.scaleY();
+        this.addXAxis();
+        this.addYAxis();
+        this.svg.append('g').attr('class', `container--${this.campusName.replace(' ', '')}`);
+        Object.keys(this.data).forEach((course) => {
+            this.addDots(this.data[course]);
+            // this.addTrendLine(this.data[course]);
+        });
+        this.addXAxisLabel();
+        this.addYAxisLabel();
     }
 
-    generateScatterplot(d, title, color) {
-        const margin = {
-            top: 50,
-            right: 30,
-            bottom: 40,
-            left: 50
-        };
-        let width = 220 - margin.left - margin.right;
-        let height = 240 - margin.top - margin.bottom;
+    appendSVG() {
+        this.svg = d3.select(this.container)
+            .append('svg')
+            .attr('class', 'scatter-plot--svg')
+            .attr('width', this.width + this.margin.left + this.margin.right)
+            .attr('height', this.height + this.margin.top + this.margin.bottom)
+            .attr('aria-hidden', 'true')
+            .append('g')
+            .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
+    }
 
-        let svg = d3.select(".scatter-plot")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .attr("class", "scatter-plot--svg")
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + ", " + margin.top + ")")
+    scaleX() {
+        this.x = d3.scaleLinear()
+            .domain([0, this.dataFormatter.getMaxCount('perc_attendance')])
+            .range([0, this.width]);
+    }
 
-        svg
-            .append("rect")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("class", "scatterplot-back")
-            .attr("height", height)
-            .attr("width", width + 10)
-            .style("fill", "#EBEBEB")
+    scaleY() {
+        this.y = d3.scaleLinear()
+            .domain([0, this.dataFormatter.getMaxCount('average_modulemark')])
+            .range([this.height, 0]);
+    }
 
-        // Add X axis
-        const x = d3.scaleLinear()
-            .domain([-1 * 1.95, d3.max(d, d => d['perc_attendance'])])
-            .range([0, width])
-        svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x).tickSize(-height).ticks(7))
-            .select(".domain").remove()
+    addXAxis() {
+        this.svg.append('g')
+            .attr('class', 'x-axis');
+        this.formatXAxis();
+    }
 
-        // Add Y axis
-        const y = d3.scaleLinear()
-            .domain([0, d3.max(d, d => d['average_modulemark'])])
-            .range([height, 0])
-            .nice()
-        svg.append("g")
-            .call(d3.axisLeft(y).tickSize(-width).ticks(7))
-            .select(".domain").remove()
+    formatXAxis() {
+        d3.select(document.querySelector('.x-axis'))
+            .attr('transform', `translate(-2,${this.height})`)
+            .call(d3.axisBottom(this.x)
+                .tickSizeOuter(0)
+                .ticks(5));
+    }
 
-        // Customization
-        svg.selectAll(".tick line").attr("stroke", "white")
+    addXAxisLabel() {
+        this.svg.append('text')
+            .attr('class', 'x-axis-label')
+            .attr('transform', 'translate(50, 270)')
+            .text('% attendance');
+    }
 
-        // Add X axis label:
-        svg.append("text")
-            .attr("text-anchor", "end")
-            .attr("x", width / 2 + margin.left + 20)
-            .attr("y", height + margin.top - 20)
-            .style("font-size", "10px")
-            .text("Average module attendance (%)");
+    addYAxis() {
+        this.svg.append('g')
+            .attr('class', 'y-axis')
+        this.formatYAxis();
+    }
 
-        // Y axis label:
-        svg.append("text")
-            .attr("text-anchor", "end")
-            .attr("transform", "rotate(-90)")
-            .attr("y", -margin.left + 20)
-            .attr("x", -margin.top - height / 2 + 110)
-            .style("font-size", "10px")
-            .text("Average module mark (%)")
+    formatYAxis() {
+        d3.select(document.querySelector('.y-axis'))
+            .call(d3.axisLeft(this.y)
+                .ticks(4)
+                .tickSize([-this.width]));
+    }
 
-        svg.append("text")
-            .attr("x", width / 2 + margin.right - 20)
-            .attr("y", -20)
-            .attr("class", "scatter-title")
-            .attr("text-anchor", "middle")
-            .style("font-size", "12px")
-            .style("font-weight", "600")
-            .text(title)
-            .call(this.wrap, 160);
+    addYAxisLabel() {
+        this.svg.append('text')
+            .attr('class', 'y-axis-label')
+            .attr('transform', 'translate(-20, -10)')
+            .text('% marks');
+    }
 
-        // Add dots
-        svg.append('g')
-            .selectAll("dot")
-            .data(d)
+    addDots(course) {
+        const data = course;
+        d3.select(`.container--${this.campusName.replace(' ', '')}`)
+            .append('g')
+            .selectAll('.dot')
+            .data(data)
+            .attr('class', `dot-container-${course[0].course_code}`)
             .enter()
-            .append("circle")
-            .attr("cx", (d) => {
-                return x(d['perc_attendance']);
-            })
-            .attr("cy", (d) => {
-                return y(d['average_modulemark']);
-            })
-            .attr("r", 2)
-            .style("fill", color)
+            .append('circle')
+            .attr('class', `dot dot-${course[0].course_code}`)
+            .attr('cx', (d) => this.x(d['perc_attendance']))
+            .attr('cy', (d) => this.y(d['average_modulemark']))
+            .attr('r', 1.5);
+    }
 
-        let lineData = this.calcLinear(d);
-        lineData.forEach((dta) => {
+    addTrendLine(course) {
+        const data = this.calcLinearRegression(course);
+        data.forEach((dta) => {
             dta.x = +dta.x;
             dta.y = +dta.y;
             dta.yhat = +dta.yhat;
         });
 
-        let line = d3.line()
-            .x(function(dta) {
-                return x(dta.x);
-            })
-            .y(function(dta) {
-                return y(dta.yhat);
-            });
+        this.trendLineContainer = d3.select(`.container--${this.campusName.replace(' ', '')}`).append('g')
+            .attr('class', `line-container-${course[0].course_code}`);
 
-        svg.append("path")
-            .datum(lineData)
-            .attr("class", "line")
-            .attr("d", line)
-            .attr("stroke", "black")
-            .attr("stroke-width", 1);
+        const line = d3.line()
+            .x((d) => this.x(d.x))
+            .y((d) => this.y(d.yhat));
+
+        this.trendLineContainer.append('path')
+            .datum(data)
+            .attr('class', `line trend-line-${course[0].course_code}`)
+            .attr('d', line)
+            .style('stroke-width', 1.5)
+            .style('fill', 'none');
     }
 
-    calcLinear(data) {
+    calcLinearRegression(data) {
         let x = [];
         let y = [];
         let n = data.length;
@@ -239,38 +206,63 @@ class ScatterCharts {
         return (newData);
     }
 
-    wrap(text, width) {
-        text.each(function() {
-            const text = d3.select(this);
-            let words = text.text().split(/\s+/).reverse();
-            let word;
-            let line = [];
-            let lineNumber = 0;
-            const lineHeight = 1.1;
-            const x = text.attr("x");
-            const y = text.attr("y");
-            const dy = 0;
+    updateScatterplot(courseData) {
+        this.scaleX();
+        this.scaleY();
 
-            let tspan = text.text(null)
-                .append("tspan")
-                .attr("x", x)
-                .attr("y", y)
-                .attr("dy", dy + "em");
+        this.formatXAxis();
+        this.formatYAxis();
 
-            while (word = words.pop()) {
-                line.push(word);
-                tspan.text(line.join(" "));
-                if (tspan.node().getComputedTextLength() > width) {
-                    line.pop();
-                    tspan.text(line.join(" "));
-                    line = [word];
-                    tspan = text.append("tspan")
-                        .attr("x", x)
-                        .attr("y", y)
-                        .attr("dy", ++lineNumber * lineHeight + dy + "em")
-                        .text(word);
-                }
-            }
+        this.svg.append('g').attr('class', `container--${this.campusName.replace(' ', '')}`);
+        Object.keys(courseData).forEach((course) => {
+            this.addDots(courseData[course]);
+            // this.addTrendLine(courseData[course]);
+        });
+    }
+
+    addEventListener() {
+        document.querySelector('#campus-select').addEventListener('change', (i) => {
+            this.data = this.dataFormatter.updateChartData(i);
+            d3.select(`.dv-scatterplot-container-charts--chart .container--${this.campusName.replace(' ', '')}`).remove();
+            this.campusName = this.dataFormatter.campusName;
+            this.updateScatterplot(this.data);
+        });
+    }
+
+    resize() {
+        const chart = d3.select(document.querySelector('.dv-scatterplot-container-charts--chart svg'));
+        const width = parseInt(this.container.clientWidth, 10);
+        this.width = width - this.margin.left - this.margin.right;
+
+        // resize the chart
+        chart
+            .style('height', `${this.height + this.margin.top + this.margin.bottom}px`)
+            .style('width', `${this.width + this.margin.left + this.margin.right}px`);
+
+        // update X and Y range
+        this.x.range([0, this.width]);
+        this.y.range([this.height, 0]);
+
+        // update axes
+        this.formatXAxis();
+        this.formatYAxis();
+
+        chart.select('.x-axis-label').attr('transform', `translate(${(this.width - this.margin.left - this.margin.right - 10) / 2}, 270)`);
+
+        // update dots
+        Object.keys(this.data).forEach((course) => {
+            chart.selectAll(`.dot-${course}`)
+                .attr('cx', (d) => this.x(d['perc_attendance']))
+                .attr('cy', (d) => this.y(d['average_modulemark']));
+        });
+
+        // update lines
+        Object.keys(this.data).forEach((course) => {
+            const line = d3.line()
+                .x((d) => this.x(d.x))
+                .y((d) => this.y(d.yhat));
+            chart.select(`.trend-line-${course}`)
+                .attr('d', line);
         });
     }
 }
