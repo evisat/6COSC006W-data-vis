@@ -16,12 +16,12 @@ $campus-colours: (
 @import "./components/credits/credits.scss";
 
 body {
-    background-color: #1C3144;
+    background-color: #1c3144;
 }
 
 .dv-main-content--container {
     -webkit-backface-visibility: hidden;
-    background-color: #1C3144;
+    background-color: #1c3144;
     color: #fff;
     font-family: "Open Sans", sans-serif;
     padding: 0.8rem;
@@ -36,15 +36,37 @@ body {
             border-left: solid 2px #a6c766;
 
             @media (min-width: 560px) {
-                font-size: 2rem;
-                width: 35%;
-                line-height: 3rem;
+                font-size: 3rem;
+                width: 52.9%;
+                line-height: 4rem;
+                padding: 0 0 0 1rem;
+            }
+        }
+
+        &--cta {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+
+            @media (min-width: 560px) {
+                margin: 5rem 0 1rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        &--chevron {
+            width: 40px;
+            margin: 0 0 2rem;
+
+            @media (min-width: 560px) {
+                width: 50px;
             }
         }
 
         & > div:first-child {
             display: flex;
             justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
     }
@@ -56,7 +78,8 @@ body {
         margin: 0.5rem 0;
 
         @media (min-width: 560px) {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            padding: 0 0 0 1rem;
         }
     }
 
@@ -68,7 +91,51 @@ body {
     }
 
     .fp-section {
-        -webkit-transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    stop {
+        animation: colors 2s ease-out infinite;
+    }
+    stop:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+    @keyframes colors {
+        0% {
+            stop-color: #fff;
+        }
+        25% {
+            stop-color: #c0c6cb;
+        }
+        50% {
+            stop-color: #657380;
+        }
+        75% {
+            stop-color: #c0c6cb;
+        }
+        100% {
+            stop-color: #fff;
+        }
+    }
+
+    .bounce {
+        animation: bounce 2s ease-out infinite;
+    }
+
+    @keyframes bounce {
+        0%,
+        25%,
+        50%,
+        75%,
+        100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-20px);
+        }
+        60% {
+            transform: translateY(-12px);
+        }
     }
 }
 
