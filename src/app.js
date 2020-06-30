@@ -22,5 +22,6 @@ new PredictGrades(data);
 new HorizontalCharts(data);
 
 new fullpage('#fullpage', {
-    navigation: false,
+    autoScrolling: false,
+    fitToSection: false,
 });

@@ -139,7 +139,7 @@ class HorizontalCharts {
 
             const barthree = document.createElement('div');
             barthree.className = 'bar-chart_bar';
-            barthree.style.width = `${averageCommValue}%`;
+            barthree.style.width = `${averageCommValue}miles `;
             barthree.style.backgroundColor = '#a6c766';
             barthree.setAttribute('aria-hidden', 'true');
             barthree.setAttribute('data-percentage', `${averageCommValue}%`);
