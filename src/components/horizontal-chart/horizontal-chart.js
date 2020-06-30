@@ -5,9 +5,10 @@ class HorizontalCharts {
         document.querySelector('.dv-horizontal-container--title').innerHTML =
             "Commute length and attendance";
         document.querySelector('.dv-horizontal-container--description').innerHTML =
-            "The horizontal chart shows average attendance and commute length for the top 5 courses with the highest average module marks."
+            "The charts below show average module attendance and commute length for the top five courses based on average module marks."
+            // BA Film shows to have the highest average module marks, however, the average attendance is quite low. BA Fashion Design also shows a low average attendance even though average module marks are high. So the positive relationship we have seen in the previous chart between the two variables proves to be weak. These results could be related to the type of course, and whether attendance is really required. It is has a larger commute length compared to the other 4 course, while also having the smallest average attendance, showing a weak positive correlation between the two variables.
         this.createKeys();
-        this.chartData(this.data);
+        this.generateData(this.data);
     }
 
     groupBy(xs, key) {
@@ -17,21 +18,7 @@ class HorizontalCharts {
         }, {});
     }
 
-
-    chartData(d) {
-        const chartData = [{
-            filter: "average_modulemark",
-            sort: "top",
-            symbol: "%"
-        }
-        ];
-
-        for (let chart in chartData) {
-            this.generateData(this.data, chartData[chart]);
-        };
-    }
-
-    getAverageAttendance(d, chart) {
+    getAverageAttendance(d) {
         let newArr = [];
         d.forEach((i) => {
             const courseName = i.course;
@@ -49,7 +36,7 @@ class HorizontalCharts {
         return newArr;
     }
 
-    getAverageCommute(d, chart) {
+    getAverageCommute(d) {
         let newArr = [];
         d.forEach((i) => {
             const courseName = i.course;
@@ -67,7 +54,7 @@ class HorizontalCharts {
         return newArr;
     }
 
-    generateData(d, chart) {
+    generateData(d) {
         this.groupedByCourse = this.groupBy(d, 'course_title');
 
         let newArr = [];
@@ -82,16 +69,14 @@ class HorizontalCharts {
             });
         }
 
-        const sortedData = newArr.sort(function (a, b) {
-            return chart.sort == "top" ? b['value'] - a['value'] : a['value'] - b['value'];
-        }).slice(0, 5);
+        const sortedData = newArr.sort((a, b) => b['value'] - a['value']).slice(0, 5);
 
-        this.createBarChart(sortedData, chart);
+        this.createBarChart(sortedData);
     }
 
-    createBarChart(d, chart) {
-        const averageAttendance = this.getAverageAttendance(d, chart);
-        const averageCommute = this.getAverageCommute(d, chart);
+    createBarChart(d) {
+        const averageAttendance = this.getAverageAttendance(d);
+        const averageCommute = this.getAverageCommute(d);
 
         for (var x = 0; x < d.length; x++) {
             const attendance = averageAttendance[x];
@@ -130,7 +115,7 @@ class HorizontalCharts {
             value.className = 'bar-chart_value bar-tooltiptext';
             value.style.width = `${averageAttValue}%`;
             value.tabIndex = '0';
-            value.innerHTML = `${(attendance.value)}${chart.symbol}`;
+            value.innerHTML = `${(attendance.value)}%`;
             barContainer.appendChild(value);
 
             const barContainerThree = document.createElement('div');
@@ -139,7 +124,7 @@ class HorizontalCharts {
 
             const barthree = document.createElement('div');
             barthree.className = 'bar-chart_bar';
-            barthree.style.width = `${averageCommValue}miles `;
+            barthree.style.width = `${averageCommValue}% `;
             barthree.style.backgroundColor = '#a6c766';
             barthree.setAttribute('aria-hidden', 'true');
             barthree.setAttribute('data-percentage', `${averageCommValue}%`);
@@ -147,9 +132,9 @@ class HorizontalCharts {
 
             const valuethree = document.createElement('span');
             valuethree.className = 'bar-chart_value bar-tooltiptext';
-            valuethree.style.width = `${averageCommValue}miles`;
+            valuethree.style.width = `${averageCommValue}%`;
             valuethree.tabIndex = '0';
-            valuethree.innerHTML = `${(commute.value)}${chart.symbol}`;
+            valuethree.innerHTML = `${(commute.value)}miles`;
             barContainerThree.appendChild(valuethree);
 
             this.container.appendChild(sectionContainer);

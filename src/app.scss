@@ -20,7 +20,6 @@ body {
 }
 
 .dv-main-content--container {
-    -webkit-backface-visibility: hidden;
     background-color: #1c3144;
     color: #fff;
     font-family: "Open Sans", sans-serif;
@@ -94,16 +93,18 @@ body {
         color: #fff;
     }
 
-    .fp-section {
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-
     stop {
         animation: colors 2s ease-out infinite;
     }
+
     stop:nth-child(2) {
         animation-delay: 0.5s;
     }
+
+    .bounce {
+        animation: bounce 2s ease-out infinite;
+    }
+
     @keyframes colors {
         0% {
             stop-color: #fff;
@@ -120,10 +121,6 @@ body {
         100% {
             stop-color: #fff;
         }
-    }
-
-    .bounce {
-        animation: bounce 2s ease-out infinite;
     }
 
     @keyframes bounce {

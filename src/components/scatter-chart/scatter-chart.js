@@ -20,7 +20,7 @@ class ScatterCharts {
 
         document.querySelector('.dv-scatterplot-container-charts--description').innerHTML = `The scatterplot shows a relationship between average module attendance and average module marks for courses based in <span class="title-${this.campusName.replace(' ', '')}" id="campusName">${this.campusName}</span>`;
         document.querySelector('.dv-scatterplot-container-charts--title').innerHTML = 'Attendance and Performance';
-        document.querySelector('.dv-scatterplot-container-charts--description-two').innerHTML = `The linear regression line shows a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus. Based on individual <span class="dot-scatter dot-${this.campusName.replace(' ', '')}"></span> data of students.`;
+        document.querySelector('.dv-scatterplot-container-charts--description-two').innerHTML = `Based on the individual <span class="dot-scatter dot-${this.campusName.replace(' ', '')}"></span> data of students, we can see that there is a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus .`;
 
         // initial sizing (will resize to the viewport when drawn)
         this.width = chartConfig.width - this.margin.left - this.margin.right;
@@ -45,7 +45,6 @@ class ScatterCharts {
         this.svg.append('g').attr('class', `container--${this.campusName.replace(' ', '')}`);
         Object.keys(this.data).forEach((course) => {
             this.addDots(this.data[course]);
-            // this.addTrendLine(this.data[course]);
         });
         this.addXAxisLabel();
         this.addYAxisLabel();
@@ -128,29 +127,6 @@ class ScatterCharts {
             .attr('cx', (d) => this.x(d['perc_attendance']))
             .attr('cy', (d) => this.y(d['average_modulemark']))
             .attr('r', 1.5);
-    }
-
-    addTrendLine(course) {
-        const data = this.calcLinearRegression(course);
-        data.forEach((dta) => {
-            dta.x = +dta.x;
-            dta.y = +dta.y;
-            dta.yhat = +dta.yhat;
-        });
-
-        this.trendLineContainer = d3.select(`.container--${this.campusName.replace(' ', '')}`).append('g')
-            .attr('class', `line-container-${course[0].course_code}`);
-
-        const line = d3.line()
-            .x((d) => this.x(d.x))
-            .y((d) => this.y(d.yhat));
-
-        this.trendLineContainer.append('path')
-            .datum(data)
-            .attr('class', `line trend-line-${course[0].course_code}`)
-            .attr('d', line)
-            .style('stroke-width', 1.5)
-            .style('fill', 'none');
     }
 
     calcLinearRegression(data) {
@@ -254,15 +230,6 @@ class ScatterCharts {
             chart.selectAll(`.dot-${course}`)
                 .attr('cx', (d) => this.x(d['perc_attendance']))
                 .attr('cy', (d) => this.y(d['average_modulemark']));
-        });
-
-        // update lines
-        Object.keys(this.data).forEach((course) => {
-            const line = d3.line()
-                .x((d) => this.x(d.x))
-                .y((d) => this.y(d.yhat));
-            chart.select(`.trend-line-${course}`)
-                .attr('d', line);
         });
     }
 }
