@@ -44,7 +44,7 @@ class PredictGrades {
         this.scaleY();
         this.addXAxis();
         this.addYAxis();
-        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}`);
+        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}`);
         this.addDots(this.data);
         this.addTrendLine(this.data);
         this.addXAxisLabel();
@@ -116,7 +116,7 @@ class PredictGrades {
     }
 
     addDots(course) {
-        d3.select(`.container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}`)
+        d3.select(`.container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}`)
             .append('g')
             .selectAll('.dot')
             .data(course)
@@ -137,7 +137,7 @@ class PredictGrades {
             dta.yhat = +dta.yhat;
         });
 
-        this.trendLineContainer = d3.select(`.container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}`).append('g');
+        this.trendLineContainer = d3.select(`.container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}`).append('g');
 
         const line = d3.line()
             .x((d) => this.x(d.x))
@@ -213,7 +213,7 @@ class PredictGrades {
         this.formatXAxis();
         this.formatYAxis();
 
-        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}`);
+        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}`);
         this.addDots(this.data);
         this.addTrendLine(this.data);
     }
@@ -221,7 +221,7 @@ class PredictGrades {
     addEventListeners() {
         document.querySelector('#select-degreeType').addEventListener('change', (i) => {
             this.data = this.dataFormatter.updateCourseDropdown(i);
-            d3.select(`.dv-prediction-container-form--chart .container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}`).remove();
+            d3.select(`.dv-prediction-container-form--chart .container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}`).remove();
             this.course = this.dataFormatter.course;
             this.updateScatterplot();
             this.updateRangeSlider();
@@ -229,7 +229,7 @@ class PredictGrades {
 
         document.querySelector('#select-course').addEventListener('change', (i) => {
             this.data = this.dataFormatter.updateChartData(i);
-            d3.select(`.dv-prediction-container-form--chart .container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}`).remove();
+            d3.select(`.dv-prediction-container-form--chart .container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}`).remove();
             this.course = this.dataFormatter.course;
             this.updateScatterplot();
             this.updateRangeSlider();

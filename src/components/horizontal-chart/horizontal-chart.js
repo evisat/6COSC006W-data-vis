@@ -69,7 +69,7 @@ class CommuteAttendance {
                 const selectedCourse = courseOptions.filter((option) => option.value === this.dataFormatter.course);
                 selectedCourse[0].setAttribute('selected', '');
 
-                d3.select(`.dv-horizontal-container-form--chart .container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}-commute`).remove();
+                d3.select(`.dv-horizontal-container-form--chart .container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}-commute`).remove();
                 this.updateScatterplot();
             });
 
@@ -84,7 +84,7 @@ class CommuteAttendance {
         this.scaleY();
         this.addXAxis();
         this.addYAxis();
-        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}-commute`);
+        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}-commute`);
         this.addDots(this.data);
         this.addXAxisLabel();
         this.addYAxisLabel();
@@ -154,7 +154,7 @@ class CommuteAttendance {
     }
 
     addDots(course) {
-        d3.select(`.container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}-commute`)
+        d3.select(`.container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}-commute`)
             .append('g')
             .selectAll('.dot')
             .data(course)
@@ -174,21 +174,21 @@ class CommuteAttendance {
         this.formatXAxis();
         this.formatYAxis();
 
-        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}-commute`);
+        this.svg.append('g').attr('class', `container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}-commute`);
         this.addDots(this.data);
     }
 
     addEventListeners() {
         document.querySelector('#select-degreeType-commute').addEventListener('change', (i) => {
             this.data = this.dataFormatter.updateCourseDropdown(i);
-            d3.select(`.dv-horizontal-container-form--chart .container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}-commute`).remove();
+            d3.select(`.dv-horizontal-container-form--chart .container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}-commute`).remove();
             this.course = this.dataFormatter.course;
             this.updateScatterplot();
         });
 
         document.querySelector('#select-course-commute').addEventListener('change', (i) => {
             this.data = this.dataFormatter.updateChartData(i);
-            d3.select(`.dv-horizontal-container-form--chart .container--${this.course.replace(/\s|\&|\:*\(Sandwich\)/g, '')}-commute`).remove();
+            d3.select(`.dv-horizontal-container-form--chart .container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}-commute`).remove();
             this.course = this.dataFormatter.course;
             this.updateScatterplot();
         });
