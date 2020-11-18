@@ -36,7 +36,6 @@ class FormatChartData {
 
     getTop5data(i, course) {
         document.querySelector("#select-course-commute").innerHTML = '';
-        console.log('i.target.value', i.target.value);
         this.degree = i.target.value
 
         this.dataFormatted = this.groupedByDegreeType[this.degree];
@@ -53,7 +52,6 @@ class FormatChartData {
 
         this.course = course;
         this.dataFormatted = this.groupedByCourseName[this.course];
-        console.log('COURSEe', this.groupedByCourseName[this.course]);
         return this.groupedByCourseName[this.course];
     }
 
@@ -89,7 +87,6 @@ class FormatChartData {
 
     updateCourseDropdown(i) {
         document.querySelector("#select-course-commute").innerHTML = '';
-        console.log('i.target.value', i.target.value);
         this.degree = i.target.value
 
         this.dataFormatted = this.groupedByDegreeType[this.degree];

@@ -60,6 +60,7 @@ class CommuteAttendance {
                 // update degree dropdown
                 const selectedDegree = degreeOptions.filter((option) => option.value === this.dataFormatter.degree);
                 selectedDegree[0].setAttribute('selected', '');
+                selectedDegree[0].innerHTML = this.dataFormatter.degree;
 
                 // remove selected from all options
                 const courseOptions = Array.from(document.querySelectorAll("#select-course-commute option"));
@@ -68,6 +69,7 @@ class CommuteAttendance {
                 // update course dropdown
                 const selectedCourse = courseOptions.filter((option) => option.value === this.dataFormatter.course);
                 selectedCourse[0].setAttribute('selected', '');
+                selectedCourse[0].innerHTML = this.dataFormatter.course;
 
                 d3.select(`.dv-horizontal-container-form--chart .container--${this.course.replace(/\s|\&|\:|\(Sandwich\)/g, '')}-commute`).remove();
                 this.updateScatterplot();
