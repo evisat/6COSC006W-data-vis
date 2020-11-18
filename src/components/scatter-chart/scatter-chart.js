@@ -20,7 +20,7 @@ class ScatterCharts {
 
         document.querySelector('.dv-scatterplot-container-charts--description').innerHTML = `The scatterplot shows a relationship between average module attendance and average module marks for courses based in <span class="title-${this.campusName.replace(' ', '')}" id="campusName">${this.campusName}</span>`;
         document.querySelector('.dv-scatterplot-container-charts--title').innerHTML = 'Attendance and Performance';
-        document.querySelector('.dv-scatterplot-container-charts--description-two').innerHTML = `Based on the individual <span class="dot-scatter dot-${this.campusName.replace(' ', '')}"></span> data of students, we can see that there is a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus .`;
+        document.querySelector('.dv-scatterplot-container-charts--description-two').innerHTML = `Based on the individual <span class="dot-scatter dot-${this.campusName.replace(' ', '')}"></span> data of students, we can see that there is a stronger positive correlation for courses held at Cavendish campus compared to those in the Harrow campus.`;
 
         // initial sizing (will resize to the viewport when drawn)
         this.width = chartConfig.width - this.margin.left - this.margin.right;

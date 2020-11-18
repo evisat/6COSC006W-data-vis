@@ -6,6 +6,10 @@
         box-sizing: border-box;
         
         @media (min-width: 560px) {
+            width: 85%;
+        }
+
+        @media (min-width: 1200px) {
             width: 45%;
         }
 
@@ -99,13 +103,6 @@
                 }
             }
         }
-    }
-
-    & > div:first-child {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
     }
 }
 

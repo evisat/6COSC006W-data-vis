@@ -1,19 +1,24 @@
 .dv-horizontal {
-    .dv-horizontal-container {
+    .dv-horizontal-container-form {
         width: 100%;
         overflow: hidden;
         display: block;
         box-sizing: border-box;
 
         @media (min-width: 560px) {
+            width: 85%;
+        }
+
+        @media (min-width: 1200px) {
             width: 45%;
         }
 
         &--title {
-            border-left: solid 2px #a6c766;
+            border-left: solid 2px #aaabbc;
         }
 
         &--description {
+            margin: 0 0 0.8rem 0;
             font-size: 0.8rem;
 
             @media (min-width: 370px) {
@@ -22,101 +27,151 @@
 
             @media (min-width: 560px) {
                 font-size: 1.2rem;
+                margin-bottom: 1.5rem;
                 line-height: 1.8rem;
             }
         }
 
-        &--keys {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: flex-end;
-            color: #222;
+        &--description-two {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
 
-            .key-item {
-                text-align: left;
-                width: fit-content;
+        &--buttons {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            button.five-buttons {
+                cursor: pointer;
+                padding: 0.2rem 0.5rem;
+                background: #ec7357;
+                color: #222;
+                display: block;
                 font-weight: 600;
+                margin-top: 0.3rem;
                 font-size: 0.8rem;
-                padding: 0 0.3rem;
-                
+                line-height: 1.2rem;
+                margin: 0 0.3rem 0.3rem 0;
+                border: 0;
+
+                @media (min-height: 600px) {
+                    font-size: 0.9rem;
+                    line-height: 1.3rem;
+                    margin: 0 0.3rem 0.3rem 0;
+                }
+
+                @media (min-height: 700px) {
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                    margin: 0 0.5rem 0.5rem 0;
+                }
+            }
+        }
+
+        &--chart {
+            padding: 0.4rem;
+            width: 100%;
+
+            .commute-scatter-plot--svg {
+                .line {
+                    stroke: #debade;
+                }
+
+                .dot {
+                    fill: #a6c766;
+                    opacity: 0.5;
+                }
+
+                .linesOfIntersection {
+                    stroke: #a6c766;
+                    stroke-width: 2;
+                    stroke-dasharray: (3, 3);
+                }
+
+                .y-axis-commute .tick line,
+                .x-axis-commute .tick line {
+                    stroke: #6e6e73;
+                    stroke-width: 1px;
+                }
+
+                .x-axis-commute .domain {
+                    stroke: #6e6e73;
+                    stroke-width: 1px;
+                }
+
+                .y-axis-commute .domain {
+                    display: none;
+                }
+
+                .x-axis-commute .tick:first-of-type {
+                    display: none;
+                }
+            }
+        }
+
+        &--dropdown {
+            display: flex;
+
+            label.dropdownList-label {
+                margin: 0.25rem 0 0.25rem;
+                font-weight: 600;
+                text-align: right;
+                flex: 1 0;
+                font-size: 0.8rem;
+
                 @media (min-width: 370px) {
                     font-size: 1rem;
                 }
+
+                @media (min-width: 1800px) {
+                    font-size: 1.4em;
+                }
             }
 
-            .dv-horizontal-container--keys-Attendance.key-item {
-                background-color: #ec7357;
-            }
+            div {
+                position: relative;
+                background-color: #fff;
+                border: 1px solid #eaeaea;
+                margin: 0 0 0.25rem 0.5rem;
+                flex: 1.5 0;
+                align-self: center;
 
-            .dv-horizontal-container--keys-CommuteLength.key-item {
-                background-color: #a6c766;
-            }
-        }
-
-        .dv-horizontal-container--chart {
-            width: 100%;
-
-            .horizontal-chart-container--chart {
-                .horizontal-chart-container--title {
-                    margin: 24px 0 5px;
+                select {
                     font-size: 1rem;
-                }
-            }
-
-            .bar-chart_container {
-                display: block;
-                margin-bottom: 5px;
-
-                @media (min-width: 560px) {
-                    margin-bottom: 1rem;
-                }
-
-                p.bar-chart_label {
-                    margin: 0 0 4px;
-                    font-size: 0.8rem;
-                    font-weight: 600;
-
-                    @media (min-width: 560px) {
-                        font-size: 1rem;
-                    }    
-                }
-
-                .bar-chart_barContainer {
-                    height: 19px;
-                    // display: inline-block;
+                    font-weight: 200;
                     width: 100%;
-                    background-color: #ebebeb;
-                    position: relative;
+                    padding: 4px 24px 4px 10px;
+                    border: none;
+                    background-color: transparent;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
 
-                    .bar-chart_bar {
-                        height: 19px;
-                        display: inline-block;
-                        -webkit-transition: width 0.8s;
-                        transition: width 0.8s;
-                        transition-timing-function: ease-out;
+                    &:active,
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
                     }
 
-                    .bar-tooltiptext {
-                        align-self: center;
-                        position: absolute;
-                        font-size: 0.8em;
-                        height: 19px;
-                        width: 80px;
-                        color: #222;
-                        font-weight: 600;
-                        margin-left: 0.25rem;
-                        display: inline-block;
+                    @media (min-width: 1800px) {
+                        font-size: 1.2em;
                     }
+                }
+
+                &:after {
+                    content: " ";
+                    top: 50%;
+                    margin-top: -2px;
+                    right: 8px;
+                    width: 0;
+                    height: 0;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    border-top: 5px solid #222;
+                    position: absolute;
                 }
             }
         }
-    }
-
-    & > div:first-child {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
     }
 }

@@ -1,4 +1,3 @@
-import fullpage from 'fullpage';
 import data from './assets/data/uowdata_clean.json';
 import './app.scss';
 // polyfills
@@ -42,9 +41,3 @@ div.innerHTML = `<svg id="e2b708d4-248a-470c-b40c-9a10cdf9259b" data-name="Layer
 
 document.querySelector('.dv-title-container').appendChild(p);
 document.querySelector('.dv-title-container').appendChild(div);
-
-
-new fullpage('#fullpage', {
-    autoScrolling: false,
-    fitToSection: false,
-});
