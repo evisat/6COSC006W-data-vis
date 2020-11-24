@@ -1,123 +1,123 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
-        <link rel="icon" type="image/png" href="https://i.ibb.co/c6Nh46p/favicon2.png">
-        <title>A Visual Analysis of Student Commute Length, Attendance and Performance at University</title>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141502377-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
+    <link rel="icon" type="image/png" href="https://i.ibb.co/c6Nh46p/favicon2.png">
+    <title>A Visual Analysis of Student Commute Length, Attendance and Performance at University</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141502377-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-            gtag('config', 'UA-141502377-1');
-        </script>
-        <style>
-            body {
-                background-color: #1c3144;
-            }
+        gtag('config', 'UA-141502377-1');
+    </script>
+    <style>
+        body {
+            background-color: #1c3144;
+        }
 
-            .fallback-content {
-                display: block;
-                margin: 1rem auto;
-                font-size: 1.5rem;
-                color: #fff;
-                font-weight: 500;
-                text-align: center;
-            }
-        </style>
-    </head>
+        .fallback-content {
+            display: block;
+            margin: 1rem auto;
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+        }
+    </style>
+</head>
 
-    <body>
-        <div class="fallback-content hidden">
-            A modern browser with JavaScript and a stable internet connection is required to view this interactive page. Please enable it to continue.
+<body>
+    <div class="fallback-content hidden">
+        A modern browser with JavaScript and a stable internet connection is required to view this interactive page.
+        Please enable it to continue.
+    </div>
+    <div class="dv-main-content--container">
+        <div class="dv-title-container section">
+            <h1 class="dv-title-container--title"></h1>
         </div>
-        <div class="dv-main-content--container">
-            <div class="dv-title-container section">
-                <h1 class="dv-title-container--title"></h1>
+        <div class="dv-introduction  section">
+            <div class="text-section--container">
+                <h2 class="text-section--container-header section-header"></h2>
+                <p class="text-section--container-text"></p>
             </div>
-            <div class="dv-introduction  section">
-                <div class="text-section--container">
-                    <h2 class="text-section--container-header section-header"></h2>
-                    <p class="text-section--container-text"></p>
+        </div>        <div class="dv-scatterplot-container section">
+            <div class="dv-scatterplot-container-charts">
+                <h2 class="dv-scatterplot-container-charts--title section-header"></h2>
+                <p class="dv-scatterplot-container-charts--description"></p>
+                <div class="dv-scatterplot-container-charts--dropdown">
+                    <label class="dropdownList-label" for="campus-select"></label>
+                    <div class="form-campus"></div>
                 </div>
-            </div>            <div class="dv-scatterplot-container section">
-                <div class="dv-scatterplot-container-charts">
-                    <h2 class="dv-scatterplot-container-charts--title section-header"></h2>
-                    <p class="dv-scatterplot-container-charts--description"></p>
-                    <div class="dv-scatterplot-container-charts--dropdown">
-                        <label class="dropdownList-label" for="campus-select"></label>
-                        <div class="form-campus"></div>
-                    </div>
-                    <div class="dv-scatterplot-container-charts--chart"></div>
-                    <p class="dv-scatterplot-container-charts--description-two"></p>
+                <div class="dv-scatterplot-container-charts--chart"></div>
+                <p class="dv-scatterplot-container-charts--description-two"></p>
+            </div>
+        </div>        <div class="dv-prediction-container section">
+            <div class="dv-prediction-container-form">
+                <h2 class="dv-prediction-container-form--title section-header"></h2>
+                <p class="dv-prediction-container-form--description"></p>
+                <div class="dv-prediction-container-form--dropdown dropdown-degree">
+                    <label class="dropdownList-label" for="select-degreeType"></label>
+                    <div class="degreeType-select-form" id="form-degree-select"></div>
                 </div>
-            </div>            <div class="dv-prediction-container section">
-                <div class="dv-prediction-container-form">
-                    <h2 class="dv-prediction-container-form--title section-header"></h2>
-                    <p class="dv-prediction-container-form--description"></p>
-                    <div class="dv-prediction-container-form--dropdown dropdown-degree">
-                        <label class="dropdownList-label" for="select-degreeType"></label>
-                        <div class="degreeType-select-form" id="form-degree-select"></div>
-                    </div>
-                    <div class="dv-prediction-container-form--dropdown dropdown-course">
-                        <label class="dropdownList-label" for="select-course"></label>
-                        <div class="course-select-form" id="form-course-select"></div>
-                    </div>
-                    <div class="dv-prediction-container-form--chart"></div>
-                    <label class="prediction-slider-label" for="slider-range"></label>
-                    <div id="prediction-sliderPercAtten">
-                        <p id="perct-slider-value"></p>
-                        <div class="perc-select-form"></div>
-                    </div>
-                    <p id="predict-average-mark"></p>
+                <div class="dv-prediction-container-form--dropdown dropdown-course">
+                    <label class="dropdownList-label" for="select-course"></label>
+                    <div class="course-select-form" id="form-course-select"></div>
+                </div>
+                <div class="dv-prediction-container-form--chart"></div>
+                <label class="prediction-slider-label" for="slider-range"></label>
+                <div id="prediction-sliderPercAtten">
+                    <p id="perct-slider-value"></p>
+                    <div class="perc-select-form"></div>
+                </div>
+                <p id="predict-average-mark"></p>
+            </div>
+        </div>        <div class="dv-horizontal section">
+            <div class="dv-horizontal-container-form">
+                <h2 class="dv-horizontal-container-form--title section-header"></h2>
+                <p class="dv-horizontal-container-form--description"></p>
+                <div class="dv-horizontal-container-form--dropdown dropdown-degree-commute">
+                    <label class="dropdownList-label" for="select-degreeType-commute"></label>
+                    <div class="degreeType-select-form-commute" id="form-degree-select-commute"></div>
+                </div>
+                <div class="dv-horizontal-container-form--dropdown dropdown-course-commute">
+                    <label class="dropdownList-label" for="select-course-commute"></label>
+                    <div class="course-select-form-commute" id="form-course-select-commute"></div>
+                </div>
+                <div class="dv-horizontal-container-form--chart"></div>
+                <p class="dv-horizontal-container-form--description-two"></p>
+                <div class="dv-horizontal-container-form--buttons"></div>
+            </div>
+        </div>        <div class="dv-methodology  section">
+            <div class="text-section--container">
+                <h2 class="text-section--container-header section-header"></h2>
+                <p class="text-section--container-text"></p>
+            </div>
+        </div>        <div class="dv-conclusion section">
+            <div class="text-section--container">
+                <h2 class="text-section--container-header section-header"></h2>
+                <p class="text-section--container-text"></p>
+            </div>
+        </div>        <div class="dv-credits section">
+            <div class="text-section--container">
+                <h2 class="text-section--container-header section-header"></h2>
+                <div class="text-section--container-text">
+                    <p class="text-section--container-text--one"></p>
+                    <p class="text-section--container-text--two"></p>
+                    <p class="text-section--container-text--three"></p>
+                    <p class="text-section--container-text--four"></p>
+                    <p class="text-section--container-text--five"></p>
                 </div>
             </div>
-            <div class="dv-horizontal section">
-                <div class="dv-horizontal-container-form">
-                    <h2 class="dv-horizontal-container-form--title section-header"></h2>
-                    <p class="dv-horizontal-container-form--description"></p>
-                    <div class="dv-horizontal-container-form--dropdown dropdown-degree-commute">
-                        <label class="dropdownList-label" for="select-degreeType-commute"></label>
-                        <div class="degreeType-select-form-commute" id="form-degree-select-commute"></div>
-                    </div>
-                    <div class="dv-horizontal-container-form--dropdown dropdown-course-commute">
-                        <label class="dropdownList-label" for="select-course-commute"></label>
-                        <div class="course-select-form-commute" id="form-course-select-commute"></div>
-                    </div>
-                    <div class="dv-horizontal-container-form--chart"></div>
-                    <p class="dv-horizontal-container-form--description-two"></p>
-                    <div class="dv-horizontal-container-form--buttons"></div>
-                </div>
-            </div>            <div class="dv-methodology  section">
-                <div class="text-section--container">
-                    <h2 class="text-section--container-header section-header"></h2>
-                    <p class="text-section--container-text"></p>
-                </div>
-            </div>            <div class="dv-conclusion section">
-                <div class="text-section--container">
-                    <h2 class="text-section--container-header section-header"></h2>
-                    <p class="text-section--container-text"></p>
-                </div>
-            </div>            <div class="dv-credits section">
-                <div class="text-section--container">
-                    <h2 class="text-section--container-header section-header"></h2>
-                    <div class="text-section--container-text">
-                        <p class="text-section--container-text--one"></p>
-                        <p class="text-section--container-text--two"></p>
-                        <p class="text-section--container-text--three"></p>
-                        <p class="text-section--container-text--four"></p>
-                        <p class="text-section--container-text--five"></p>
-                    </div>
-                </div>
-            </div>        </div>
-        <script>
-            document.querySelector('.dv-main-content--container').classList.remove('hidden');
-        </script>
-    <script type="text/javascript" src="application.js"></script></body>
+        </div>    </div>
+    <script>
+        document.querySelector('.dv-main-content--container').classList.remove('hidden');
+    </script>
+<script type="text/javascript" src="application.js"></script></body>
 
 </html>

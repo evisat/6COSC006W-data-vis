@@ -1,227 +1,227 @@
 .dv-prediction-container {
-    .dv-prediction-container-form {
-        width: 100%;
-        overflow: hidden;
-        display: block;
-        box-sizing: border-box;
+  .dv-prediction-container-form {
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    box-sizing: border-box;
 
-        @media (min-width: 560px) {
-            width: 85%;
-        }
-
-        @media (min-width: 1200px) {
-            width: 45%;
-        }
-
-        &--title {
-            border-left: solid 2px #aaabbc;
-        }
-
-        &--description {
-            margin: 0 0 0.25rem 0;
-            font-size: 0.8rem;
-
-            @media (min-width: 370px) {
-                font-size: 1rem;
-            }
-
-            @media (min-width: 560px) {
-                font-size: 1.2rem;
-                margin-bottom: 1.5rem;
-                line-height: 1.8rem;
-            }
-        }
-
-        &--chart {
-            padding: 0.4rem;
-            width: 100%;
-
-            .predict-scatter-plot--svg {
-                .line {
-                    stroke: #debade;
-                }
-
-                .dot {
-                    fill: #a6c766;
-                    opacity: 0.5;
-                }
-
-                .linesOfIntersection {
-                    stroke: #a6c766;
-                    stroke-width: 2;
-                    stroke-dasharray: (3, 3);
-                }
-
-                .y-axis-predict .tick line,
-                .x-axis-predict .tick line {
-                    stroke: #6e6e73;
-                    stroke-width: 1px;
-                }
-
-                .x-axis-predict .domain {
-                    stroke: #6e6e73;
-                    stroke-width: 1px;
-                }
-
-                .y-axis-predict .domain {
-                    display: none;
-                }
-
-                .x-axis-predict .tick:first-of-type {
-                    display: none;
-                }
-            }
-        }
-
-        &--dropdown {
-            display: flex;
-
-            label.dropdownList-label {
-                margin: 0.25rem 0 0.25rem;
-                font-weight: 600;
-                text-align: right;
-                flex: 1 0;
-                font-size: 0.8rem;
-
-                @media (min-width: 370px) {
-                    font-size: 1rem;
-                }
-
-                @media (min-width: 1800px) {
-                    font-size: 1.4em;
-                }
-            }
-
-            div {
-                position: relative;
-                background-color: #fff;
-                border: 1px solid #eaeaea;
-                margin: 0 0 0.25rem 0.5rem;
-                flex: 1.5 0;
-                align-self: center;
-
-                select {
-                    font-size: 1rem;
-                    font-weight: 200;
-                    width: 100%;
-                    padding: 4px 24px 4px 10px;
-                    border: none;
-                    background-color: transparent;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-
-                    &:active,
-                    &:focus {
-                        outline: none;
-                        box-shadow: none;
-                    }
-
-                    @media (min-width: 1800px) {
-                        font-size: 1.2em;
-                    }
-                }
-
-                &:after {
-                    content: " ";
-                    top: 50%;
-                    margin-top: -2px;
-                    right: 8px;
-                    width: 0;
-                    height: 0;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-top: 5px solid #222;
-                    position: absolute;
-                }
-            }
-        }
+    @media (min-width: 560px) {
+      width: 85%;
     }
 
-    .prediction-slider-label {
+    @media (min-width: 1200px) {
+      width: 45%;
+    }
+
+    &--title {
+      border-left: solid 2px #aaabbc;
+    }
+
+    &--description {
+      margin: 0 0 0.25rem 0;
+      font-size: 0.8rem;
+
+      @media (min-width: 370px) {
+        font-size: 1rem;
+      }
+
+      @media (min-width: 560px) {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.8rem;
+      }
+    }
+
+    &--chart {
+      padding: 0.4rem;
+      width: 100%;
+
+      .predict-scatter-plot--svg {
+        .line {
+          stroke: #debade;
+        }
+
+        .dot {
+          fill: #a6c766;
+          opacity: 0.5;
+        }
+
+        .linesOfIntersection {
+          stroke: #a6c766;
+          stroke-width: 2;
+          stroke-dasharray: (3, 3);
+        }
+
+        .y-axis-predict .tick line,
+        .x-axis-predict .tick line {
+          stroke: #6e6e73;
+          stroke-width: 1px;
+        }
+
+        .x-axis-predict .domain {
+          stroke: #6e6e73;
+          stroke-width: 1px;
+        }
+
+        .y-axis-predict .domain {
+          display: none;
+        }
+
+        .x-axis-predict .tick:first-of-type {
+          display: none;
+        }
+      }
+    }
+
+    &--dropdown {
+      display: flex;
+
+      label.dropdownList-label {
         margin: 0.25rem 0 0.25rem;
         font-weight: 600;
-        display: block;
+        text-align: right;
+        flex: 1 0;
         font-size: 0.8rem;
 
         @media (min-width: 370px) {
-            font-size: 1rem;
-        }
-    }
-
-    #prediction-sliderPercAtten {
-        display: flex;
-
-        #perct-slider-value {
-            margin: 0.25rem 0 0.25rem;
-            font-weight: 600;
-            text-align: right;
-            flex: 1 0;
-            font-size: 0.8rem;
-
-            @media (min-width: 370px) {
-                font-size: 1rem;
-            }
+          font-size: 1rem;
         }
 
-        .perc-select-form {
-            position: relative;
-            background-color: #fff;
-            border: 0;
-            margin: 0 0 0.25rem 0.5rem;
-            flex: 5 0;
-            align-self: center;
+        @media (min-width: 1800px) {
+          font-size: 1.4em;
         }
+      }
 
-        .range-slider {
-            display: block;
-            width: 100%;
-            -webkit-appearance: none;
-            height: 17px;
+      div {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        margin: 0 0 0.25rem 0.5rem;
+        flex: 1.5 0;
+        align-self: center;
+
+        select {
+          font-size: 1rem;
+          font-weight: 200;
+          width: 100%;
+          padding: 4px 24px 4px 10px;
+          border: none;
+          background-color: transparent;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+
+          &:active,
+          &:focus {
             outline: none;
-            margin: 0;
+            box-shadow: none;
+          }
+
+          @media (min-width: 1800px) {
+            font-size: 1.2em;
+          }
         }
 
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 25px;
-            height: 25px;
-            background: #a6c766;
-            cursor: pointer;
+        &:after {
+          content: " ";
+          top: 50%;
+          margin-top: -2px;
+          right: 8px;
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid #222;
+          position: absolute;
         }
-
-        .range-slider::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            background: #a6c766;
-            cursor: pointer;
-        }
-
-        .range-slider::-ms-thumb {
-            width: 25px;
-            height: 25px;
-            background: #a6c766;
-            cursor: pointer;
-        }
+      }
     }
+  }
 
-    #predict-average-mark {
+  .prediction-slider-label {
+    margin: 0.25rem 0 0.25rem;
+    font-weight: 600;
+    display: block;
+    font-size: 0.8rem;
+
+    @media (min-width: 370px) {
+      font-size: 1rem;
+    }
+  }
+
+  #prediction-sliderPercAtten {
+    display: flex;
+
+    #perct-slider-value {
+      margin: 0.25rem 0 0.25rem;
+      font-weight: 600;
+      text-align: right;
+      flex: 1 0;
+      font-size: 0.8rem;
+
+      @media (min-width: 370px) {
         font-size: 1rem;
-        margin: 0.3rem 0 0.5rem;
-
-        @media (min-width: 370px) {
-            font-size: 1.5rem;
-            margin: 0.5rem 0;
-        }
-
-        @media (min-width: 560px) {
-            margin: 1rem 0;
-        }
+      }
     }
 
-    span#pred-color {
-        color: #a6c766;
-        font-weight: 600;
+    .perc-select-form {
+      position: relative;
+      background-color: #fff;
+      border: 0;
+      margin: 0 0 0.25rem 0.5rem;
+      flex: 5 0;
+      align-self: center;
     }
+
+    .range-slider {
+      display: block;
+      width: 100%;
+      -webkit-appearance: none;
+      height: 17px;
+      outline: none;
+      margin: 0;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #a6c766;
+      cursor: pointer;
+    }
+
+    .range-slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #a6c766;
+      cursor: pointer;
+    }
+
+    .range-slider::-ms-thumb {
+      width: 25px;
+      height: 25px;
+      background: #a6c766;
+      cursor: pointer;
+    }
+  }
+
+  #predict-average-mark {
+    font-size: 1rem;
+    margin: 0.3rem 0 0.5rem;
+
+    @media (min-width: 370px) {
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    @media (min-width: 560px) {
+      margin: 1rem 0;
+    }
+  }
+
+  span#pred-color {
+    color: #a6c766;
+    font-weight: 600;
+  }
 }

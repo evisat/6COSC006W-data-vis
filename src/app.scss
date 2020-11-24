@@ -1,20 +1,20 @@
 $campus-colours: (
-    CavendishCampus: #a6c766,
-    HarrowCampus: #ec7357,
-    MaryleboneCampus: #debade,
-    RegentCampus: #aaabbc,
+  CavendishCampus: #a6c766,
+  HarrowCampus: #ec7357,
+  MaryleboneCampus: #debade,
+  RegentCampus: #aaabbc,
 );
 
 @mixin mobile {
-    @media (min-width: 360px) and (max-width: 400px) {
-        @content;
-    }
+  @media (min-width: 360px) and (max-width: 400px) {
+    @content;
+  }
 }
 
 @mixin mobile-plus {
-    @media (min-width: 410px) and (max-width: 560px) {
-        @content;
-    }
+  @media (min-width: 410px) and (max-width: 560px) {
+    @content;
+  }
 }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,600");
@@ -27,158 +27,158 @@ $campus-colours: (
 @import "./components/credits/credits.scss";
 
 .dv-main-content--container {
-    background-color: #1c3144;
+  background-color: #1c3144;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  padding: 0.4rem;
+
+  .dv-title-container {
+    &--title {
+      font-size: 1.3rem;
+      width: 100%;
+      padding: 0 0 0 0.5rem;
+      font-weight: 500;
+      text-align: left;
+      border-left: solid 2px #a6c766;
+
+      @media (min-width: 370px) {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: 560px) {
+        font-size: 3rem;
+        width: 91%;
+        line-height: 4rem;
+        padding: 0 0 0 1rem;
+      }
+
+      @media (min-width: 1000px) {
+        width: 68%;
+        font-size: 3rem;
+        line-height: 4rem;
+        padding: 0 0 0 1rem;
+      }
+
+      @media (min-width: 1100px) {
+        width: 54.9%;
+        font-size: 3rem;
+        line-height: 4rem;
+        padding: 0 0 0 1rem;
+      }
+
+      @media (min-width: 1400px) {
+        width: 52.9%;
+        font-size: 3rem;
+        line-height: 4rem;
+        padding: 0 0 0 1rem;
+      }
+    }
+
+    &--cta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+
+      @media (min-width: 560px) {
+        margin: 5rem 0 1rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    &--chevron {
+      width: 40px;
+      margin: 0 0 2rem;
+
+      @media (min-width: 560px) {
+        width: 50px;
+      }
+    }
+  }
+
+  .section {
+    height: 120vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-height: 600px) {
+      height: 100vh;
+    }
+  }
+
+  .section-header {
+    padding: 0 0 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+
+    @media (min-width: 560px) {
+      font-size: 2rem;
+      padding: 0 0 0 1rem;
+    }
+  }
+
+  a {
+    border-bottom: solid 1px #a6c766;
+    text-decoration: none;
+    font-weight: 600;
     color: #fff;
-    font-family: "Open Sans", sans-serif;
-    padding: 0.4rem;
+  }
 
-    .dv-title-container {
-        &--title {
-            font-size: 1.3rem;
-            width: 100%;
-            padding: 0 0 0 0.5rem;
-            font-weight: 500;
-            text-align: left;
-            border-left: solid 2px #a6c766;
+  stop {
+    animation: colors 2s ease-out infinite;
+  }
 
-            @media (min-width: 370px) {
-                font-size: 1.5rem;
-            }
+  stop:nth-child(2) {
+    animation-delay: 0.5s;
+  }
 
-            @media (min-width: 560px) {
-                font-size: 3rem;
-                width: 91%;
-                line-height: 4rem;
-                padding: 0 0 0 1rem;
-            }
-    
-            @media (min-width: 1000px) {
-                width: 68%;
-                font-size: 3rem;
-                line-height: 4rem;
-                padding: 0 0 0 1rem;
-            }
+  .bounce {
+    animation: bounce 2s ease-out infinite;
+  }
 
-            @media (min-width: 1100px) {
-                width: 54.9%;
-                font-size: 3rem;
-                line-height: 4rem;
-                padding: 0 0 0 1rem;
-            }
-
-            @media (min-width: 1400px) {
-                width: 52.9%;
-                font-size: 3rem;
-                line-height: 4rem;
-                padding: 0 0 0 1rem;
-            }
-        }
-
-        &--cta {
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem;
-
-            @media (min-width: 560px) {
-                margin: 5rem 0 1rem;
-                font-size: 1.2rem;
-            }
-        }
-
-        &--chevron {
-            width: 40px;
-            margin: 0 0 2rem;
-
-            @media (min-width: 560px) {
-                width: 50px;
-            }
-        }
+  @keyframes colors {
+    0% {
+      stop-color: #fff;
     }
-
-    .section {
-        height: 120vh;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-
-        @media (min-height: 600px) {
-            height: 100vh;
-        }
+    25% {
+      stop-color: #c0c6cb;
     }
-
-    .section-header {
-        padding: 0 0 0 0.5rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin: 0.5rem 0;
-
-        @media (min-width: 560px) {
-            font-size: 2rem;
-            padding: 0 0 0 1rem;
-        }
+    50% {
+      stop-color: #657380;
     }
-
-    a {
-        border-bottom: solid 1px #a6c766;
-        text-decoration: none;
-        font-weight: 600;
-        color: #fff;
+    75% {
+      stop-color: #c0c6cb;
     }
-
-    stop {
-        animation: colors 2s ease-out infinite;
+    100% {
+      stop-color: #fff;
     }
+  }
 
-    stop:nth-child(2) {
-        animation-delay: 0.5s;
+  @keyframes bounce {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      transform: translateY(0);
     }
-
-    .bounce {
-        animation: bounce 2s ease-out infinite;
+    40% {
+      transform: translateY(-20px);
     }
-
-    @keyframes colors {
-        0% {
-            stop-color: #fff;
-        }
-        25% {
-            stop-color: #c0c6cb;
-        }
-        50% {
-            stop-color: #657380;
-        }
-        75% {
-            stop-color: #c0c6cb;
-        }
-        100% {
-            stop-color: #fff;
-        }
+    60% {
+      transform: translateY(-12px);
     }
-
-    @keyframes bounce {
-        0%,
-        25%,
-        50%,
-        75%,
-        100% {
-            transform: translateY(0);
-        }
-        40% {
-            transform: translateY(-20px);
-        }
-        60% {
-            transform: translateY(-12px);
-        }
-    }
+  }
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }

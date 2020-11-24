@@ -1,160 +1,160 @@
 .dv-scatterplot-container {
-    .dv-scatterplot-container-charts {
-        width: 100%;
-        overflow: hidden;
-        display: block;
-        box-sizing: border-box;
-        
-        @media (min-width: 560px) {
-            width: 85%;
-        }
+  .dv-scatterplot-container-charts {
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    box-sizing: border-box;
 
-        @media (min-width: 1200px) {
-            width: 45%;
-        }
-
-        &--title {
-            border-left: solid 2px #ec7357;
-        }
-
-        &--description,
-        &--description-two {
-            font-size: 0.8rem;
-
-            @media (min-width: 370px) {
-                font-size: 1rem;
-            }
-
-            @media (min-width: 560px) {
-                font-size: 1.2rem;
-                line-height: 1.8rem;
-            }
-        }
-
-        &--description {
-            margin: 0 0 0.25rem 0;
-        }
-
-        &--description-two {
-            margin: 0;
-        }
-
-        &--chart {
-            padding: 0.4rem;
-            width: 100%;
-        }
-
-        &--dropdown {
-            display: flex;
-
-            label.dropdownList-label {
-                margin: 0.25rem 0 0.25rem;
-                font-weight: 600;
-                padding: 8px 0 8px 0;
-                text-align: right;
-                flex: 1 0;
-    
-                @media (min-width: 1800px) {
-                    font-size: 1.4em;
-                }
-            }
-
-            .form-campus {
-                position: relative;
-                background-color: #fff;
-                border: 1px solid #eaeaea;
-                margin: 0 0 0.25rem 0.5rem;
-                flex: 1.5 0;
-                align-self: center;
-        
-                select {
-                    font-size: 1rem;
-                    font-weight: 200;
-                    width: 100%;
-                    padding: 4px 24px 4px 10px;
-                    border: none;
-                    background-color: transparent;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-        
-                    &:active,
-                    &:focus {
-                        outline: none;
-                        box-shadow: none;
-                    }
-        
-                    @media (min-width: 1800px) {
-                        font-size: 1.2em;
-                    }
-                }
-        
-                &:after {
-                    content: " ";
-                    top: 50%;
-                    margin-top: -2px;
-                    right: 8px;
-                    width: 0;
-                    height: 0;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-top: 5px solid #222;
-                    position: absolute;
-                }
-            }
-        }
+    @media (min-width: 560px) {
+      width: 85%;
     }
+
+    @media (min-width: 1200px) {
+      width: 45%;
+    }
+
+    &--title {
+      border-left: solid 2px #ec7357;
+    }
+
+    &--description,
+    &--description-two {
+      font-size: 0.8rem;
+
+      @media (min-width: 370px) {
+        font-size: 1rem;
+      }
+
+      @media (min-width: 560px) {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+      }
+    }
+
+    &--description {
+      margin: 0 0 0.25rem 0;
+    }
+
+    &--description-two {
+      margin: 0;
+    }
+
+    &--chart {
+      padding: 0.4rem;
+      width: 100%;
+    }
+
+    &--dropdown {
+      display: flex;
+
+      label.dropdownList-label {
+        margin: 0.25rem 0 0.25rem;
+        font-weight: 600;
+        padding: 8px 0 8px 0;
+        text-align: right;
+        flex: 1 0;
+
+        @media (min-width: 1800px) {
+          font-size: 1.4em;
+        }
+      }
+
+      .form-campus {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        margin: 0 0 0.25rem 0.5rem;
+        flex: 1.5 0;
+        align-self: center;
+
+        select {
+          font-size: 1rem;
+          font-weight: 200;
+          width: 100%;
+          padding: 4px 24px 4px 10px;
+          border: none;
+          background-color: transparent;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+
+          &:active,
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
+
+          @media (min-width: 1800px) {
+            font-size: 1.2em;
+          }
+        }
+
+        &:after {
+          content: " ";
+          top: 50%;
+          margin-top: -2px;
+          right: 8px;
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid #222;
+          position: absolute;
+        }
+      }
+    }
+  }
 }
 
 @each $campus, $colour in $campus-colours {
-    .title-#{$campus} {
-        padding: 0 0.3rem;
-        background: $colour;
-        color: #222;
-        display: block;
-        width: fit-content;
-        font-weight: 600;
-        margin-top: 0.3rem;
-    }
+  .title-#{$campus} {
+    padding: 0 0.3rem;
+    background: $colour;
+    color: #222;
+    display: block;
+    width: fit-content;
+    font-weight: 600;
+    margin-top: 0.3rem;
+  }
 
-    .dot-#{$campus} {
-        height: 0.5rem;
-        width: 0.5rem;
-        background-color: $colour;
-        border-radius: 50%;
-        display: inline-block;
-    }
+  .dot-#{$campus} {
+    height: 0.5rem;
+    width: 0.5rem;
+    background-color: $colour;
+    border-radius: 50%;
+    display: inline-block;
+  }
 
-    .container--#{$campus} path {
-        stroke: $colour;
-    }
+  .container--#{$campus} path {
+    stroke: $colour;
+  }
 
-    .container--#{$campus} .dot {
-        fill: $colour;
-        opacity: 0.35;
-    }
+  .container--#{$campus} .dot {
+    fill: $colour;
+    opacity: 0.35;
+  }
 }
 
 .y-axis .tick line,
 .x-axis .tick line {
-    stroke: #6e6e73;
-    stroke-width: 1px;
+  stroke: #6e6e73;
+  stroke-width: 1px;
 }
 
 .x-axis .domain {
-    stroke: #6e6e73;
-    stroke-width: 1px;
+  stroke: #6e6e73;
+  stroke-width: 1px;
 }
 
 .y-axis .domain {
-    display: none;
+  display: none;
 }
 
 svg text {
-    font-size: 1rem;
-    fill: #D1D1D1;
+  font-size: 1rem;
+  fill: #d1d1d1;
 }
 
 .x-axis .tick:first-of-type {
-    display: none;
+  display: none;
 }
